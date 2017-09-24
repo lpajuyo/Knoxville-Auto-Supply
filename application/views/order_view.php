@@ -28,6 +28,6 @@
 			
         </tbody>
     </table>
-    <a href="<?php echo base_url('knoxville/addClient')?>">Add Client</a>
+    <a href="<?php echo base_url('knoxville/addOrder')?>">Add Order</a>
 </body>
 </html>
