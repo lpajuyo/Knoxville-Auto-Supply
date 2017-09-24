@@ -5,6 +5,7 @@ class Knoxville extends CI_Controller {
     public function __construct(){
         parent::__construct();
         $this->load->model('client_model','Client');
+        $this->load->model('sales_agent_model','SalesAgent');
     }
 
 	public function index()
@@ -17,6 +18,93 @@ class Knoxville extends CI_Controller {
             }
         }
 	}
+    
+    public function viewSalesAgents(){
+        $result_array = $this->SalesAgent->read();
+        
+        $data['sales_agents'] = $result_array; 
+        $this->load->view('sales_agent_view',$data);
+        $this->load->library('encryption');
+        echo bin2hex($this->encryption->create_key(16));
+    }
+    
+    public function addSalesAgent(){
+        //load the view
+        //get form data
+        //add to db
+        $rules = array(
+                    array('field'=>'userID', 'label'=>'User ID', 'rules'=>'required'),
+                    array('field'=>'pass', 'label'=>'Password', 'rules'=>'required'),
+                    array('field'=>'name', 'label'=>'Full Name', 'rules'=>'required'),
+                    array('field'=>'bday', 'label'=>'Birthdate', 'rules'=>'required'),
+                    array('field'=>'age', 'label'=>'Age', 'rules'=>'required'),
+                    array('field'=>'email', 'label'=>'Email', 'rules'=>'required'),
+                    array('field'=>'cnum', 'label'=>'Contact No.', 'rules'=>'required')
+                    //array('field'=>'isAdmin', 'label'=>'Admin?', 'rules'=>'required'),
+                );
+        $this->form_validation->set_rules($rules);
+        if($this->form_validation->run()==FALSE){
+            $this->load->view('add_sales_agentForm');
+        }
+        else{
+            if(isset($_POST['isAdmin']))
+                $isAdmin=1;
+            else
+                $isAdmin=0;
+            $salesAgentRecord=array('userID'=>$_POST['userID'],'password'=>$_POST['pass'],'fullname'=>$_POST['name'],'birthdate'=>$_POST['bday'],'age'=>$_POST['age'],'email'=>$_POST['email'],'contact_no'=>$_POST['cnum'],'isAdmin'=>$isAdmin);
+            $this->SalesAgent->create($salesAgentRecord);
+            redirect('knoxville/viewSalesAgents');
+        }
+    }
+    
+    public function updateSalesAgent($userID){
+        $data['userID']=$userID;
+        $condition = array('userID' => $userID);
+        $oldRecord = $this->SalesAgent->read($condition);
+        foreach($oldRecord as $o){
+            $data['userID'] = $o['userID'];
+            $data['pass'] = $o['password'];
+            $data['name'] = $o['fullname'];
+            $data['bday'] = $o['birthdate'];
+            $data['age'] = $o['age'];
+            $data['email'] = $o['email'];
+            $data['cnum'] = $o['contact_no'];
+            if($o['isAdmin']>0)
+                $isAdmin='checked';
+            else
+                $isAdmin='';
+            $data['isAdmin'] = $isAdmin;
+        }
+        $rules = array(
+                    array('field'=>'userID', 'label'=>'User ID', 'rules'=>'required'),
+                    array('field'=>'pass', 'label'=>'Password', 'rules'=>'required'),
+                    array('field'=>'name', 'label'=>'Full Name', 'rules'=>'required'),
+                    array('field'=>'bday', 'label'=>'Birthdate', 'rules'=>'required'),
+                    array('field'=>'age', 'label'=>'Age', 'rules'=>'required'),
+                    array('field'=>'email', 'label'=>'Email', 'rules'=>'required'),
+                    array('field'=>'cnum', 'label'=>'Contact No.', 'rules'=>'required')
+                    //array('field'=>'isAdmin', 'label'=>'Admin?', 'rules'=>'required'),
+                );
+        $this->form_validation->set_rules($rules);
+        if($this->form_validation->run()==FALSE){
+            $this->load->view('update_sales_agentForm',$data);
+        }
+        else{
+            if(isset($_POST['isAdmin']))
+                $isAdmin=1;
+            else
+                $isAdmin=0;
+            $newRecord=array('userID'=>$_POST['userID'],'password'=>$_POST['pass'],'fullname'=>$_POST['name'],'birthdate'=>$_POST['bday'],'age'=>$_POST['age'],'email'=>$_POST['email'],'contact_no'=>$_POST['cnum'],'isAdmin'=>$isAdmin);
+            $this->SalesAgent->update($newRecord);
+            redirect('knoxville/viewSalesAgents');
+        }
+    }
+    
+    public function delSalesAgent($userID){
+        $where_array = array('userID'=>$userID);
+        $this->SalesAgent->del($where_array);
+        redirect('knoxville/viewSalesAgents');
+    }
     
     public function viewClients(){
         $result_array = $this->Client->read();
