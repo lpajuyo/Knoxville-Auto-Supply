@@ -6,7 +6,10 @@ class Knoxville extends CI_Controller {
         parent::__construct();
         $this->load->model('client_model','Client');
         $this->load->model('sales_agent_model','SalesAgent');
+		    $this->load->model('order_model','Order');
     }
+	
+	
 
 	public function index()
 	{
@@ -162,5 +165,42 @@ class Knoxville extends CI_Controller {
         $where_array = array('clientID'=>$clientID);
         $this->Client->del($where_array);
         redirect('knoxville/viewClients');
+    }
+	
+	public function addOrder (){ 
+	
+	
+	 $rules = array(
+                    array('field'=>'clientid', 'label'=>'Client', 'rules'=>'required'),
+                    array('field'=>'date', 'label'=>'date', 'rules'=>'required'),
+                    array('field'=>'time', 'label'=>'time', 'rules'=>'required'),
+					array('field'=>'duedate', 'label'=>'Due date', 'rules'=>'required')
+                );
+        $this->form_validation->set_rules($rules);
+        if($this->form_validation->run()==FALSE){
+			$result_array = $this->Client->read();
+			$data['clients'] = $result_array;
+			$this->load->model('item_model','Item');
+			$result_array = $this->Item->read();
+			$data['items'] = $result_array;
+			$this->load->view('add_orders',$data);
+        }
+        else{
+
+	 $orderRecord=array('clientID'=>$_POST['clientid'],'date'=>$_POST['date'],'time'=>$_POST['time'],'due'=>$_POST['duedate']);
+     $this->Order->create($orderRecord);
+	 redirect('knoxville/viewOrders');
+		}
+	}
+	
+	 public function viewOrders(){
+		
+		
+		$result_array = $this->Order->read();
+		$data['orders']= $result_array;
+		
+			
+         //Array ( [clientID] => 1 [client_name] => dsa [address] => dsa [contact_no] => 123 ) 
+        $this->load->view('order_view',$data);
     }
 }

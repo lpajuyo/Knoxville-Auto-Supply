@@ -1,9 +1,10 @@
 <?php
-class Item_model extends CI_Model {
-    private $table = 'item';
+
+class Order_model extends CI_Model {
+    private $table = 'client_order';
     
-    function create($itemRecord){
-        $this->db->insert($this->table, $itemRecord);
+    function create($orderRecord){
+        $this->db->insert($this->table, $orderRecord);
     }
     
     function read($condition=null){
