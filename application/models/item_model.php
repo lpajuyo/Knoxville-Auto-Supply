@@ -1,7 +1,7 @@
 <?php
 
-class Sales_agent_model extends CI_Model {
-    private $table = 'sales_agent';
+class Item_model extends CI_Model {
+    private $table = 'item';
     
     function create($clientRecord){
         $this->db->insert($this->table, $clientRecord);
