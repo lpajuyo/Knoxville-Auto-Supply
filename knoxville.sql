@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 23, 2017 at 06:08 AM
+-- Generation Time: Sep 24, 2017 at 12:58 PM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 5.6.24
 
@@ -38,7 +38,7 @@ CREATE TABLE `client` (
 --
 
 INSERT INTO `client` (`clientID`, `client_name`, `address`, `contact_no`) VALUES
-(1, 'dsa', 'dsa', 123);
+(1, 'dsa', 'dsad', 123);
 
 -- --------------------------------------------------------
 
@@ -52,7 +52,7 @@ CREATE TABLE `client_order` (
   `time` time NOT NULL,
   `due` date NOT NULL,
   `contact_no` int(11) NOT NULL,
-  `userID` int(11) NOT NULL,
+  `userID` varchar(20) NOT NULL,
   `clientID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -97,6 +97,13 @@ CREATE TABLE `sales_agent` (
   `isAdmin` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `sales_agent`
+--
+
+INSERT INTO `sales_agent` (`userID`, `password`, `birthdate`, `age`, `email`, `contact_no`, `fullname`, `isAdmin`) VALUES
+('admin', '1234', '2017-09-01', 1, 'lala', 123, 'lala', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -124,7 +131,8 @@ CREATE TABLE `transaction` (
   `time` time NOT NULL,
   `status` varchar(10) NOT NULL,
   `unit_price` int(11) NOT NULL,
-  `itemID` int(11) NOT NULL
+  `itemID` int(11) NOT NULL,
+  `orderID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -167,13 +175,17 @@ ALTER TABLE `sales_agent`
 -- Indexes for table `shipment`
 --
 ALTER TABLE `shipment`
-  ADD PRIMARY KEY (`shipID`);
+  ADD PRIMARY KEY (`shipID`),
+  ADD KEY `delivererID` (`delivererID`),
+  ADD KEY `transID` (`transID`);
 
 --
 -- Indexes for table `transaction`
 --
 ALTER TABLE `transaction`
-  ADD PRIMARY KEY (`transID`);
+  ADD PRIMARY KEY (`transID`,`itemID`,`orderID`),
+  ADD KEY `itemID` (`itemID`),
+  ADD KEY `orderID` (`orderID`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -217,7 +229,22 @@ ALTER TABLE `transaction`
 -- Constraints for table `client_order`
 --
 ALTER TABLE `client_order`
-  ADD CONSTRAINT `client id cascade` FOREIGN KEY (`clientID`) REFERENCES `client` (`clientID`) ON DELETE CASCADE;
+  ADD CONSTRAINT `client id cascade` FOREIGN KEY (`clientID`) REFERENCES `client` (`clientID`) ON DELETE CASCADE,
+  ADD CONSTRAINT `client_order_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `sales_agent` (`userID`);
+
+--
+-- Constraints for table `shipment`
+--
+ALTER TABLE `shipment`
+  ADD CONSTRAINT `shipment_ibfk_1` FOREIGN KEY (`delivererID`) REFERENCES `deliverer` (`delivererID`),
+  ADD CONSTRAINT `shipment_ibfk_2` FOREIGN KEY (`transID`) REFERENCES `transaction` (`transID`);
+
+--
+-- Constraints for table `transaction`
+--
+ALTER TABLE `transaction`
+  ADD CONSTRAINT `transaction_ibfk_1` FOREIGN KEY (`itemID`) REFERENCES `item` (`itemID`),
+  ADD CONSTRAINT `transaction_ibfk_2` FOREIGN KEY (`orderID`) REFERENCES `client_order` (`orderID`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
