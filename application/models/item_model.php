@@ -1,6 +1,5 @@
 <?php
-
-class item_model extends CI_Model {
+class Item_model extends CI_Model {
     private $table = 'item';
     
     function create($itemRecord){
