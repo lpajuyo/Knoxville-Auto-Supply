@@ -14,9 +14,6 @@
 <body>
   <?php echo validation_errors(); ?>
   
-  <?php echo form_open(''); //this is equal to <form method="post" accept-charset="utf-8" action="http://localhost/Knoxville-Auto-Supply/">
-                                     //to add attributes, edit to: echo form('','class="lala" id="lala"'); 
-  ?>
   <div id="imageCar"><img class="img-responsive" src="assets/img/car1.jpg"></div>
     <div id="h1Head">
         <h1>KNOXVILLE </h1>
@@ -24,7 +21,10 @@
     </div>
     <div id="login">
         <div class="login-card">
-            <form class="form-signin">
+            <!--<form class="form-signin">-->
+            <?php echo form_open('','class="form-signin"'); //this is equal to <form method="post" accept-charset="utf-8" action="http://localhost/Knoxville-Auto-Supply/">
+                                     //to add attributes, edit to: echo form('','class="lala" id="lala"'); 
+  ?>
 			<div class="form-group">
 				<div class="input-group">
 					<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
