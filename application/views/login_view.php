@@ -14,7 +14,7 @@
 <body>
   <?php echo validation_errors(); ?>
   
-  <div id="imageCar"><img class="img-responsive" src="assets/img/car1.jpg"></div>
+  <div id="imageCar"><img class="img-responsive" src="assets/img/car1.jpg" /></div>
     <div id="h1Head">
         <h1>KNOXVILLE </h1>
         <p class="textL">AUTO SUPPLY</p>

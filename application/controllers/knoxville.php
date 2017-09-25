@@ -17,6 +17,8 @@ class Knoxville extends CI_Controller {
             $session_data=$this->session->userdata('logged_in');
             $data['userID']=$session_data['userID'];
             if($session_data['isAdmin']>0){
+				$header_data['title'] = "Management Dashboard";
+				$this->load->view('include/header',$header_data);
                 $this->load->view('management_dashboard',$data);
             }
         }
@@ -26,6 +28,8 @@ class Knoxville extends CI_Controller {
         $result_array = $this->SalesAgent->read();
         
         $data['sales_agents'] = $result_array; 
+		$header_data['title'] = "View Sales Agents";
+			$this->load->view('include/header',$header_data);
         $this->load->view('sales_agent_view',$data);
         $this->load->library('encryption');
     }
@@ -46,6 +50,8 @@ class Knoxville extends CI_Controller {
                 );
         $this->form_validation->set_rules($rules);
         if($this->form_validation->run()==FALSE){
+			$header_data['title'] = "Add Sales Agent";
+			$this->load->view('include/header',$header_data);
             $this->load->view('add_sales_agentForm');
         }
         else{
