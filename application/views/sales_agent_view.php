@@ -1,24 +1,30 @@
 <!DOCTYPE html>
 
-<html>
-<head>
-    <title>View Sales Agents</title>
-</head>
-<body>
-    <table>
-        <thead>
-            <tr>
-                <th>User ID</th>
-                <th>Password</th>
-                <th>Name</th>
-                <th>Birthdate</th>
-                <th>Age</th>
-                <th>Email</th>
-                <th>Contact Number</th>
-                <th>isAdmin</th>
-                <th>ACTION</th>
-            </tr>
-        </thead>
+	<a href="<?php echo base_url('knoxville/addSalesAgent')?>"><button class="btn btn-primary" type="button" id="addButton"><span class="glyphicon glyphicon-plus"> </span>Add Sales Agent</button></a>
+	
+	<div id="table">
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            </div>
+        </div>
+    </div>
+    
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr id="trHead">
+						<th class="info">User ID</th>
+						<th class="info">Password</th>
+						<th class="info">Name</th>
+						<th class="info">Birthdate</th>
+						<th class="info">Age</th>
+						<th class="info">Email</th>
+						<th class="info">Contact Number</th>
+						<th class="info">isAdmin</th>
+						<th class="info">ACTION</th>
+					</tr>
+				</thead>
         <tbody>
             <?php
                 foreach($sales_agents as $c){  
@@ -29,6 +35,7 @@
             ?>
         </tbody>
     </table>
-    <a href="<?php echo base_url('knoxville/addSalesAgent')?>">Add Sales Agent</a>
+    </div>
+</div>
 </body>
 </html>

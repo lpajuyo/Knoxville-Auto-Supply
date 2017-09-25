@@ -15,10 +15,23 @@
     <nav class="navbar">
         <div class="container-fluid">
             <div class="navbar-header"><p class="navbar-brand">Knoxville Auto Supply</p>
-                <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+                <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1"></button>
             </div>
             <div class="collapse navbar-collapse" id="navcol-1">
-                <ul class="nav navbar-nav"></ul>
+                <ul class="nav navbar-nav">
+					<li><a href="<?php echo base_url('knoxville/viewSalesAgents')?>" class="navigation">Sales Agent Management</a></li>
+					<li><a href="<?php echo base_url('knoxville/viewClients')?>" class="navigation">Client Management</a></li>
+					<li><a href="<?php echo base_url('knoxville/addOrder')?>" class="navigation">Sales Management</a></li>
+				</ul>
+				<div id="user">
+					<div class="dropdown">
+					  Hi Admin!
+					  <span class="caret" data-toggle="dropdown"></span>
+					  <ul class="dropdown-menu">
+						<li><a href="#">LOGOUT</a></li>
+					  </ul>
+					</div>
+				</div>
             </div>
         </div>
     </nav>

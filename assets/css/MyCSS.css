@@ -17,7 +17,7 @@ tr#trBody{
 button#addButton.btn.btn-primary{
   margin-left:130px;
   margin-top: 110px;
-  width:120px;
+  width:150px;
   float:left;
 }
 
@@ -25,10 +25,24 @@ nav.navbar{
 	background-color:#1E88E5;
 	color: #fff;
 }
-
+.navigation{
+	color: #fff;
+}
 .navbar-brand{
 	font-size: 22px;
-	margin: 5px;
+}
+#user{
+	margin: 15px 10px;
+	float: right;
+}
+#myCarousel{
+	margin: 50px 150px;
+	width: 500px;
+	height: 250px;
+}
+#cImage{
+	width:500px;
+	height:250px;
 }
 label{
 	font-size: 16px;
