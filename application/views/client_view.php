@@ -2,7 +2,7 @@
 
 <html>
 <head>
-    <title>View Orders</title>
+    <title>View Clients</title>
 </head>
 <body>
     <table>
