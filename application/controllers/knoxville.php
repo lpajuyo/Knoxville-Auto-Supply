@@ -130,7 +130,7 @@ class Knoxville extends CI_Controller {
 		$this->form_validation->set_error_delimiters('<p class="error">', '</p>');
         if($this->form_validation->run()==FALSE){
 			$header_data['title'] = "Add Client";
-            $this->load->view('include/header',$header_data);
+            //$this->load->view('include/header',$header_data);
             $this->load->view('add_clientForm');
         }
         else{
