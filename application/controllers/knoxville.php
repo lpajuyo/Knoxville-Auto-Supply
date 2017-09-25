@@ -181,7 +181,8 @@ class Knoxville extends CI_Controller {
 	
 	public function addOrder (){ 
 	
-	
+	 $header_data['title'] = "Add Orders";
+	 
 	 $rules = array(
                     array('field'=>'clientid', 'label'=>'Client', 'rules'=>'required'),
                     array('field'=>'date', 'label'=>'date', 'rules'=>'required'),
@@ -195,6 +196,7 @@ class Knoxville extends CI_Controller {
 			$this->load->model('item_model','Item');
 			$result_array = $this->Item->read();
 			$data['items'] = $result_array;
+			$this->load->view('include/header',$header_data);
 			$this->load->view('add_orders',$data);
         }
         else{
