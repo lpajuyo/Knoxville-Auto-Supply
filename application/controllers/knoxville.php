@@ -28,7 +28,6 @@ class Knoxville extends CI_Controller {
         $data['sales_agents'] = $result_array; 
         $this->load->view('sales_agent_view',$data);
         $this->load->library('encryption');
-        echo bin2hex($this->encryption->create_key(16));
     }
     
     public function addSalesAgent(){
