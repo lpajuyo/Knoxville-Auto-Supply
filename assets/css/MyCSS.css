@@ -31,6 +31,12 @@ nav.navbar{
 .navbar-brand{
 	font-size: 22px;
 }
+
+li:hover {
+	background-color: #1E88E5;
+	opacity: 0.7;
+}
+
 #user{
 	margin: 15px 10px;
 	float: right;
@@ -122,4 +128,17 @@ div#login{
 .submarg{margin-top: 48px;}
 .sub-btn{font-family: montserrat; font-size: 20; color: black;}
 
+/* add_orders */
+.cntr {
+	margin-left: 30%;
+	border: 15px solid #1E88E5;
+	padding: 25px;
+	width: 40%;
+	background-color: #85C1E9;
+	font-size: 17px;
+}
 
+.boxhead {
+	color: white;
+	font-size: 30px;
+}
