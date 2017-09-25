@@ -21,7 +21,9 @@ class Knoxville extends CI_Controller {
     public function viewClients(){
         $result_array = $this->Client->read();
         
-        $data['clients'] = $result_array; //Array ( [clientID] => 1 [client_name] => dsa [address] => dsa [contact_no] => 123 ) 
+        $data['clients'] = $result_array; //Array ( [clientID] => 1 [client_name] => dsa [address] => dsa [contact_no] => 123 )
+		$header_data['title'] = "View Clients";
+        $this->load->view('include/header',$header_data);
         $this->load->view('client_view',$data);
     }
     
@@ -35,7 +37,10 @@ class Knoxville extends CI_Controller {
                     array('field'=>'cnum', 'label'=>'Contact No.', 'rules'=>'required')
                 );
         $this->form_validation->set_rules($rules);
+		$this->form_validation->set_error_delimiters('<p class="error">', '</p>');
         if($this->form_validation->run()==FALSE){
+			$header_data['title'] = "Add Client";
+            $this->load->view('include/header',$header_data);
             $this->load->view('add_clientForm');
         }
         else{
@@ -61,6 +66,8 @@ class Knoxville extends CI_Controller {
                 );
         $this->form_validation->set_rules($rules);
         if($this->form_validation->run()==FALSE){
+			$header_data['title'] = "Update Clients";
+            $this->load->view('include/header',$header_data);
             $this->load->view('update_clientForm',$data);
         }
         else{

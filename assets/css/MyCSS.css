@@ -1,0 +1,107 @@
+div#table{
+  width:820px;
+  height:300px;
+  margin-left:80px;
+  margin-top:80px;
+  float:left;
+}
+
+tr#trHead{
+  color:#455A64;
+}
+
+tr#trBody{
+  color:#90A4AE;
+}
+
+button#addButton.btn.btn-primary{
+  margin-left:130px;
+  margin-top: 110px;
+  width:120px;
+  float:left;
+}
+
+nav.navbar{
+	background-color:#1E88E5;
+	color: #fff;
+}
+
+.navbar-brand{
+	font-size: 22px;
+	margin: 5px;
+}
+label{
+	font-size: 16px;
+	display:inline-block;
+	max-width:100%;
+	margin-bottom:10px;
+	font-weight:700;
+}
+.ClientForm{
+	width: 500px;
+	height: 500px;
+	padding: 60px 30px;
+	margin-left: 430px;
+	box-shadow:0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+#buttonSubmit{
+	padding: 10px 30px;
+	margin-top: 25px;
+	margin-left:170px;
+}
+
+div#h1Head{
+  margin-top:150px;
+  margin-left:140px;
+  position:absolute;
+}
+
+div#imageCar{
+  position:absolute;
+}
+
+h1{
+  color:#fff;
+  font-size:55px;
+  margin-bottom:2px;
+}
+
+p.textL{
+  color:#ffffff;
+  font-size:30px;
+}
+
+div#login{
+  margin-left:140px;
+  margin-top:210px;
+  position:absolute;
+}
+.login-card{
+  width:400px;
+  padding:35px 40px 30px;
+  margin-top:50px;
+  border-radius:2px;
+  box-shadow:0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.btn.btn-signin{
+  font-weight:700;
+  height:36px;
+  line-height:36px;
+  font-size:14px;
+  background:#1565C0;
+  border-radius:3px;
+  border:none;
+  transition:all 0.218s;
+  padding:0;
+  margin-top:5px;
+}
+
+.login-card .btn.btn-signin:hover, .login-card .btn.btn-signin:active, .login-card .btn.btn-signin:focus{
+  background:rgb(104, 145, 162);;
+}
+.input-group{
+	height: 20px;
+}
+
+

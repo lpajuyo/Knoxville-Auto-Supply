@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 
-<html>
-<head>
-    <title>View Clients</title>
-</head>
-<body>
-    <table>
-        <thead>
-            <tr>
-                <th>Client ID</th>
-                <th>Client Name</th>
-                <th>Address</th>
-                <th>Contact No.</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
+	<a href="<?php echo base_url('knoxville/addClient')?>">
+    <button class="btn btn-primary" type="button" id="addButton"><span class="glyphicon glyphicon-plus"> </span>Add Client</button></a>
+    <div id="table">
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr id="trHead">
+                        <th class="info">Client ID</th>
+                        <th class="info">Client Name</th>
+                        <th class="info">Address </th>
+                        <th class="info">Contact No.</th>
+                        <th class="info">Action </th>
+                    </tr>
+                </thead>
+                <tbody>
             <?php
                 foreach($clients as $c){ //Array ( [clientID] => 1 [client_name] => dsa [address] => dsa [contact_no] => 123 ) 
                     echo "<tr><td>".$c['clientID']."</td><td>".$c['client_name']."</td><td>".$c['address']."</td><td>".$c['contact_no']
@@ -25,6 +24,8 @@
             ?>
         </tbody>
     </table>
-    <a href="<?php echo base_url('knoxville/addClient')?>">Add Client</a>
+    </div>
+</div>
+    
 </body>
 </html>
