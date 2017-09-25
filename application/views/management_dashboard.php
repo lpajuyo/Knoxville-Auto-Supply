@@ -8,5 +8,6 @@
 	<h1>Hi <?php echo $userID; ?>!</h1>
     <a href="<?php echo base_url('knoxville/viewSalesAgents')?>">Sales Agent Management</a>
     <a href="<?php echo base_url('knoxville/viewClients')?>">Client Management</a>
+	<a href="<?php echo base_url('knoxville/addOrder')?>">Sales Management</a>
 </body>
 </html>
