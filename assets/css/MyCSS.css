@@ -5,7 +5,13 @@ div#table{
   margin-top:80px;
   float:left;
 }
-
+div#table_include{
+  width:500px;
+  height:300px;
+  margin-left:80px;
+  margin-top:80px;
+  float:left;
+}
 tr#trHead{
   color:#455A64;
 }
