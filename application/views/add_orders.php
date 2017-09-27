@@ -30,7 +30,6 @@
 		<label class="duedate-label" for="duedate">Due Date: &nbsp; </label>
 		<input type="date" name="duedate"/>
     </div>
-	
 	<div id="table_include">
     <div id="myModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
@@ -38,29 +37,34 @@
             </div>
         </div>
     </div>
-    
-        <div class="table-responsive">
-            <table class="table table-striped">
+    </div>
+            <table class="table">
                 <thead>
                     <tr id="trHead">
 						<th class="info">Item Description</th>
 						<th class="info">Stocks</th>
 						<th class="info">Price</th>
+							 
 						<th class="info">Quantity</th>
 						<th class="info">ADD</th>
-					</tr>
-				</thead>
+					</tr></thead>
+					
         <tbody>
             <?php
                 foreach($items as $c){  
-                    echo "<tr><td>".$c['item_desc']."</td><td>".$c['stocks']
-                    .'</td><td>&nbsp;</td><td>&nbsp;</td><td><input type="checkbox" name="'.$c['itemID'].'" /></td>';
+                    echo "<tr><td>".$c['item_desc']."</td><td>".$c['stocks'].'</td>
+						<td class="col-sm-2">
+							<input type="price" class="form-control" id="price"  name="price">
+						</td>
+						<td class="col-sm-2">
+							<input type="quantity" class="form-control" id="quantity"  name="quatity">
+						</td>
+						<td><input type="checkbox" name="'.$c['itemID'].'" /></td>';
                 }
             ?>
-        </tbody>
-    </table>
-    </div>
-	</div>
+			
+    </tbody>
+   </table>
 	
 	<div class="form-group">
 		<label class="items-label" for="items">Items: &nbsp; </label>
@@ -86,5 +90,6 @@
 	
 	</form>
 	</div>
+	
 </body>
 </html>
