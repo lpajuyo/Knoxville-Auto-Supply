@@ -25,11 +25,13 @@ class Login extends CI_Controller {
         
         if($result_array){
             foreach($result_array as $row){
-                $sess_data=array(
+                $this->session->set_userdata('userID', $row['userID']);
+                $this->session->set_userdata('isAdmin', $row['isAdmin']);
+                /*$sess_data=array(
                     'userID' => $row['userID'],
                     'isAdmin' => $row['isAdmin']
-                );
-                $this->session->set_userdata('logged_in', $sess_data);
+                );*/
+                //$this->session->set_userdata('logged_in', $sess_data);
             }
             return true;
         }
@@ -37,5 +39,10 @@ class Login extends CI_Controller {
             $this->form_validation->set_message('verifyLogin','Invalid Username or Password.');
             return false;
         }
+    }
+    
+    public function logout(){
+        session_destroy();
+        redirect(base_url());
     }
 }
