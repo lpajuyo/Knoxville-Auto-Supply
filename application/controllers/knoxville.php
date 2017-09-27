@@ -14,7 +14,7 @@ class Knoxville extends CI_Controller {
 
 	public function index()
 	{
-        if($this->session->userdata('logged_in')){
+        if($this->session->userdata('userID')){
             //$session_data=$this->session->userdata('logged_in');
             $data['userID']=$this->session->userdata('userID');
             if($this->session->userdata('isAdmin')>0){
