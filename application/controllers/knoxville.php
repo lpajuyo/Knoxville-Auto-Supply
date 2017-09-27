@@ -6,7 +6,8 @@ class Knoxville extends CI_Controller {
         parent::__construct();
         $this->load->model('client_model','Client');
         $this->load->model('sales_agent_model','SalesAgent');
-		    $this->load->model('order_model','Order');
+		$this->load->model('order_model','Order');
+		$this->load->model('item_model','Item');
     }
 	
 	
@@ -14,9 +15,9 @@ class Knoxville extends CI_Controller {
 	public function index()
 	{
         if($this->session->userdata('logged_in')){
-            $session_data=$this->session->userdata('logged_in');
-            $data['userID']=$session_data['userID'];
-            if($session_data['isAdmin']>0){
+            //$session_data=$this->session->userdata('logged_in');
+            $data['userID']=$this->session->userdata('userID');
+            if($this->session->userdata('isAdmin')>0){
 				$header_data['title'] = "Management Dashboard";
 				$this->load->view('include/header',$header_data);
                 $this->load->view('management_dashboard',$data);
@@ -31,7 +32,6 @@ class Knoxville extends CI_Controller {
 		$header_data['title'] = "View Sales Agents";
 			$this->load->view('include/header',$header_data);
         $this->load->view('sales_agent_view',$data);
-        $this->load->library('encryption');
     }
     
     public function addSalesAgent(){
@@ -201,20 +201,80 @@ class Knoxville extends CI_Controller {
         }
         else{
 
-	 $orderRecord=array('clientID'=>$_POST['clientid'],'date'=>$_POST['date'],'time'=>$_POST['time'],'due'=>$_POST['duedate']);
+	 $orderRecord=array('clientID'=>$_POST['clientid'],'date'=>$_POST['date'],'time'=>$_POST['time'],'due'=>$_POST['duedate'],'userID'=>$this->session->userdata('userID'));
      $this->Order->create($orderRecord);
 	 redirect('knoxville/viewOrders');
 		}
 	}
 	
-	 public function viewOrders(){
-		
-		
-		$result_array = $this->Order->read();
-		$data['orders']= $result_array;
-		
-			
-         //Array ( [clientID] => 1 [client_name] => dsa [address] => dsa [contact_no] => 123 ) 
+	public function viewOrders(){
+        $result_array = $this->Order->read();
+        
+        $data['orders'] = $result_array; 
+		$header_data['title'] = "View Sales";
+			$this->load->view('include/header',$header_data);
         $this->load->view('order_view',$data);
+    }
+    
+    public function viewItems(){
+        $result_array = $this->Item->read();
+        
+        $data['item'] = $result_array; 
+		$header_data['title'] = "View Inventory";
+			$this->load->view('include/header',$header_data);
+        $this->load->view('item_view',$data);
+    }
+    
+    public function addItem(){
+        //load the view
+        //get form data
+        //add to db
+        $rules = array(
+                    array('field'=>'idesc', 'label'=>'Item Description', 'rules'=>'required'),
+                    array('field'=>'stocks', 'label'=>'Stocks', 'rules'=>'required')
+                );
+        $this->form_validation->set_rules($rules);
+		$this->form_validation->set_error_delimiters('<p class="error">', '</p>');
+        if($this->form_validation->run()==FALSE){
+			$header_data['title'] = "Add Item";
+            $this->load->view('include/header',$header_data);
+            $this->load->view('add_itemForm');
+        }
+        else{
+            $itemRecord=array('item_desc'=>$_POST['idesc'],'stocks'=>$_POST['stocks']);
+            $this->Item->create($itemRecord);
+            redirect('knoxville/viewItems');
+        }
+    }
+    
+    public function delItem($itemID){
+        $where_array = array('itemID'=>$itemID);
+        $this->Item->del($where_array);
+        redirect('knoxville/viewItems');
+    }
+    
+    public function updateItem($itemID){
+        $data['itemID']=$itemID;
+        $condition = array('itemID' => $itemID);
+        $oldRecord = $this->Item->read($condition);
+        foreach($oldRecord as $o){
+            $data['idesc'] = $o['item_desc'];
+            $data['stocks'] = $o['stocks'];
+        }
+        $rules = array(
+                    array('field'=>'idesc', 'label'=>'Item Description', 'rules'=>'required'),
+                    array('field'=>'stocks', 'label'=>'Stocks', 'rules'=>'required')
+                );
+        $this->form_validation->set_rules($rules);
+        if($this->form_validation->run()==FALSE){
+			$header_data['title'] = "Update Item";
+            $this->load->view('include/header',$header_data);
+            $this->load->view('update_itemForm',$data);
+        }
+        else{
+            $newRecord=array('itemID'=>$itemID,'item_desc'=>$_POST['idesc'],'stocks'=>$_POST['stocks']);
+            $this->Item->update($newRecord);
+            redirect('knoxville/viewItems');
+        }
     }
 }

@@ -21,14 +21,15 @@
                 <ul class="nav navbar-nav">
 					<li><a href="<?php echo base_url('knoxville/viewSalesAgents')?>" class="navigation">Sales Agent Management</a></li>
 					<li><a href="<?php echo base_url('knoxville/viewClients')?>" class="navigation">Client Management</a></li>
-					<li><a href="<?php echo base_url('knoxville/addOrder')?>" class="navigation">Sales Management</a></li>
+					<li><a href="<?php echo base_url('knoxville/viewOrders')?>" class="navigation">Sales Management</a></li>
+					<li><a href="<?php echo base_url('knoxville/viewItems')?>" class="navigation">Inventory Management</a></li>
 				</ul>
 				<div id="user">
 					<div class="dropdown">
 					  Hi Admin!
 					  <span class="caret" data-toggle="dropdown"></span>
 					  <ul class="dropdown-menu">
-						<li><a href="#">LOGOUT</a></li>
+						<li><a href="<?php echo base_url('login/logout'); ?>">LOGOUT</a></li>
 					  </ul>
 					</div>
 				</div>
