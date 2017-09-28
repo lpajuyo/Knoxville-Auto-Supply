@@ -135,7 +135,7 @@ div#login{
 .cntr {
 	
 	border: 15px solid #1E88E5;
-	
+	position: center;
 	width: 40%;
 	background-color: #85C1E9;
 	font-size: 17px;
