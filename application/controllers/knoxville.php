@@ -95,6 +95,8 @@ class Knoxville extends CI_Controller {
                 );
         $this->form_validation->set_rules($rules);
         if($this->form_validation->run()==FALSE){
+			$title['title']="Update Sales Agent";
+            $this->load->view('include/header',$title);
             $this->load->view('update_sales_agentForm',$data);
         }
         else{
