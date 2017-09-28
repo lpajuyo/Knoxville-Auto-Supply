@@ -1,14 +1,13 @@
 div#table{
   width:820px;
   height:300px;
-  margin-left:80px;
-  float:left;
+  
+
 }
 div#table_include{
   width:500px;
   height:300px;
-  margin-left:80px;
-  float:left;
+  float: right;
 }
 tr#trHead{
   color:#455A64;
@@ -134,9 +133,9 @@ div#login{
 
 /* add_orders */
 .cntr {
-	margin-left: 30%;
+	
 	border: 15px solid #1E88E5;
-	padding: 25px;
+	
 	width: 40%;
 	background-color: #85C1E9;
 	font-size: 17px;

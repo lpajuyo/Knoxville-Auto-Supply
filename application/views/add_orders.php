@@ -30,14 +30,9 @@
 		<label class="duedate-label" for="duedate">Due Date: &nbsp; </label>
 		<input type="date" name="duedate"/>
     </div>
-	<div id="table_include">
-    <div id="myModal" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-            </div>
-        </div>
-    </div>
-    </div>
+	
+   
+       
             <table class="table">
                 <thead>
                     <tr id="trHead">
@@ -64,8 +59,15 @@
             ?>
 			
     </tbody>
-   </table>
 	
+   </table>
+    <div id="myModal" class="modal fade" role="dialog">
+	 <div class="modal-dialog">
+            <div class="modal-content">
+            </div>
+        </div>
+    </div>
+    
 	<div class="form-group">
 		<label class="items-label" for="items">Items: &nbsp; </label>
 		<select name="items" form="order">
