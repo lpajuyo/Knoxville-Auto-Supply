@@ -203,12 +203,7 @@ class Knoxville extends CI_Controller {
 
 	 $orderRecord=array('clientID'=>$_POST['clientid'],'date'=>$_POST['date'],'time'=>$_POST['time'],'due'=>$_POST['duedate'],'userID'=>$this->session->userdata('userID'));
 	 $this->Order->create($orderRecord);
-	 $name = $_GET['color'];
-		foreach ($name as $color){ 
-			echo $color."<br />";
-			}
-			redirect('knoxville/viewOrders');
-			}
+	 
 		}
 	
 	public function viewOrders(){
