@@ -24,7 +24,7 @@
 					<li><a href="<?php echo base_url('knoxville/viewOrders')?>" class="navigation">Sales Management</a></li>
 					<li><a href="<?php echo base_url('knoxville/viewItems')?>" class="navigation">Inventory Management</a></li>
 				</ul>
-				<div id="user">
+				<div id="users">
 					<div class="dropdown">
 					  Hi Admin!
 					  <span class="caret" data-toggle="dropdown"></span>
