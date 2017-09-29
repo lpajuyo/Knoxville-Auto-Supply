@@ -35,7 +35,6 @@
                 <thead>
                     <tr id="trHead">
 						<th class="info">Item Description</th>
-						<th class="info">Stocks</th>
 						<th class="info">
 						<label for="price">Price</label></th>
 						<th class="info">
@@ -49,7 +48,7 @@
 				$counter = 0;
                 foreach($items as $c){  
 				$counter++;
-                    echo "<tr><td>".$c['item_desc']."</td><td>".$c['stocks'].'</td>
+                    echo '<tr><td>'.$c['item_desc'].'</td>
 						<td class="col-sm-2">
 
 							<input type="price" class="form-control" id="price'.$counter.'"  name="price[]" disabled>
