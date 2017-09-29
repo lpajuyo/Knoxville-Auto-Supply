@@ -20,10 +20,16 @@
 			
 			 
                 foreach($orders as $c){ //Array ( [clientID] => 1 [client_name] => dsa [address] => dsa [contact_no] => 123 ) 
-                    echo "<tr><td>".$c['clientID']."</td><td>".$c['date']."</td><td>".$c['time']."</td><td>".$c['due']
-                    .'</td><td><a href="">Edit</a> | <a href="">Delete</a></td></tr>';
+                    echo "<tr><td>";
+					foreach($clients as $i)
+					{
+						if ($c['clientID'] == $i['clientID'])
+						echo $i['client_name'];
+					}	
+					echo "</td><td>".$c['date']."</td><td>".$c['time']."</td><td>".$c['due']
+                    .'</td><td><a href="'.base_url('knoxville/viewTransaction/'.$c['orderID'].'').'">>>View Order Details</a> | <a href="">Delete</a></td></tr>';
                     //echo base_url('knoxville/delClient/'.c['clientID'])
-                }
+					}
             ?>
 			
         </tbody>

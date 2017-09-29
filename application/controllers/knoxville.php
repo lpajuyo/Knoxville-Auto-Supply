@@ -233,11 +233,34 @@ class Knoxville extends CI_Controller {
 	
 	public function viewOrders(){
         $result_array = $this->Order->read();
-        
         $data['orders'] = $result_array; 
+		$result_array = $this->Client->read();
+		$data['clients'] = $result_array;
 		$header_data['title'] = "View Sales";
-			$this->load->view('include/header',$header_data);
+		$this->load->view('include/header',$header_data);
         $this->load->view('order_view',$data);
+    }
+	public function viewTransaction($orderID){
+        $condition = array('orderID' => $orderID);
+		$orderRec = $this->Order->read($condition);
+		 foreach($orderRec as $o){
+            $clientID = $o['clientID'];
+        }
+		$condition = array('clientID' => $clientID);
+        $clientRec = $this->Client->read($condition);
+		 foreach($clientRec as $o){
+            $data['cname'] = $o['client_name'];
+            $data['cadd'] = $o['address'];
+			$data['cnum'] = $o['contact_no'];
+        }
+		$condition = array('orderID' => $orderID);
+		$transRec = $this->Transaction->read($condition);
+		$data['trans'] = $transRec;
+		$result_array = $this->Item->read();
+		$data['items'] = $result_array;
+		$header_data['title'] = "$orderID: Order Details";
+		$this->load->view('include/header',$header_data);
+        $this->load->view('trans_view',$data);
     }
     
     public function viewItems(){
@@ -245,7 +268,7 @@ class Knoxville extends CI_Controller {
         
         $data['item'] = $result_array; 
 		$header_data['title'] = "View Inventory";
-			$this->load->view('include/header',$header_data);
+		$this->load->view('include/header',$header_data);
         $this->load->view('item_view',$data);
     }
     
