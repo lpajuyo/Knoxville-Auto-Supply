@@ -20,8 +20,10 @@
 	</div>
 	
 	<div class="form-group">
-		<label class="date-label" for="date">Date and Time: &nbsp; </label>
-		<input type="date" name="date" /><input type="time" name="time" />
+		<label class="date-label" for="date">Date:&nbsp; </label>
+ 		<input type="date" name="date" />		 
+ 		<label class="date-label" for="date">Time: &nbsp;</label>		
+		<input type="time" name="time" />
     </div>
 	
 	<div class="form-group">
