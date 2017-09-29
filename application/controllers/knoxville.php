@@ -8,6 +8,7 @@ class Knoxville extends CI_Controller {
         $this->load->model('sales_agent_model','SalesAgent');
 		$this->load->model('order_model','Order');
 		$this->load->model('item_model','Item');
+		$this->load->model('transaction_model','Transaction');
     }
 	
 	
@@ -191,6 +192,7 @@ class Knoxville extends CI_Controller {
                     array('field'=>'time', 'label'=>'time', 'rules'=>'required'),
 					array('field'=>'duedate', 'label'=>'Due date', 'rules'=>'required')
                 );
+				
         $this->form_validation->set_rules($rules);
         if($this->form_validation->run()==FALSE){
 			$result_array = $this->Client->read();
@@ -202,10 +204,28 @@ class Knoxville extends CI_Controller {
 			$this->load->view('add_orders',$data);
         }
         else{
-
+		$count = 0; 
+		 if(!empty($_POST['itemList'])) {
+		 foreach($_POST['itemList'] as $check) {
+		 $count++;
+		 }
 		 $orderRecord=array('clientID'=>$_POST['clientid'],'date'=>$_POST['date'],'time'=>$_POST['time'],'due'=>$_POST['duedate'],'userID'=>$this->session->userdata('userID'));
 		 $this->Order->create($orderRecord);
+		 
+		 $items=$_POST['itemList'];
+		 $price=$_POST['price'];
+		 $quantity=$_POST['quantity'];
+		 for($x = 0; $x<=$count; $x++){
+		 if($items[$x] != NULL){
+         $transRecord=array('orderID'=>'1','itemID'=>$items[$x],'unit_price'=>$price[$x],'quantity'=>$quantity[$x],'date'=>$_POST['date'],'time'=>$_POST['time'],'status'=>'quoted');   
+		 $this->Transaction->create($transRecord);
+		 }
+		 }
+		 
+		}
 		 redirect('knoxville/viewOrders');
+		 
+		
 			}
 		}
 	
