@@ -212,12 +212,14 @@ class Knoxville extends CI_Controller {
 		 $orderRecord=array('clientID'=>$_POST['clientid'],'date'=>$_POST['date'],'time'=>$_POST['time'],'due'=>$_POST['duedate'],'userID'=>$this->session->userdata('userID'));
 		 $this->Order->create($orderRecord);
 		 
+         $orderID=$this->Order->getLastRecordID();
+         $orderID = $orderID['orderID'];
 		 $items=$_POST['itemList'];
 		 $price=$_POST['price'];
 		 $quantity=$_POST['quantity'];
 		 for($x = 0; $x<=$count; $x++){
 		 if($items[$x] != NULL){
-         $transRecord=array('orderID'=>'1','itemID'=>$items[$x],'unit_price'=>$price[$x],'quantity'=>$quantity[$x],'date'=>$_POST['date'],'time'=>$_POST['time'],'status'=>'quoted');   
+         $transRecord=array('orderID'=>$orderID,'itemID'=>$items[$x],'unit_price'=>$price[$x],'quantity'=>$quantity[$x],'date'=>$_POST['date'],'time'=>$_POST['time'],'status'=>'quoted');   
 		 $this->Transaction->create($transRecord);
 		 }
 		 }

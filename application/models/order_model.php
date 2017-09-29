@@ -30,5 +30,12 @@ class Order_model extends CI_Model {
     function del($where_array){
         $this->db->delete($this->table,$where_array);
     }
+    
+    function getLastRecordID(){
+        $this->db->select_max('orderID');
+        $query = $this->db->get($this->table,1);
+        
+        return $query->row_array();
+    }
 }
 ?>
