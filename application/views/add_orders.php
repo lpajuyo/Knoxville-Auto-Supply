@@ -38,10 +38,12 @@
                     <tr id="trHead">
 						<th class="info">Item Description</th>
 						<th class="info">Stocks</th>
-						<th class="info">Price</th>
-							 
-						<th class="info">Quantity</th>
-						<th class="info">ADD</th>
+						<th class="info">
+						<label for="price">Price</label></th>
+						<th class="info">
+						<label for="price">Quantity</label></th>
+						<th class="info">
+						<label for="itemList[]">ADD</th>
 					</tr></thead>
 					
         <tbody>
@@ -51,13 +53,13 @@
 				$counter++;
                     echo "<tr><td>".$c['item_desc']."</td><td>".$c['stocks'].'</td>
 						<td class="col-sm-2">
-							<input type="price" class="form-control" id="price'.$counter.'"  name="price">
+							<input type="price" class="form-control" id="price'.$counter.'"  name="price[]" disabled>
 						</td>
 						<td class="col-sm-2">							
-							<input type="quantity" class="form-control" id="quantity'.$counter.'"  name="quantity">
+							<input type="quantity" class="form-control" id="quantity'.$counter.'"  name="quantity[]" disabled>
 						</td>
 						
-						<td><input type="checkbox" name="itemList[]" id="items'.$counter.'" value="'.$c['itemID'].'" onclick="enableDisable(this.checked, "price'.$counter.'")" /></td>
+						<td><input type="checkbox" name="itemList[]" id="items'.$counter.'" value="'.$c['itemID'].'" onClick="toggle('."'items".$counter."'".', '."'price".$counter."'".', '."'quantity".$counter."'".')"  /></td>
 						
 						
 						';
@@ -69,20 +71,15 @@
     </tbody>
 	
    </table>
-	<script language="text/javascript">
-					function enableDisable(bEnable, textBoxID)
-				{
-				textBoxID.disabled = bEnable.checked ? false : true;
-				if (!textBoxID.disabled) {
-					textBoxID.focus();
-        }
-				}	
-	</script>
+	
 	<button class="btn btn-primary btn-md" type="submit">
 		<span class="glyphicon glyphicon-download-alt"> </span> Save
 	</button>
 	
 	</form>
+	
+	
+	
 	</div>
 	
 </body>
