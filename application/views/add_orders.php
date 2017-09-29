@@ -54,7 +54,7 @@
 							<input type="price" class="form-control" id="price'.$counter.'"  name="price[]" disabled>
 						</td>
 						<td class="col-sm-2">							
-							<input type="number" class="form-control" min="1" max="100000" value="1" id="quantity'.$counter.'"  name="quantity[]" disabled>
+							<input type="quantity" class="form-control" id="quantity'.$counter.'"  name="quantity[]" disabled>
 						</td>
 						
 						<td><input type="checkbox" name="itemList[]" id="items'.$counter.'" value="'.$c['itemID'].'" onClick="toggle('."'items".$counter."'".', '."'price".$counter."'".', '."'quantity".$counter."'".')"  /></td>
