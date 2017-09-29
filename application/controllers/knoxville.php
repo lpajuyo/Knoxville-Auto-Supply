@@ -95,6 +95,8 @@ class Knoxville extends CI_Controller {
                 );
         $this->form_validation->set_rules($rules);
         if($this->form_validation->run()==FALSE){
+			$title['title']="Update Sales Agent";
+            $this->load->view('include/header',$title);
             $this->load->view('update_sales_agentForm',$data);
         }
         else{
@@ -201,11 +203,11 @@ class Knoxville extends CI_Controller {
         }
         else{
 
-	 $orderRecord=array('clientID'=>$_POST['clientid'],'date'=>$_POST['date'],'time'=>$_POST['time'],'due'=>$_POST['duedate'],'userID'=>$this->session->userdata('userID'));
-     $this->Order->create($orderRecord);
-	 redirect('knoxville/viewOrders');
+		 $orderRecord=array('clientID'=>$_POST['clientid'],'date'=>$_POST['date'],'time'=>$_POST['time'],'due'=>$_POST['duedate'],'userID'=>$this->session->userdata('userID'));
+		 $this->Order->create($orderRecord);
+		 redirect('knoxville/viewOrders');
+			}
 		}
-	}
 	
 	public function viewOrders(){
         $result_array = $this->Order->read();
