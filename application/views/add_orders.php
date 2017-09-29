@@ -20,10 +20,8 @@
 	</div>
 	
 	<div class="form-group">
-		<label class="date-label" for="date">Date:&nbsp; </label>
-		<input type="date" name="date" />
-		<label class="date-label" for="date">Time: &nbsp;</label>
-		<input type="time" name="time" />
+		<label class="date-label" for="date">Date and Time: &nbsp; </label>
+		<input type="date" name="date" /><input type="time" name="time" />
     </div>
 	
 	<div class="form-group">
@@ -31,9 +29,7 @@
 		<input type="date" name="duedate"/>
     </div>
 	
-   
-       
-            <table class="table">
+	<table class="table">
                 <thead>
                     <tr id="trHead">
 						<th class="info">Item Description</th>
@@ -46,44 +42,41 @@
 					
         <tbody>
             <?php
+				$counter = 0;
                 foreach($items as $c){  
+				$counter++;
                     echo "<tr><td>".$c['item_desc']."</td><td>".$c['stocks'].'</td>
 						<td class="col-sm-2">
-							<input type="price" class="form-control" id="price"  name="price">
+							<input type="price" class="form-control" id="price'.$counter.'"  name="price">
 						</td>
-						<td class="col-sm-2">
-							<input type="quantity" class="form-control" id="quantity"  name="quatity">
+						<td class="col-sm-2">							
+							<input type="quantity" class="form-control" id="quantity'.$counter.'"  name="quantity">
 						</td>
-						<td><input type="checkbox" name="'.$c['itemID'].'" /></td>';
+						
+						<td><input type="checkbox" name="itemList[]" id="items'.$counter.'" value="'.$c['itemID'].'" onclick="enableDisable(this.checked, "price'.$counter.'")" /></td>
+						
+						
+						';
+						
+						
                 }
             ?>
 			
     </tbody>
 	
    </table>
-    <div id="myModal" class="modal fade" role="dialog">
-	 <div class="modal-dialog">
-            <div class="modal-content">
-            </div>
-        </div>
-    </div>
-    
-	<div class="form-group">
-		<label class="items-label" for="items">Items: &nbsp; </label>
-		<select name="items" form="order">
-			<option value="items"> </option>
-		</select>
-    </div>
 	
-	<div class="form-group">
-		<label class="quantity-label" for="quantity">Quantity: &nbsp; </label>
-		<input type="dropdown" name="quantity"/>
-    </div>
+	<script language="text/javascript">
+					function enableDisable(bEnable, textBoxID)
+				{
+				textBoxID.disabled = bEnable.checked ? false : true;
+				if (!textBoxID.disabled) {
+					textBoxID.focus();
+        }
+				}	
+	</script>
 	
-	<div class="form-group">
-		<label class="price-label" for="price">Price: &nbsp; </label>
-		<input type="text" name="price"/>
-    </div>
+	
 	
 	
 	<button class="btn btn-primary btn-md" type="submit">
@@ -92,6 +85,5 @@
 	
 	</form>
 	</div>
-	
 </body>
 </html>
