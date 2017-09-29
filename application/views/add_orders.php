@@ -21,8 +21,8 @@
 	
 	<div class="form-group">
 		<label class="date-label" for="date">Date:&nbsp; </label>
-		<input type="date" name="date" />
-		<label class="date-label" for="date">Time: &nbsp;</label>
+ 		<input type="date" name="date" />		 
+ 		<label class="date-label" for="date">Time: &nbsp;</label>		
 		<input type="time" name="time" />
     </div>
 	
@@ -31,9 +31,7 @@
 		<input type="date" name="duedate"/>
     </div>
 	
-   
-       
-            <table class="table">
+	<table class="table">
                 <thead>
                     <tr id="trHead">
 						<th class="info">Item Description</th>
@@ -53,6 +51,7 @@
 				$counter++;
                     echo "<tr><td>".$c['item_desc']."</td><td>".$c['stocks'].'</td>
 						<td class="col-sm-2">
+
 							<input type="price" class="form-control" id="price'.$counter.'"  name="price[]" disabled>
 						</td>
 						<td class="col-sm-2">							
@@ -71,7 +70,7 @@
     </tbody>
 	
    </table>
-	
+
 	<button class="btn btn-primary btn-md" type="submit">
 		<span class="glyphicon glyphicon-download-alt"> </span> Save
 	</button>
@@ -81,6 +80,5 @@
 	
 	
 	</div>
-	
 </body>
 </html>
