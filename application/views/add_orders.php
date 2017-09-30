@@ -51,10 +51,10 @@
                     echo '<tr><td>'.$c['item_desc'].'</td>
 						<td class="col-sm-2">
 
-							<input type="price" class="form-control" id="price'.$counter.'"  name="price[]" disabled>
+							<input type="price" class="form-control" id="price'.$counter.'"  name="price[]" value="0" disabled>
 						</td>
 						<td class="col-sm-2">							
-							<input type="quantity" class="form-control" id="quantity'.$counter.'"  name="quantity[]" disabled>
+							<input type="quantity" class="form-control" id="quantity'.$counter.'"  name="quantity[]" value="0" disabled>
 						</td>
 						
 						<td><input type="checkbox" name="itemList[]" id="items'.$counter.'" value="'.$c['itemID'].'" onClick="toggle('."'items".$counter."'".', '."'price".$counter."'".', '."'quantity".$counter."'".')"  /></td>

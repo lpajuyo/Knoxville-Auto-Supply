@@ -9,6 +9,7 @@ class Knoxville extends CI_Controller {
 		$this->load->model('order_model','Order');
 		$this->load->model('item_model','Item');
 		$this->load->model('transaction_model','Transaction');
+		$this->load->model('deliverer_model','Deliverer');
     }
 	
 	
@@ -332,7 +333,80 @@ class Knoxville extends CI_Controller {
             redirect('knoxville/viewItems');
         }
     }
-	
-	
-	
+    
+    public function viewDeliverer(){
+        $result_array = $this->Deliverer->read();
+        
+        $data['deliverer'] = $result_array; 
+		$header_data['title'] = "View Deliverers";
+		$this->load->view('include/header',$header_data);
+        $this->load->view('deliverer_view',$data);
+    }
+    
+    public function addDeliverer(){
+        //load the view
+        //get form data
+        //add to db
+        $rules = array(
+                    array('field'=>'vehicle', 'label'=>'Vehicle', 'rules'=>'required'),
+                    array('field'=>'cnum', 'label'=>'Contact No.', 'rules'=>'required')
+                    //array('field'=>'isAdmin', 'label'=>'Admin?', 'rules'=>'required'),
+                );
+        $this->form_validation->set_rules($rules);
+        if($this->form_validation->run()==FALSE){
+			$header_data['title'] = "Add Deliverer";
+			$this->load->view('include/header',$header_data);
+            $this->load->view('add_delivererForm');
+        }
+        else{
+            if(isset($_POST['assigned']))
+                $assigned=1;
+            else
+                $assigned=0;
+            $delivererRecord=array('vehicle'=>$_POST['vehicle'],'contact_no'=>$_POST['cnum'],'assigned'=>$assigned);
+            $this->Deliverer->create($delivererRecord);
+            redirect('knoxville/viewDeliverer');
+        }
+    }
+    
+    public function updateDeliverer($delivererID){
+        $data['delivererID']=$delivererID;
+        $condition = array('delivererID' => $delivererID);
+        $oldRecord = $this->Deliverer->read($condition);
+        foreach($oldRecord as $o){
+            $data['vehicle'] = $o['vehicle'];
+            $data['cnum'] = $o['contact_no'];
+            if($o['assigned']>0)
+                $assigned='checked';
+            else
+                $assigned='';
+            $data['assigned'] = $assigned;
+        }
+        $rules = array(
+                    array('field'=>'vehicle', 'label'=>'Vehicle', 'rules'=>'required'),
+                    array('field'=>'cnum', 'label'=>'Contact No.', 'rules'=>'required')
+                    //array('field'=>'isAdmin', 'label'=>'Admin?', 'rules'=>'required'),
+                );
+        $this->form_validation->set_rules($rules);
+        if($this->form_validation->run()==FALSE){
+			$title['title']="Update Deliverer";
+            $this->load->view('include/header',$title);
+            $this->load->view('update_delivererForm',$data);
+        }
+        else{
+            if(isset($_POST['assigned']))
+                $assigned=1;
+            else
+                $assigned=0;
+            $newRecord=array('delivererID'=>$delivererID,'vehicle'=>$_POST['vehicle'],'contact_no'=>$_POST['cnum'],'assigned'=>$assigned);
+            $this->Deliverer->update($newRecord);
+            redirect('knoxville/viewDeliverer');
+        }
+    }
+    
+    public function delDeliverer($delivererID){
+        $where_array = array('delivererID'=>$delivererID);
+        $this->Deliverer->del($where_array);
+        redirect('knoxville/viewDeliverer');
+    }
 }
