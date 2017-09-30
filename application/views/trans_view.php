@@ -1,18 +1,25 @@
 <!DOCTYPE html>
 
+<div class="margin left">
+	<p class="font">Client name: <?php echo $cname?></p><br />
+	<p class="font">Address: <?php echo $cadd?></p><br />
+	<p class="font">Contact no.: <?php echo $cnum?></p><br />
+</div>
 
-	Client name: <?php echo $cname?><br />
-	Address: <?php echo $cadd?><br />
-	Contact no.: <?php echo $cnum?><br />
-    <table>
+<a href="<?php echo base_url('knoxville/addTransaction')?>" >
+    <button class="btn btn-primary" type="button" id="addButton"><span class="glyphicon glyphicon-plus"> </span>Add Transaction</button></a>
+
+<div id="table" class="margin">
+	<div class="table-responsive ">
+    <table class="table table-striped">
         <thead>
-            <tr>
-                <th>Item Name</th>
-				<th>Price</th>
-				<th>Quantity</th>
-                <th>Date</th>
-                <th>Status</th>
-                <th>Action</th>
+            <tr id="trHead">
+                <th class="info">Item Name</th>
+				<th class="info">Price</th>
+				<th class="info">Quantity</th>
+                <th class="info">Date</th>
+                <th class="info">Status</th>
+                <th class="info">Action</th>
             </tr>
         </thead>
         <tbody>
@@ -33,6 +40,7 @@
 			
         </tbody>
     </table>
-    <a href="<?php echo base_url('knoxville/addOrder')?>">Add Transaction</a>
+</div>
+</div>
 </body>
 </html>

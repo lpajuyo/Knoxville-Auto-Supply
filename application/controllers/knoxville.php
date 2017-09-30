@@ -262,6 +262,14 @@ class Knoxville extends CI_Controller {
 		$this->load->view('include/header',$header_data);
         $this->load->view('trans_view',$data);
     }
+	
+	public function addTransaction(){
+		$header_data['title'] = "ADD TRANSACTION";
+		 $this->load->view('include/header',$header_data);
+		 $this->load->view('add_trans');
+		
+		
+	}
     
     public function viewItems(){
         $result_array = $this->Item->read();
@@ -324,4 +332,7 @@ class Knoxville extends CI_Controller {
             redirect('knoxville/viewItems');
         }
     }
+	
+	
+	
 }
