@@ -24,6 +24,7 @@
 					<li><a href="<?php echo base_url('knoxville/viewClients')?>" class="navigation">Client Management</a></li>
 					<li><a href="<?php echo base_url('knoxville/viewOrders')?>" class="navigation">Sales Management</a></li>
 					<li><a href="<?php echo base_url('knoxville/viewItems')?>" class="navigation">Inventory Management</a></li>
+					<li><a href="<?php echo base_url('knoxville/viewDeliverer')?>" class="navigation">Deliverer Management</a></li>
 				</ul>
 				<div id="users">
 					<div class="dropdown">
