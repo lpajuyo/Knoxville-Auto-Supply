@@ -40,6 +40,8 @@
 						<th class="info">
 						<label for="price">Quantity</label></th>
 						<th class="info">
+						<label for="price">Transaction</label></th>
+						<th class="info">
 						<label for="itemList[]">ADD</th>
 					</tr></thead>
 					
@@ -51,14 +53,18 @@
                     echo '<tr><td>'.$c['item_desc'].'</td>
 						<td class="col-sm-2">
 
-							<input type="price" class="form-control" id="price'.$counter.'"  name="price[]" value="0" disabled>
+							<input type="price" class="form-control" id="price'.$counter.'"  name="price[]" value="0" disabled />
 						</td>
 						<td class="col-sm-2">							
-							<input type="quantity" class="form-control" id="quantity'.$counter.'"  name="quantity[]" value="0" disabled>
+							<input type="quantity" class="form-control" id="quantity'.$counter.'"  name="quantity[]" value="0" disabled />
 						</td>
-						
-						<td><input type="checkbox" name="itemList[]" id="items'.$counter.'" value="'.$c['itemID'].'" onClick="toggle('."'items".$counter."'".', '."'price".$counter."'".', '."'quantity".$counter."'".')"  /></td>
-						
+						<td class="col-sm-2">							
+							<select name="trans" id="trans'.$counter.'" disabled>
+							<option value="Quoted">Quoted</option>
+							<option value="Purchased">Purchased</option>
+							</select>
+						</td>
+						<td><input type="checkbox" name="itemList[]" id="items'.$counter.'" value="'.$c['itemID'].'" onClick="toggle('."'items".$counter."'".', '."'price".$counter."'".', '."'trans".$counter."'".', '."'quantity".$counter."'".')"  /></td>
 						
 						';
 						

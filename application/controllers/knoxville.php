@@ -220,7 +220,7 @@ class Knoxville extends CI_Controller {
 		 $quantity=$_POST['quantity'];
 		 for($x = 0; $x<=$count; $x++){
 		 if($items[$x] != NULL){
-         $transRecord=array('orderID'=>$orderID,'itemID'=>$items[$x],'unit_price'=>$price[$x],'quantity'=>$quantity[$x],'date'=>$_POST['date'],'time'=>$_POST['time'],'status'=>'quoted');   
+         $transRecord=array('orderID'=>$orderID,'itemID'=>$items[$x],'unit_price'=>$price[$x],'quantity'=>$quantity[$x],'date'=>$_POST['date'],'time'=>$_POST['time'],'status'=>$_POST['trans']);   
 		 $this->Transaction->create($transRecord);
 		 }
 		 }
@@ -244,6 +244,7 @@ class Knoxville extends CI_Controller {
 	public function viewTransaction($orderID){
         $condition = array('orderID' => $orderID);
 		$orderRec = $this->Order->read($condition);
+		$data['orderID'] = $orderID;
 		 foreach($orderRec as $o){
             $clientID = $o['clientID'];
         }
@@ -264,10 +265,35 @@ class Knoxville extends CI_Controller {
         $this->load->view('trans_view',$data);
     }
 	
-	public function addTransaction(){
-		$header_data['title'] = "ADD TRANSACTION";
+	public function addPurchase($orderID){
+		$data['orderID']=$orderID;
+		$header_data['title'] = "Purchase";
+		$condition = array('orderID'=>$orderID);
+		$TransRec = $this->Transaction->read($condition);
+		$data['trans'] = $TransRec;
+		$condition = '(orderID = "'.$orderID.'" and status = "Quoted")';
+		$QRec = $this->Transaction->read($condition);
+		$data['Qrec'] = $QRec;
+		$itemsRec = $this->Item->read();
+		$data['items'] = $itemsRec;
 		 $this->load->view('include/header',$header_data);
-		 $this->load->view('add_trans');
+		 $this->load->view('add_purchase',$data);
+		$count = 0; 
+		 if(!empty($_POST['itemList'])) {
+		 foreach($_POST['itemList'] as $check) {
+		 $count++;
+		 }
+		 $items=$_POST['itemList'];
+		 $price=$_POST['price'];
+		 $quantity=$_POST['quantity'];
+		 for($x = 0; $x<=$count; $x++){
+		 if($items[$x] != NULL){
+         $transRecord=array('orderID'=>$orderID,'itemID'=>$items[$x],'unit_price'=>$price[$x],'quantity'=>$quantity[$x],'date'=>$_POST['date'],'time'=>$_POST['time'],'status'=>"Purchased");   
+		 $this->Transaction->create($transRecord);
+		 }
+		 }
+		 redirect('knoxville/viewOrders');
+		 }
 		
 		
 	}
