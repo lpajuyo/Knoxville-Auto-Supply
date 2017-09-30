@@ -20,15 +20,15 @@
 	</div>
 	
 	<div class="form-group">
-		<label class="date-label" for="date">Date:&nbsp; </label>
- 		<input type="date" name="date" />		 
+		<label class="date-label" for="date">Date(dd/mm/yyyy):&nbsp; </label>
+ 		<input type="date" name="date" value="<?php echo date('Y-m-d'); ?>" />		 
  		<label class="date-label" for="date">Time: &nbsp;</label>		
-		<input type="time" name="time" />
+		<input type="time" name="time" value="<?php date_default_timezone_set('Asia/Manila'); echo  date("H:i"); ?>"/>
     </div>
 	
 	<div class="form-group">
-		<label class="duedate-label" for="duedate">Due Date: &nbsp; </label>
-		<input type="date" name="duedate"/>
+		<label class="duedate-label" for="duedate">Due Date(dd/mm/yyyy): &nbsp; </label>
+		<input type="date" name="duedate" value="<?php echo date('Y-m-d', strtotime( date('Y-m-d'). ' + 7 days'))?>"/>
     </div>
 	
 	<table class="table">
