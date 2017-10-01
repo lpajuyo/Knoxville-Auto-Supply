@@ -6,8 +6,8 @@
 	<p class="font">Contact no.: <?php echo $cnum?></p><br />
 </div>
 
-<a href="<?php echo base_url('knoxville/addTransaction')?>" >
-    <button class="btn btn-primary" type="button" id="addButton"><span class="glyphicon glyphicon-plus"> </span>Add Transaction</button></a>
+<a href="<?php echo base_url('knoxville/addPurchase/'.$orderID.'') ?>" >
+    <button class="btn btn-primary" type="button" id="addButton"><span class="glyphicon glyphicon-plus"> </span>Purchase items</button></a>
 
 <div id="table" class="margin">
 	<div class="table-responsive ">
