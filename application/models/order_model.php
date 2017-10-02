@@ -10,6 +10,7 @@ class Order_model extends CI_Model {
     function read($condition=null){
         $this->db->select('*');
         $this->db->from($this->table);
+        $this->db->order_by('date','desc');
         
         if(isset($condition))
             $this->db->where($condition);
