@@ -19,7 +19,7 @@
 						<th class="info">
 						<label for="price">Price</label></th>
 						<th class="info">
-						<label for="price">Quantity</label></th>
+						<label for="quantity">Quantity</label></th>
 						<th class="info">
 						<label for="itemList[]">ADD</th>
 					</tr></thead>
@@ -45,10 +45,10 @@
 						echo '</td>
 							<td class="col-sm-2">
 
-								<input type="price" class="form-control" id="price'.$counter.'" value="'.$Q['unit_price'].'" name="price[]">
+								<input type="number" class="form-control" id="price'.$counter.'" value="'.$Q['unit_price'].'" name="price[]">
 							</td>
 							<td class="col-sm-2">							
-								<input type="quantity" class="form-control" id="quantity'.$counter.'"  name="quantity[]" value="'.$Q['quantity'].'">
+								<input type="number" class="form-control" id="quantity'.$counter.'"  name="quantity[]" value="'.$Q['quantity'].'">
 							</td>
 							
 							<td><input type="checkbox" name="itemList[]" id="items'.$counter.'" value="'.$Q['itemID'].'" onClick="toggle2('."'items".$counter."'".', '."'price".$counter."'".', '."'quantity".$counter."'".')"  checked/></td>

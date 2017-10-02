@@ -24,11 +24,20 @@
  		<input type="date" name="date" value="<?php echo date('Y-m-d'); ?>" />		 
  		<label class="date-label" for="date">Time: &nbsp;</label>		
 		<input type="time" name="time" value="<?php date_default_timezone_set('Asia/Manila'); echo  date("H:i"); ?>"/>
+		
     </div>
 	
 	<div class="form-group">
+	
+		<label class="trans-label" for="transaction">Transaction: &nbsp;</label>		
+		<select name="trans" id="trans">
+							<option value="Quoted">Quote</option>
+							<option value="Purchased">Purchase</option></select>
+							
+		<br />					
 		<label class="duedate-label" for="duedate">Due Date(dd/mm/yyyy): &nbsp; </label>
 		<input type="date" name="duedate" value="<?php echo date('Y-m-d', strtotime( date('Y-m-d'). ' + 7 days'))?>"/>
+		
     </div>
 	
 	<table class="table">
@@ -38,9 +47,7 @@
 						<th class="info">
 						<label for="price">Price</label></th>
 						<th class="info">
-						<label for="price">Quantity</label></th>
-						<th class="info">
-						<label for="price">Transaction</label></th>
+						<label for="quantity">Quantity</label></th>
 						<th class="info">
 						<label for="itemList[]">ADD</th>
 					</tr></thead>
@@ -53,18 +60,13 @@
                     echo '<tr><td>'.$c['item_desc'].'</td>
 						<td class="col-sm-2">
 
-							<input type="price" class="form-control" id="price'.$counter.'"  name="price[]" value="0" disabled />
+							<input type="number" class="form-control" id="price'.$counter.'"  name="price[]" value="0" disabled />
 						</td>
 						<td class="col-sm-2">							
-							<input type="quantity" class="form-control" id="quantity'.$counter.'"  name="quantity[]" value="0" disabled />
+							<input type="number" class="form-control" id="quantity'.$counter.'"  name="quantity[]" value="0" disabled />
 						</td>
-						<td class="col-sm-2">							
-							<select name="trans" id="trans'.$counter.'" disabled>
-							<option value="Quoted">Quoted</option>
-							<option value="Purchased">Purchased</option>
-							</select>
-						</td>
-						<td><input type="checkbox" name="itemList[]" id="items'.$counter.'" value="'.$c['itemID'].'" onClick="toggle('."'items".$counter."'".', '."'price".$counter."'".', '."'trans".$counter."'".', '."'quantity".$counter."'".')"  /></td>
+						
+						<td><input type="checkbox" name="itemList[]" id="items'.$counter.'" value="'.$c['itemID'].'" onClick="toggle('."'items".$counter."'".', '."'price".$counter."'".', '."'quantity".$counter."'".')"  /></td>
 						
 						';
 						

@@ -327,6 +327,72 @@ class Knoxville extends CI_Controller {
 		 $this->Transaction->create($transRecord);
 		 }
 		 }
+		 redirect('knoxville/viewTransaction/'.$orderID.'');
+		 }
+		
+		
+	}
+	
+	public function addRefund($orderID){
+		$data['orderID']=$orderID;
+		$header_data['title'] = "Refund";
+		$condition = array('orderID'=>$orderID);
+		$TransRec = $this->Transaction->read($condition);
+		$data['trans'] = $TransRec;
+		$condition = '(orderID = "'.$orderID.'" and status = "Purchased")';
+		$PRec = $this->Transaction->read($condition);
+		$data['Prec'] = $PRec;
+		$itemsRec = $this->Item->read();
+		$data['items'] = $itemsRec;
+		 $this->load->view('include/header',$header_data);
+		 $this->load->view('add_refundForm',$data);
+		$count = 0; 
+		 if(!empty($_POST['itemList'])) {
+		 foreach($_POST['itemList'] as $check) {
+		 $count++;
+		 }
+		 $items=$_POST['itemList'];
+		 $price=$_POST['price'];
+		 $quantity=$_POST['quantity'];
+		 $trans=$_POST['trans'];
+		 for($x = 0; $x<=$count; $x++){
+		 if($items[$x] != NULL){
+         $transRecord=array('orderID'=>$orderID,'itemID'=>$items[$x],'unit_price'=>$price[$x],'quantity'=>$quantity[$x],'date'=>$_POST['date'],'time'=>$_POST['time'],'status'=>$trans[$x]);   
+		 $this->Transaction->create($transRecord);
+		 }
+		 }
+		 redirect('knoxville/viewOrders');
+		 }
+		
+		
+	}
+	public function AddDeliverySched($orderID){
+		$data['orderID']=$orderID;
+		$header_data['title'] = "Schedule For Delivery";
+		$deliverer=$this->Deliverer->read();
+		$data['deliverer'] = $deliverer;
+		$condition = array('orderID'=>$orderID);
+		$TransRec = $this->Transaction->read($condition);
+		$data['trans'] = $TransRec;
+		$condition = '(orderID = "'.$orderID.'" and status = "Purchased")';
+		$PRec = $this->Transaction->read($condition);
+		$data['Prec'] = $PRec;
+		$itemsRec = $this->Item->read();
+		$data['items'] = $itemsRec;
+		 $this->load->view('include/header',$header_data);
+		 $this->load->view('add_deliveryschedForm',$data);
+		$count = 0; 
+		 if(!empty($_POST['itemList'])) {
+		 foreach($_POST['itemList'] as $check) {
+		 $count++;
+		 }
+		 $items=$_POST['itemList'];
+		 for($x = 0; $x<=$count; $x++){
+		 if($items[$x] != NULL){
+         $shipmentRecord=array('itemID'=>$items[$x],'delivererID'=>$_POST['delivererID'],'date'=>$_POST['date'],'time'=>$_POST['time'],'status'=>"Subject for Delivery");   
+		 $this->Shipment->create($shipmentRecord);
+		 }
+		 }
 		 redirect('knoxville/viewOrders');
 		 }
 		
@@ -420,11 +486,7 @@ class Knoxville extends CI_Controller {
             $this->load->view('add_delivererForm');
         }
         else{
-            if(isset($_POST['assigned']))
-                $assigned=1;
-            else
-                $assigned=0;
-            $delivererRecord=array('vehicle'=>$_POST['vehicle'],'contact_no'=>$_POST['cnum'],'assigned'=>$assigned);
+            $delivererRecord=array('vehicle'=>$_POST['vehicle'],'contact_no'=>$_POST['cnum'],'assigned'=>$_POST['assigned']);
             $this->Deliverer->create($delivererRecord);
             redirect('knoxville/viewDeliverer');
         }
@@ -455,10 +517,6 @@ class Knoxville extends CI_Controller {
             $this->load->view('update_delivererForm',$data);
         }
         else{
-            if(isset($_POST['assigned']))
-                $assigned=1;
-            else
-                $assigned=0;
             $newRecord=array('delivererID'=>$delivererID,'vehicle'=>$_POST['vehicle'],'contact_no'=>$_POST['cnum'],'assigned'=>$assigned);
             $this->Deliverer->update($newRecord);
             redirect('knoxville/viewDeliverer');
