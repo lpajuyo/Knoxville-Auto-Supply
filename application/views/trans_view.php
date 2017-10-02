@@ -33,7 +33,7 @@
 						if ($t['itemID'] == $i['itemID'])
 						echo $i['item_desc'];
 					}	
-					echo '</td><td>'.$t['unit_price'].'</td><td>'.$t['quantity'].'</td><td>'.$t['date'].'</td><td>'.$t['status'].'</td><td><a href="">Edit</a> | <a href="">Delete</a></td></tr>';
+					echo '</td><td>'.$t['unit_price'].'</td><td>'.$t['quantity'].'</td><td>'.$t['date'].'</td><td>'.$t['status'].'</td><td><a href="'.base_url('knoxville/updateTransaction/'.$t['transID']).'">Edit</a> | <a href="">Delete</a></td></tr>';
                     //echo base_url('knoxville/delClient/'.c['clientID'])
 					}
             ?>

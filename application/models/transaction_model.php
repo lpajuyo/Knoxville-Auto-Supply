@@ -9,6 +9,7 @@ class Transaction_model extends CI_Model {
     function read($condition=null){
         $this->db->select('*');
         $this->db->from($this->table);
+        $this->db->order_by('date','desc');
         
         if(isset($condition))
             $this->db->where($condition);
@@ -22,8 +23,9 @@ class Transaction_model extends CI_Model {
         
     }
     
-    function update($newRecord){
-        $this->db->replace($this->table,$newRecord);
+    function update($newRecord, $transID){
+        $this->db->where('transID', $transID);
+        $this->db->update($this->table,$newRecord);
     }
     
     function del($where_array){

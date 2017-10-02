@@ -205,32 +205,35 @@ class Knoxville extends CI_Controller {
 			$this->load->view('add_orders',$data);
         }
         else{
-		$count = 0; 
-		 if(!empty($_POST['itemList'])) {
-		 foreach($_POST['itemList'] as $check) {
-		 $count++;
-		 }
-		 $orderRecord=array('clientID'=>$_POST['clientid'],'date'=>$_POST['date'],'time'=>$_POST['time'],'due'=>$_POST['duedate'],'userID'=>$this->session->userdata('userID'));
-		 $this->Order->create($orderRecord);
-		 
-         $orderID=$this->Order->getLastRecordID();
-         $orderID = $orderID['orderID'];
-		 $items=$_POST['itemList'];
-		 $price=$_POST['price'];
-		 $quantity=$_POST['quantity'];
-		 for($x = 0; $x<=$count; $x++){
-		 if($items[$x] != NULL){
-         $transRecord=array('orderID'=>$orderID,'itemID'=>$items[$x],'unit_price'=>$price[$x],'quantity'=>$quantity[$x],'date'=>$_POST['date'],'time'=>$_POST['time'],'status'=>$_POST['trans']);   
-		 $this->Transaction->create($transRecord);
-		 }
-		 }
-		 
+            $count = 0; 
+             if(!empty($_POST['itemList'])) {
+                 foreach($_POST['itemList'] as $check) {
+                    $count++;
+                 }
+                 $orderRecord=array('clientID'=>$_POST['clientid'],'date'=>$_POST['date'],'time'=>$_POST['time'],'due'=>$_POST['duedate'],'userID'=>$this->session->userdata('userID'));
+                 $this->Order->create($orderRecord);
+                 
+                 $orderID=$this->Order->getLastRecordID();
+                 $orderID = $orderID['orderID'];
+                 $items=$_POST['itemList'];
+                 $price=$_POST['price'];
+                 $quantity=$_POST['quantity'];
+                 for($x = 0; $x<=$count; $x++){
+                     if($items[$x] != NULL){
+                        $transRecord=array('orderID'=>$orderID,'itemID'=>$items[$x],'unit_price'=>$price[$x],'quantity'=>$quantity[$x],'date'=>$_POST['date'],'time'=>$_POST['time'],'status'=>$_POST['trans']);   
+                        $this->Transaction->create($transRecord);
+                     }
+                 }
+            }
+             redirect('knoxville/viewOrders');
 		}
-		 redirect('knoxville/viewOrders');
-		 
-		
-			}
-		}
+	}
+    
+    public function delOrder($orderID){
+        $where_array = array('orderID'=>$orderID);
+        $this->Order->del($where_array);
+        redirect('knoxville/viewOrders');
+    }
 	
 	public function viewOrders(){
         $result_array = $this->Order->read();
@@ -263,6 +266,38 @@ class Knoxville extends CI_Controller {
 		$header_data['title'] = "$orderID: Order Details";
 		$this->load->view('include/header',$header_data);
         $this->load->view('trans_view',$data);
+    }
+    
+    public function updateTransaction($transID){
+        $data['transID']=$transID;
+        $condition = array('transID' => $transID);
+        $oldRecord = $this->Transaction->read($condition);
+        foreach($oldRecord as $o){
+            $data['price'] = $o['unit_price'];
+            $data['qty'] = $o['quantity'];
+            $orderID = $o['orderID'];
+            $itemID = $o['itemID'];
+        }
+        $condition = array('itemID'=>$itemID);
+        $itemRec=$this->Item->read($condition);
+        foreach($itemRec as $i){
+            $data['item_desc'] = $i['item_desc'];
+        }
+        $rules = array(
+                    array('field'=>'price', 'label'=>'Price', 'rules'=>'required'),
+                    array('field'=>'qty', 'label'=>'Quantity', 'rules'=>'required')
+                );
+        $this->form_validation->set_rules($rules);
+        if($this->form_validation->run()==FALSE){
+			$header_data['title'] = "Update Transaction";
+            $this->load->view('include/header',$header_data);
+            $this->load->view('update_transForm',$data);
+        }
+        else{
+            $newRecord=array('unit_price'=>$_POST['price'],'quantity'=>$_POST['qty']);
+            $this->Transaction->update($newRecord, $transID);
+            $this->viewTransaction($orderID);
+        }
     }
 	
 	public function addPurchase($orderID){
