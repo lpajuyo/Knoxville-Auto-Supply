@@ -4,10 +4,9 @@
 	<p class="font">Client name: <?php echo $cname?></p><br />
 	<p class="font">Address: <?php echo $cadd?></p><br />
 	<p class="font">Contact no.: <?php echo $cnum?></p><br />
+	<p><a href="<?php echo base_url('knoxville/addDeliverySched/'.$orderID.'') ?>" ><b> >>Schedule items for delivery</b></a></p>
 </div>
 
-<a href="<?php echo base_url('knoxville/addPurchase/'.$orderID.'') ?>" >
-    <button class="btn btn-primary" type="button" id="addButton"><span class="glyphicon glyphicon-plus"> </span>Purchase items</button></a>
 
 <div id="table" class="margin">
 	<div class="table-responsive ">
@@ -37,9 +36,16 @@
                     //echo base_url('knoxville/delClient/'.c['clientID'])
 					}
             ?>
+
+			
 			
         </tbody>
     </table>
+	
+	<a href="<?php echo base_url('knoxville/addPurchase/'.$orderID.'') ?>" >
+    <button class="btn btn-primary" type="button" id="addButton"><span class="glyphicon glyphicon-plus"> </span>Purchase items</button></a>	
+	<a href="<?php echo base_url('knoxville/addRefund/'.$orderID.'') ?>" >
+	<button class="btn btn-primary" type="button" id="addButton"><span class="glyphicon glyphicon-plus"> </span>Cancel/Return Orders</button></a>
 </div>
 </div>
 </body>

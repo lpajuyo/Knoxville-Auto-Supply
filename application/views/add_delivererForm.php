@@ -19,7 +19,8 @@
     </div>
     
     <div class="top col-sm-6 top text-center">
-    <label class="control-label" for="assigned">Assigned?<input class="form-control" type="checkbox" name="assigned" id="assigned" /></label>
+    <label class="control-label" for="assigned">Assigned personnel
+	   <input class="form-control"type="text" name="assigned" id="assigned" />
 	</div>
 	<div class="submarg col-sm-4">
     <input class="form-control sub-btn" type="submit" value="SUBMIT"/>

@@ -8,6 +8,7 @@
     <table>
         <thead>
             <tr>
+				<th>Order#</th>
                 <th>Client Name</th>
                 <th>Date</th>
                 <th>Time</th>
@@ -20,7 +21,7 @@
 			
 			 
                 foreach($orders as $c){ //Array ( [clientID] => 1 [client_name] => dsa [address] => dsa [contact_no] => 123 ) 
-                    echo "<tr><td>";
+                    echo "<tr><td>".$c['orderID']."<td>";
 					foreach($clients as $i)
 					{
 						if ($c['clientID'] == $i['clientID'])
