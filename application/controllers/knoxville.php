@@ -10,6 +10,7 @@ class Knoxville extends CI_Controller {
 		$this->load->model('item_model','Item');
 		$this->load->model('transaction_model','Transaction');
 		$this->load->model('deliverer_model','Deliverer');
+		$this->load->model('shipment_model','Shipment');
     }
 	
 	
@@ -296,8 +297,15 @@ class Knoxville extends CI_Controller {
         else{
             $newRecord=array('unit_price'=>$_POST['price'],'quantity'=>$_POST['qty']);
             $this->Transaction->update($newRecord, $transID);
-            $this->viewTransaction($orderID);
+            redirect('knoxville/viewTransaction/'.$orderID);
         }
+    }
+    
+    public function delTransaction($transID, $orderID){
+        $where_array = array('transID'=>$transID);
+        $this->Transaction->del($where_array);
+        //$this->viewTransaction($orderID);
+        redirect('knoxville/viewTransaction/'.$orderID);
     }
 	
 	public function addPurchase($orderID){
@@ -379,24 +387,22 @@ class Knoxville extends CI_Controller {
 		$data['Prec'] = $PRec;
 		$itemsRec = $this->Item->read();
 		$data['items'] = $itemsRec;
-		 $this->load->view('include/header',$header_data);
-		 $this->load->view('add_deliveryschedForm',$data);
+		$this->load->view('include/header',$header_data);
+		$this->load->view('add_deliveryschedForm',$data);
 		$count = 0; 
 		 if(!empty($_POST['itemList'])) {
-		 foreach($_POST['itemList'] as $check) {
-		 $count++;
+             foreach($_POST['itemList'] as $check) {
+                $count++;
+             }
+             $items=$_POST['itemList'];
+             for($x = 0; $x<=$count; $x++){
+                 if($items[$x] != NULL){
+                     $shipmentRecord=array('itemID'=>$items[$x],'delivererID'=>$_POST['delivererID'],'date'=>$_POST['date'],'time'=>$_POST['time'],'status'=>"Subject for Delivery");   
+                     $this->Shipment->create($shipmentRecord);
+                 }
+            }
+            redirect('knoxville/viewOrders');
 		 }
-		 $items=$_POST['itemList'];
-		 for($x = 0; $x<=$count; $x++){
-		 if($items[$x] != NULL){
-         $shipmentRecord=array('itemID'=>$items[$x],'delivererID'=>$_POST['delivererID'],'date'=>$_POST['date'],'time'=>$_POST['time'],'status'=>"Subject for Delivery");   
-		 $this->Shipment->create($shipmentRecord);
-		 }
-		 }
-		 redirect('knoxville/viewOrders');
-		 }
-		
-		
 	}
     
     public function viewItems(){
@@ -476,8 +482,8 @@ class Knoxville extends CI_Controller {
         //add to db
         $rules = array(
                     array('field'=>'vehicle', 'label'=>'Vehicle', 'rules'=>'required'),
-                    array('field'=>'cnum', 'label'=>'Contact No.', 'rules'=>'required')
-                    //array('field'=>'isAdmin', 'label'=>'Admin?', 'rules'=>'required'),
+                    array('field'=>'cnum', 'label'=>'Contact No.', 'rules'=>'required'),
+                    array('field'=>'assigned', 'label'=>'Assigned Personnel', 'rules'=>'required')
                 );
         $this->form_validation->set_rules($rules);
         if($this->form_validation->run()==FALSE){
@@ -499,16 +505,12 @@ class Knoxville extends CI_Controller {
         foreach($oldRecord as $o){
             $data['vehicle'] = $o['vehicle'];
             $data['cnum'] = $o['contact_no'];
-            if($o['assigned']>0)
-                $assigned='checked';
-            else
-                $assigned='';
-            $data['assigned'] = $assigned;
+            $data['assigned'] = $o['assigned'];
         }
         $rules = array(
                     array('field'=>'vehicle', 'label'=>'Vehicle', 'rules'=>'required'),
-                    array('field'=>'cnum', 'label'=>'Contact No.', 'rules'=>'required')
-                    //array('field'=>'isAdmin', 'label'=>'Admin?', 'rules'=>'required'),
+                    array('field'=>'cnum', 'label'=>'Contact No.', 'rules'=>'required'),
+                    array('field'=>'assigned', 'label'=>'Assigned Personnel', 'rules'=>'required')
                 );
         $this->form_validation->set_rules($rules);
         if($this->form_validation->run()==FALSE){
@@ -517,7 +519,7 @@ class Knoxville extends CI_Controller {
             $this->load->view('update_delivererForm',$data);
         }
         else{
-            $newRecord=array('delivererID'=>$delivererID,'vehicle'=>$_POST['vehicle'],'contact_no'=>$_POST['cnum'],'assigned'=>$assigned);
+            $newRecord=array('delivererID'=>$delivererID,'vehicle'=>$_POST['vehicle'],'contact_no'=>$_POST['cnum'],'assigned'=>$_POST['assigned']);
             $this->Deliverer->update($newRecord);
             redirect('knoxville/viewDeliverer');
         }
