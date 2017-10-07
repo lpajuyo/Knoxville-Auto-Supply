@@ -22,12 +22,25 @@ class Item_model extends CI_Model {
         
     }
     
-    function update($newRecord){
-        $this->db->replace($this->table,$newRecord);
+    function update($newRecord, $itemID){
+        $this->db->where('itemID', $itemID);
+        $this->db->update($this->table,$newRecord);
     }
     
     function del($where_array){
         $this->db->delete($this->table,$where_array);
+    }
+    
+    function addStocks($quantity, $itemID){
+        $this->db->set('stocks','stocks+'.$quantity,FALSE);
+        $this->db->where('itemID', $itemID);
+        $this->db->update($this->table);
+    }
+    
+    function subtractStocks($quantity, $itemID){ 
+        $this->db->set('stocks','GREATEST((stocks-'.$quantity.'),0)',FALSE); //negative difference will be turned to 0
+        $this->db->where('itemID', $itemID);
+        $this->db->update($this->table);
     }
 }
 ?>
