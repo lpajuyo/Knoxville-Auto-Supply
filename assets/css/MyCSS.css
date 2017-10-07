@@ -78,7 +78,18 @@ label{
     margin: 20px 2px;
     cursor: pointer;
 }
-.sub:hover{
+.subUpdate{
+	font-family: Verdana;
+	font-size: 16px;
+	background-color: #D0D3D4;
+	color: #1A5276;
+    border: none;
+    padding:8px 32px;
+    text-decoration: none;
+    margin: 20px 120px;
+    cursor: pointer;
+}
+.sub:hover, .subUpdate:hover{
 	background-color: #34495E;
 	color: #fff;
 }
