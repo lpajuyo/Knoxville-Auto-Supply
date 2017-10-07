@@ -28,6 +28,65 @@ class Knoxville extends CI_Controller {
         }
 	}
     
+    public function viewSalesReport(){
+        if($_POST['range']=='week'){
+            $startDate = date('Y-m-d',strtotime('next sunday - 1 week'));
+            $endDate = date('Y-m-d',strtotime('next sunday - 1 second'));
+            $condition = "status='Purchased' AND date BETWEEN '$startDate' AND '$endDate'";
+            $transData=$this->Transaction->read($condition);
+            
+            $totalQuantity = 0;
+            $totalRevenue = 0;
+            foreach($transData as $t){
+                $totalQuantity += $t['quantity'];
+                $totalRevenue += $t['quantity']*$t['unit_price'];
+            }
+            
+            $data['totalQuantity'] = $totalQuantity;
+            $data['totalRevenue'] = $totalRevenue;
+            $data['range'] = 'This Week';
+            $data['date'] = $startDate.' to '.$endDate;
+            echo $this->load->view('sales_report',$data,TRUE);
+        }
+        else if($_POST['range']=='month'){
+            $startDate = date('Y-m-d',strtotime('first day of this month'));
+            $endDate = date('Y-m-d',strtotime('last day of this month'));
+            $condition = "status='Purchased' AND date BETWEEN '$startDate' AND '$endDate'";
+            $transData=$this->Transaction->read($condition);
+            
+            $totalQuantity = 0;
+            $totalRevenue = 0;
+            foreach($transData as $t){
+                $totalQuantity += $t['quantity'];
+                $totalRevenue += $t['quantity']*$t['unit_price'];
+            }
+            
+            $data['totalQuantity'] = $totalQuantity;
+            $data['totalRevenue'] = $totalRevenue;
+            $data['range'] = 'This Month';
+            $data['date'] = $startDate.' to '.$endDate;
+            echo $this->load->view('sales_report',$data,TRUE);
+        }
+        else if($_POST['range']=='day'){
+            $date = date('Y-m-d',strtotime('today'));
+            $condition=array('date'=>$date, 'status'=>'Purchased');
+            $transData=$this->Transaction->read($condition);
+            
+            $totalQuantity = 0;
+            $totalRevenue = 0;
+            foreach($transData as $t){
+                $totalQuantity += $t['quantity'];
+                $totalRevenue += $t['quantity']*$t['unit_price'];
+            }
+            
+            $data['totalQuantity'] = $totalQuantity;
+            $data['totalRevenue'] = $totalRevenue;
+            $data['range'] = 'Today';
+            $data['date'] = $date;
+            echo $this->load->view('sales_report',$data,TRUE);
+        }
+    }
+    
     public function viewSalesAgents(){
         $result_array = $this->SalesAgent->read();
         
