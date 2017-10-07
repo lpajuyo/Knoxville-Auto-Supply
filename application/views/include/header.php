@@ -9,8 +9,7 @@
 	
 	<script src="<?php echo base_url('bootstrap/js/jquery.min.js'); ?>"></script>
 	<script src="<?php echo base_url('bootstrap/js/bootstrap.min.js'); ?>"></script>
-	<script src="<?php echo base_url('assets/js/multiple_selection.js'); ?>"></script>
-	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <script src="<?php echo base_url('assets/js/multiple_selection.js'); ?>"></script>
 	
 </head>
 <body>
