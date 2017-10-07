@@ -223,6 +223,9 @@ class Knoxville extends CI_Controller {
                      if($items[$x] != NULL){
                         $transRecord=array('orderID'=>$orderID,'itemID'=>$items[$x],'unit_price'=>$price[$x],'quantity'=>$quantity[$x],'date'=>$_POST['date'],'time'=>$_POST['time'],'status'=>$_POST['trans']);   
                         $this->Transaction->create($transRecord);
+                        if($_POST['trans'] == 'Purchased'){
+                            $this->Item->subtractStocks($quantity[$x], $items[$x]);
+                        }
                      }
                  }
             }
@@ -323,19 +326,20 @@ class Knoxville extends CI_Controller {
 		 $this->load->view('add_purchase',$data);
 		$count = 0; 
 		 if(!empty($_POST['itemList'])) {
-		 foreach($_POST['itemList'] as $check) {
-		 $count++;
-		 }
-		 $items=$_POST['itemList'];
-		 $price=$_POST['price'];
-		 $quantity=$_POST['quantity'];
-		 for($x = 0; $x<=$count; $x++){
-		 if($items[$x] != NULL){
-         $transRecord=array('orderID'=>$orderID,'itemID'=>$items[$x],'unit_price'=>$price[$x],'quantity'=>$quantity[$x],'date'=>$_POST['date'],'time'=>$_POST['time'],'status'=>"Purchased");   
-		 $this->Transaction->create($transRecord);
-		 }
-		 }
-		 redirect('knoxville/viewTransaction/'.$orderID.'');
+             foreach($_POST['itemList'] as $check) {
+                $count++;
+             }
+             $items=$_POST['itemList'];
+             $price=$_POST['price'];
+             $quantity=$_POST['quantity'];
+             for($x = 0; $x<=$count; $x++){
+                 if($items[$x] != NULL){
+                     $transRecord=array('orderID'=>$orderID,'itemID'=>$items[$x],'unit_price'=>$price[$x],'quantity'=>$quantity[$x],'date'=>$_POST['date'],'time'=>$_POST['time'],'status'=>"Purchased");   
+                     $this->Transaction->create($transRecord);
+                     $this->Item->subtractStocks($quantity[$x], $items[$x]);
+                 }
+             }
+             redirect('knoxville/viewTransaction/'.$orderID.'');
 		 }
 		
 		
@@ -356,20 +360,21 @@ class Knoxville extends CI_Controller {
 		 $this->load->view('add_refundForm',$data);
 		$count = 0; 
 		 if(!empty($_POST['itemList'])) {
-		 foreach($_POST['itemList'] as $check) {
-		 $count++;
-		 }
-		 $items=$_POST['itemList'];
-		 $price=$_POST['price'];
-		 $quantity=$_POST['quantity'];
-		 $trans=$_POST['trans'];
-		 for($x = 0; $x<=$count; $x++){
-		 if($items[$x] != NULL){
-         $transRecord=array('orderID'=>$orderID,'itemID'=>$items[$x],'unit_price'=>$price[$x],'quantity'=>$quantity[$x],'date'=>$_POST['date'],'time'=>$_POST['time'],'status'=>$trans[$x]);   
-		 $this->Transaction->create($transRecord);
-		 }
-		 }
-		 redirect('knoxville/viewOrders');
+             foreach($_POST['itemList'] as $check) {
+                $count++;
+             }
+             $items=$_POST['itemList'];
+             $price=$_POST['price'];
+             $quantity=$_POST['quantity'];
+             $trans=$_POST['trans'];
+             for($x = 0; $x<=$count; $x++){
+                 if($items[$x] != NULL){
+                     $transRecord=array('orderID'=>$orderID,'itemID'=>$items[$x],'unit_price'=>$price[$x],'quantity'=>$quantity[$x],'date'=>$_POST['date'],'time'=>$_POST['time'],'status'=>$trans[$x]);   
+                     $this->Transaction->create($transRecord);
+                     $this->Item->addStocks($quantity[$x], $items[$x]);
+                 }
+             }
+             redirect('knoxville/viewOrders');
 		 }
 		
 		
@@ -462,7 +467,7 @@ class Knoxville extends CI_Controller {
         }
         else{
             $newRecord=array('itemID'=>$itemID,'item_desc'=>$_POST['idesc'],'stocks'=>$_POST['stocks']);
-            $this->Item->update($newRecord);
+            $this->Item->update($newRecord,$itemID);
             redirect('knoxville/viewItems');
         }
     }
