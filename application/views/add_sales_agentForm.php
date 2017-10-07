@@ -12,27 +12,27 @@
  
     <div>
     <label class="control-label col-sm-4" for="userID">UserID:</label>
-    <input class="form-control col-sm-4"type="text" name="userID" id="userID" />
+    <input class="form-control col-sm-4" type="text" name="userID" id="userID" />
     </div>
     
     <div>
     <label class="control-label col-sm-4" for="pass">Password:</label>
-    <input class="form-control col-sm-4"type="password" name="pass" id="pass" />
+    <input class="form-control col-sm-4" type="password" name="pass" id="pass" />
     </div>
     
     <div>
     <label class="control-label col-sm-4" for="name">Name:</label>
-    <input class="form-control col-sm-4"type="text" name="name" id="name" />
+    <input class="form-control col-sm-4" type="text" name="name" id="name" />
     </div>
     
     <div>
     <label class="control-label col-sm-4" for="bday">Birthdate:</label>
-    <input class="form-control col-sm-4"type="date" name="bday" id="bday" />
+    <input class="form-control col-sm-4" type="date" name="bday" id="bday" />
     </div>
     
     <div>
     <label class="control-label col-sm-4" for="age">Age:</label>
-    <input class="form-control col-sm-4"type="text" name="age" id="age" />
+    <input class="form-control col-sm-4" type="text" name="age" id="age" />
     </div>
     
     <div>
@@ -42,7 +42,7 @@
     
     <div>
     <label class="control-label col-sm-4" for="cnum">Contact No.:</label>
-    <input class="form-control col-sm-4"type="text" name="cnum" id="cnum" />
+    <input class="form-control col-sm-4" type="text" name="cnum" id="cnum" />
     </div>
     
     <div class="col-sm-4">
