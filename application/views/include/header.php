@@ -10,31 +10,35 @@
 	<script src="<?php echo base_url('bootstrap/js/jquery.min.js'); ?>"></script>
 	<script src="<?php echo base_url('bootstrap/js/bootstrap.min.js'); ?>"></script>
 	<script src="<?php echo base_url('assets/js/multiple_selection.js'); ?>"></script>
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	
 </head>
 <body>
-    <nav class="navbar">
-        <div class="container-fluid">
-            <div class="navbar-header"><p class="navbar-brand">Knoxville Auto Supply</p>
-                <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1"></button>
-            </div>
-            <div class="collapse navbar-collapse" id="navcol-1">
-                <ul class="nav navbar-nav">
-					<li><a href="<?php echo base_url('knoxville/viewSalesAgents')?>" class="navigation">Sales Agent Management</a></li>
-					<li><a href="<?php echo base_url('knoxville/viewClients')?>" class="navigation">Client Management</a></li>
-					<li><a href="<?php echo base_url('knoxville/viewOrders')?>" class="navigation">Sales Management</a></li>
-					<li><a href="<?php echo base_url('knoxville/viewItems')?>" class="navigation">Inventory Management</a></li>
-					<li><a href="<?php echo base_url('knoxville/viewDeliverer')?>" class="navigation">Deliverer Management</a></li>
+<div class="container">
+    <div class="tabbable">
+        <div class="row">
+            <ul class="nav nav-tabs">
+               <ul class="nav navbar-nav">
+					<li><a href="<?php echo base_url('knoxville/viewSalesAgents')?>" class="navigation active">SALES AGENT MANAGEMENT<p class="active">Manage sales agent</p></a></li>
+					<li><a href="<?php echo base_url('knoxville/viewClients')?>" class="navigation">CLIENT MANAGEMENT<p>Manage client</p></a></li>
+					<li><a href="<?php echo base_url('knoxville/viewOrders')?>" class="navigation">SALES MANAGEMENT<p>Manage sales management</p></a></li>
+					<li><a href="<?php echo base_url('knoxville/viewItems')?>" class="navigation">INVENTORY MANAGEMENT<p>Manage inventory</p></a></li>
+					<li><a href="<?php echo base_url('knoxville/viewDeliverer')?>" class="navigation">DELIVERER MANAGEMENT<p>Manage delivery</p></a></li>
 				</ul>
-				<div id="users">
-					<div class="dropdown">
-					  Hi Admin!
-					  <span class="caret" data-toggle="dropdown"></span>
-					  <ul class="dropdown-menu">
-						<li><a href="<?php echo base_url('login/logout'); ?>">LOGOUT</a></li>
-					  </ul>
-					</div>
-				</div>
-            </div>
-        </div>
-    </nav>
+            </ul>
+
+<script>
+$(document).ready(function(){
+  $('ul li a').click(function(){
+    $('li a').removeClass("active");
+    $('li p').removeClass("active");
+    $(this).addClass("active");
+});
+});
+</script>
+
+
+
+
+
+  

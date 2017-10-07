@@ -1,25 +1,25 @@
 <!DOCTYPE html>
-
-	<a href="<?php echo base_url('knoxville/addClient')?>" data-toggle="modal" data-target="#myModal">
-    <button class="btn btn-primary" type="button" id="addButton"><span class="glyphicon glyphicon-plus"> </span>Add Client</button></a>
+<div class="tab-content">
+   
+	<a href="<?php echo base_url('knoxville/addClient')?>"class="addLink"><span class="glyphicon glyphicon-plus"> </span>&nbsp;Add Client</a>
     <div id="table">
     
-    <div id="myModal" class="modal fade" role="dialog">
+    <!--<div id="myModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
             </div>
         </div>
-    </div>
+    </div>-->
     
-        <div class="table-responsive">
+        <div class="table-responsive table">
             <table class="table table-striped">
                 <thead>
                     <tr id="trHead">
-                        <th class="info">Client ID</th>
-                        <th class="info">Client Name</th>
-                        <th class="info">Address </th>
-                        <th class="info">Contact No.</th>
-                        <th class="info">Action </th>
+                        <th>Client ID</th>
+                        <th>Client Name</th>
+                        <th>Address </th>
+                        <th>Contact No.</th>
+                        <th>Action </th>
                     </tr>
                 </thead>
                 <tbody>
