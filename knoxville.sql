@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
--- https://www.phpmyadmin.net/
+-- version 4.5.1
+-- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 02, 2017 at 06:10 PM
--- Server version: 10.1.26-MariaDB
--- PHP Version: 7.1.9
+-- Generation Time: Oct 08, 2017 at 08:09 AM
+-- Server version: 10.1.16-MariaDB
+-- PHP Version: 5.6.24
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -62,12 +60,13 @@ CREATE TABLE `client_order` (
 --
 
 INSERT INTO `client_order` (`orderID`, `date`, `time`, `due`, `userID`, `clientID`) VALUES
-(1, '2017-02-02', '14:01:00', '2017-03-02', 'admin', 1),
 (16, '2017-03-02', '12:30:00', '2017-03-02', 'admin', 1),
 (17, '2017-09-30', '23:55:00', '2017-10-07', 'admin', 1),
 (18, '2017-09-30', '00:08:00', '2017-10-08', 'admin', 1),
 (19, '2017-09-30', '00:12:00', '2017-10-08', 'admin', 1),
-(20, '2017-09-30', '01:50:00', '2017-10-08', 'admin', 1);
+(20, '2017-09-30', '01:50:00', '2017-10-08', 'admin', 1),
+(21, '2017-10-07', '15:53:00', '2017-10-14', 'admin', 1),
+(22, '2017-10-07', '15:54:00', '2017-10-14', 'admin', 1);
 
 -- --------------------------------------------------------
 
@@ -87,7 +86,7 @@ CREATE TABLE `deliverer` (
 --
 
 INSERT INTO `deliverer` (`delivererID`, `vehicle`, `contact_no`, `assigned`) VALUES
-(2, 'motor', 12321, 'daddy');
+(2, 'motor', 1232, 'daddy');
 
 -- --------------------------------------------------------
 
@@ -107,7 +106,7 @@ CREATE TABLE `item` (
 
 INSERT INTO `item` (`itemID`, `item_desc`, `stocks`) VALUES
 (1, 'Hydraulic', 0),
-(2, 'Motorcycle Shock', 0);
+(2, 'Motorcycle Shock', 20);
 
 -- --------------------------------------------------------
 
@@ -143,9 +142,19 @@ CREATE TABLE `shipment` (
   `shipID` int(11) NOT NULL,
   `date` date NOT NULL,
   `time` time NOT NULL,
-  `status` varchar(10) NOT NULL,
   `delivererID` int(11) NOT NULL,
   `transID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `shipment_status`
+--
+
+CREATE TABLE `shipment_status` (
+  `shipID` int(11) NOT NULL,
+  `status` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -170,9 +179,6 @@ CREATE TABLE `transaction` (
 --
 
 INSERT INTO `transaction` (`transID`, `date`, `time`, `status`, `unit_price`, `quantity`, `itemID`, `orderID`) VALUES
-(1, '2017-04-02', '12:12:00', 'quoted', 100, 100, 2, 1),
-(2, '2017-04-02', '12:12:00', 'quoted', 100, 100, 2, 1),
-(3, '2017-12-12', '12:12:00', 'quoted', 123, 123, 2, 1),
 (4, '2017-03-02', '12:30:00', 'quoted', 2, 3, 2, 16),
 (5, '2017-09-30', '23:55:00', 'Purchased', 1300, 12, 1, 17),
 (6, '2017-09-30', '23:55:00', 'Purchased', 1500, 15, 2, 17),
@@ -185,10 +191,11 @@ INSERT INTO `transaction` (`transID`, `date`, `time`, `status`, `unit_price`, `q
 (13, '2017-09-30', '01:19:00', 'Purchased', 1200, 100, 2, 19),
 (14, '2017-09-30', '01:25:00', 'Purchased', 5000, 50, 2, 19),
 (15, '2017-09-30', '01:25:00', 'Purchased', 12, 12, 2, 19),
-(16, '2017-09-30', '01:50:00', 'Quoted', 12, 12, 1, 20),
-(17, '2017-09-30', '01:50:00', 'Quoted', 12, 120, 2, 20),
 (18, '2017-09-30', '01:56:00', 'Purchased', 12, 120, 2, 20),
-(19, '2017-10-02', '23:12:00', 'Returned', 1300, 12, 1, 17);
+(19, '2017-10-02', '23:12:00', 'Returned', 1300, 12, 1, 17),
+(30, '2017-10-07', '15:41:00', 'Purchased', 5000, 50, 1, 19),
+(31, '2017-10-07', '15:53:00', 'Purchased', 100, 20, 2, 21),
+(32, '2017-10-07', '15:54:00', 'Quoted', 100, 10, 2, 22);
 
 --
 -- Indexes for dumped tables
@@ -235,6 +242,12 @@ ALTER TABLE `shipment`
   ADD KEY `transID` (`transID`);
 
 --
+-- Indexes for table `shipment_status`
+--
+ALTER TABLE `shipment_status`
+  ADD KEY `ship_id` (`shipID`);
+
+--
 -- Indexes for table `transaction`
 --
 ALTER TABLE `transaction`
@@ -250,38 +263,32 @@ ALTER TABLE `transaction`
 -- AUTO_INCREMENT for table `client`
 --
 ALTER TABLE `client`
-  MODIFY `clientID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
+  MODIFY `clientID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `client_order`
 --
 ALTER TABLE `client_order`
-  MODIFY `orderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
-
+  MODIFY `orderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 --
 -- AUTO_INCREMENT for table `deliverer`
 --
 ALTER TABLE `deliverer`
-  MODIFY `delivererID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
+  MODIFY `delivererID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `item`
 --
 ALTER TABLE `item`
-  MODIFY `itemID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
+  MODIFY `itemID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `shipment`
 --
 ALTER TABLE `shipment`
   MODIFY `shipID` int(11) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `transaction`
 --
 ALTER TABLE `transaction`
-  MODIFY `transID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
-
+  MODIFY `transID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 --
 -- Constraints for dumped tables
 --
@@ -301,12 +308,17 @@ ALTER TABLE `shipment`
   ADD CONSTRAINT `shipment_ibfk_2` FOREIGN KEY (`transID`) REFERENCES `transaction` (`transID`);
 
 --
+-- Constraints for table `shipment_status`
+--
+ALTER TABLE `shipment_status`
+  ADD CONSTRAINT `shipment_status_ibfk_1` FOREIGN KEY (`shipID`) REFERENCES `shipment` (`shipID`) ON DELETE CASCADE;
+
+--
 -- Constraints for table `transaction`
 --
 ALTER TABLE `transaction`
-  ADD CONSTRAINT `transaction_ibfk_1` FOREIGN KEY (`itemID`) REFERENCES `item` (`itemID`),
-  ADD CONSTRAINT `transaction_ibfk_2` FOREIGN KEY (`orderID`) REFERENCES `client_order` (`orderID`);
-COMMIT;
+  ADD CONSTRAINT `transaction_ibfk_1` FOREIGN KEY (`itemID`) REFERENCES `item` (`itemID`) ON DELETE CASCADE,
+  ADD CONSTRAINT `transaction_ibfk_2` FOREIGN KEY (`orderID`) REFERENCES `client_order` (`orderID`) ON DELETE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
