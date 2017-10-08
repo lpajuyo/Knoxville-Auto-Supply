@@ -33,8 +33,10 @@ class Shipment_model extends CI_Model {
 	function getLastRecordID(){
         $this->db->select_max('shipID');
         $query = $this->db->get($this->table,1);
+        $lastID = $query->row_array();
+        $lastID = $lastID['shipID'];
         
-        return $query->row_array();
+        return $lastID;
     }
 }
 ?>

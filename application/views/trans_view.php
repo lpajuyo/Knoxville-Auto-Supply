@@ -4,7 +4,7 @@
 	<p class="font">Client name: <?php echo $cname?></p><br />
 	<p class="font">Address: <?php echo $cadd?></p><br />
 	<p class="font">Contact no.: <?php echo $cnum?></p><br />
-	<p><a href="<?php echo base_url('knoxville/addSched/'.$orderID.'') ?>" ><b> >>Schedule items for delivery</b></a></p>
+	<p><a href="<?php echo base_url('knoxville/addSched/'.$orderID) ?>" ><b> >>Schedule items for delivery</b></a></p>
 </div>
 
 	<div class="table-responsive table">

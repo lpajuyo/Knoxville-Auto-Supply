@@ -26,7 +26,7 @@
     </script>
     <script>
         $(document).ready(function(){
-            $('#range-dropdown select').change(function(){
+            $('#range-dropdown select').change(function(event){
                 var selRange = $(this).val();
                 $.ajax({
                     url: "<?php echo base_url('knoxville/viewSalesReport'); ?>",

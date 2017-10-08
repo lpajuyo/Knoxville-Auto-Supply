@@ -28,7 +28,7 @@
 
 <script>
 $(document).ready(function(){
-  $('ul li a').click(function(){
+  $('ul ul li a').click(function(){
     $('li a').removeClass("active");
     $('li p').removeClass("active");
     $(this).addClass("active");
