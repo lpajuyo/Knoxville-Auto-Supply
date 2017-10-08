@@ -458,11 +458,11 @@ class Knoxville extends CI_Controller {
                 );
 		$this->form_validation->set_rules($rules);
 		if($this->form_validation->run()==FALSE){
-		$this->load->view('include/header',$header_data);
-		$this->load->view('add_schedForm',$data);
+            $this->load->view('include/header',$header_data);
+            $this->load->view('add_schedForm',$data);
 		}
 		else{
-		$ShipRecord=array('shipID'=>'001','delivererID'=>'2','orderID'=>$orderID);
+		$ShipRecord=array('delivererID'=>$_POST['deliverer'],'orderID'=>$orderID);
 		$this->Shipment->create($ShipRecord);
 		$shipID=$this->Shipment->getLastRecordID();
 		$ShipStatus=array('shipID'=>$shipID,'date'=>$_POST['date'],'time'=>$_POST['time'],'status'=>'Scheduled');

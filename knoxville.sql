@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.7.0
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 08, 2017 at 08:09 AM
--- Server version: 10.1.16-MariaDB
--- PHP Version: 5.6.24
+-- Generation Time: Oct 08, 2017 at 01:16 PM
+-- Server version: 10.1.26-MariaDB
+-- PHP Version: 7.1.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -66,7 +68,9 @@ INSERT INTO `client_order` (`orderID`, `date`, `time`, `due`, `userID`, `clientI
 (19, '2017-09-30', '00:12:00', '2017-10-08', 'admin', 1),
 (20, '2017-09-30', '01:50:00', '2017-10-08', 'admin', 1),
 (21, '2017-10-07', '15:53:00', '2017-10-14', 'admin', 1),
-(22, '2017-10-07', '15:54:00', '2017-10-14', 'admin', 1);
+(22, '2017-10-07', '15:54:00', '2017-10-14', 'admin', 1),
+(23, '2017-10-08', '17:27:00', '2017-10-15', 'admin', 1),
+(24, '2017-10-08', '18:10:00', '2017-10-15', 'admin', 1);
 
 -- --------------------------------------------------------
 
@@ -140,11 +144,16 @@ INSERT INTO `sales_agent` (`userID`, `password`, `birthdate`, `age`, `email`, `c
 
 CREATE TABLE `shipment` (
   `shipID` int(11) NOT NULL,
-  `date` date NOT NULL,
-  `time` time NOT NULL,
   `delivererID` int(11) NOT NULL,
-  `transID` int(11) NOT NULL
+  `orderID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `shipment`
+--
+
+INSERT INTO `shipment` (`shipID`, `delivererID`, `orderID`) VALUES
+(1, 2, 23);
 
 -- --------------------------------------------------------
 
@@ -154,7 +163,9 @@ CREATE TABLE `shipment` (
 
 CREATE TABLE `shipment_status` (
   `shipID` int(11) NOT NULL,
-  `status` varchar(11) NOT NULL
+  `status` varchar(11) NOT NULL,
+  `date` date NOT NULL,
+  `time` time(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -195,7 +206,10 @@ INSERT INTO `transaction` (`transID`, `date`, `time`, `status`, `unit_price`, `q
 (19, '2017-10-02', '23:12:00', 'Returned', 1300, 12, 1, 17),
 (30, '2017-10-07', '15:41:00', 'Purchased', 5000, 50, 1, 19),
 (31, '2017-10-07', '15:53:00', 'Purchased', 100, 20, 2, 21),
-(32, '2017-10-07', '15:54:00', 'Quoted', 100, 10, 2, 22);
+(32, '2017-10-07', '15:54:00', 'Quoted', 100, 10, 2, 22),
+(33, '2017-10-08', '17:27:00', 'Quoted', 12, 120, 1, 23),
+(34, '2017-10-08', '17:28:00', 'Purchased', 12, 120, 1, 23),
+(35, '2017-10-08', '18:10:00', 'Quoted', 4, 2, 1, 24);
 
 --
 -- Indexes for dumped tables
@@ -237,9 +251,9 @@ ALTER TABLE `sales_agent`
 -- Indexes for table `shipment`
 --
 ALTER TABLE `shipment`
-  ADD PRIMARY KEY (`shipID`),
+  ADD PRIMARY KEY (`shipID`,`orderID`),
   ADD KEY `delivererID` (`delivererID`),
-  ADD KEY `transID` (`transID`);
+  ADD KEY `orderID` (`orderID`) USING BTREE;
 
 --
 -- Indexes for table `shipment_status`
@@ -268,7 +282,7 @@ ALTER TABLE `client`
 -- AUTO_INCREMENT for table `client_order`
 --
 ALTER TABLE `client_order`
-  MODIFY `orderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `orderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT for table `deliverer`
 --
@@ -283,12 +297,12 @@ ALTER TABLE `item`
 -- AUTO_INCREMENT for table `shipment`
 --
 ALTER TABLE `shipment`
-  MODIFY `shipID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `shipID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `transaction`
 --
 ALTER TABLE `transaction`
-  MODIFY `transID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `transID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 --
 -- Constraints for dumped tables
 --
@@ -305,7 +319,7 @@ ALTER TABLE `client_order`
 --
 ALTER TABLE `shipment`
   ADD CONSTRAINT `shipment_ibfk_1` FOREIGN KEY (`delivererID`) REFERENCES `deliverer` (`delivererID`),
-  ADD CONSTRAINT `shipment_ibfk_2` FOREIGN KEY (`transID`) REFERENCES `transaction` (`transID`);
+  ADD CONSTRAINT `shipment_ibfk_2` FOREIGN KEY (`orderID`) REFERENCES `client_order` (`orderID`);
 
 --
 -- Constraints for table `shipment_status`
@@ -319,6 +333,7 @@ ALTER TABLE `shipment_status`
 ALTER TABLE `transaction`
   ADD CONSTRAINT `transaction_ibfk_1` FOREIGN KEY (`itemID`) REFERENCES `item` (`itemID`) ON DELETE CASCADE,
   ADD CONSTRAINT `transaction_ibfk_2` FOREIGN KEY (`orderID`) REFERENCES `client_order` (`orderID`) ON DELETE CASCADE;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
