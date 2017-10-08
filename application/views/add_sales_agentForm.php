@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <div class="tab-content">
-   <div class="active">
+  
   <?php echo validation_errors(); ?>
   
   <?php echo form_open('knoxville/addSalesAgent'); //this is equal to <form method="post" accept-charset="utf-8" action="http://localhost/Knoxville-Auto-Supply/knoxville/addClient">
@@ -11,38 +11,38 @@
   <div class="container ClientForm">
  
     <div>
-    <label class="control-label col-sm-4" for="userID">UserID:</label>
-    <input class="form-control col-sm-4" type="text" name="userID" id="userID" />
+		<label class="control-label col-sm-4" for="userID">UserID:</label>
+		<input class="form-control col-sm-4" type="text" name="userID" id="userID" />
     </div>
     
     <div>
-    <label class="control-label col-sm-4" for="pass">Password:</label>
-    <input class="form-control col-sm-4" type="password" name="pass" id="pass" />
+		<label class="control-label col-sm-4" for="pass">Password:</label>
+		<input class="form-control col-sm-4" type="password" name="pass" id="pass" />
     </div>
     
     <div>
-    <label class="control-label col-sm-4" for="name">Name:</label>
-    <input class="form-control col-sm-4" type="text" name="name" id="name" />
+		<label class="control-label col-sm-4" for="name">Name:</label>
+		<input class="form-control col-sm-4" type="text" name="name" id="name" />
     </div>
     
     <div>
-    <label class="control-label col-sm-4" for="bday">Birthdate:</label>
-    <input class="form-control col-sm-4" type="date" name="bday" id="bday" />
+		<label class="control-label col-sm-4" for="bday">Birthdate:</label>
+		<input class="form-control col-sm-4" type="date" name="bday" id="bday" />
     </div>
     
     <div>
-    <label class="control-label col-sm-4" for="age">Age:</label>
-    <input class="form-control col-sm-4" type="text" name="age" id="age" />
+		<label class="control-label col-sm-4" for="age">Age:</label>
+		<input class="form-control col-sm-4" type="text" name="age" id="age" />
     </div>
     
     <div>
-    <label class="control-label col-sm-4" for="email">Email:</label>
-    <input class="form-control col-sm-4" type="email" name="email" id="email" />
+		<label class="control-label col-sm-4" for="email">Email:</label>
+		<input class="form-control col-sm-4" type="email" name="email" id="email" />
     </div>
     
     <div>
-    <label class="control-label col-sm-4" for="cnum">Contact No.:</label>
-    <input class="form-control col-sm-4" type="text" name="cnum" id="cnum" />
+		<label class="control-label col-sm-4" for="cnum">Contact No.:</label>
+		<input class="form-control col-sm-4" type="text" name="cnum" id="cnum" />
     </div>
     
     <div class="col-sm-4">

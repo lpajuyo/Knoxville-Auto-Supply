@@ -1,56 +1,66 @@
-<html>
-<body>
-	<div class="cntr">
-	<p class="boxhead"> Add Order </p> <br />
+<div class="tab-content">
+
 	<?php echo validation_errors(); ?>
 	<?php echo form_open('knoxville/addOrder','id="order"'); //this is equal to <form method="post" accept-charset="utf-8" action="http://localhost/Knoxville-Auto-Supply/knoxville/addClient">
                                      //to add attributes, edit to: echo form('knoxville/addClient','class="lala" id="lala"'); 
 	?>
-	 
-	<div class="form-group">
-		<label class="company-label" for="company">Company: &nbsp; </label>
-	<?php
-	echo '<select name="clientid" form="order">';
-		echo '<option selected disabled hidden>Company Name</option>';
-		foreach($clients as $c){
-			echo '<option value="'.$c['clientID'].'">'.$c['client_name'].'</option>';
-		}
-	echo '</select>';
-	?>
+	<div>&nbsp;</div>
+	<h2 class="text-center">ADD ORDER</h2>
+	<div class="container ClientForm">
+		<div>
+			<label class="control-label col-sm-4" for="company">Company: &nbsp; </label>
+		<div class="form-control col-sm-4" id="userID">
+		<?php
+		echo '<select name="clientid" form="order">';
+			echo '<option selected disabled hidden>Company Name</option>';
+			foreach($clients as $c){
+				echo '<option value="'.$c['clientID'].'">'.$c['client_name'].'</option>';
+			}
+		echo '</select>';
+		?>
+		</div>
 	</div>
 	
-	<div class="form-group">
-		<label class="date-label" for="date">Date(dd/mm/yyyy):&nbsp; </label>
- 		<input type="date" name="date" value="<?php echo date('Y-m-d'); ?>" />		 
- 		<label class="date-label" for="date">Time: &nbsp;</label>		
-		<input type="time" name="time" value="<?php date_default_timezone_set('Asia/Manila'); echo  date("H:i"); ?>"/>
-		
-    </div>
+	<div>
+		<label class="control-label col-sm-4" for="date">Date:</label>
+ 		<input class="form-control col-sm-4" type="date" name="date" value="<?php echo date('Y-m-d'); ?>" />
+	</div>
+	<div>
+ 		<label class="control-label col-sm-4" for="date">Time: &nbsp;</label>		
+		<input class="form-control col-sm-4" type="time" name="time" value="<?php date_default_timezone_set('Asia/Manila'); echo  date("H:i"); ?>"/>
+	</div>	
+    
 	
-	<div class="form-group">
+	<div>
 	
-		<label class="trans-label" for="transaction">Transaction: &nbsp;</label>		
-		<select name="trans" id="trans">
-							<option value="Quoted">Quote</option>
-							<option value="Purchased">Purchase</option></select>
+		<label class="control-label col-sm-4" for="transaction">Transaction: &nbsp;</label>		
+		<select class="form-control col-sm-4" name="trans" id="trans">
+			<option value="Quoted">Quote</option>
+			<option value="Purchased">Purchase</option>
+		</select>
+	<div>
+	</div>					
 							
-		<br />					
-		<label class="duedate-label" for="duedate">Due Date(dd/mm/yyyy): &nbsp; </label>
-		<input type="date" name="duedate" value="<?php echo date('Y-m-d', strtotime( date('Y-m-d'). ' + 7 days'))?>"/>
+		<label class="control-label col-sm-4" for="duedate">Due Date: </label>
+		<input class="form-control col-sm-4" type="date" name="duedate" value="<?php echo date('Y-m-d', strtotime( date('Y-m-d'). ' + 7 days'))?>"/>
 		
     </div>
 	
-	<table class="table">
+	<div class="table-responsive table">
+    <table class="table table-striped">
                 <thead>
                     <tr id="trHead">
-						<th class="info">Item Description</th>
-						<th class="info">
-						<label for="price">Price</label></th>
-						<th class="info">
-						<label for="quantity">Quantity</label></th>
-						<th class="info">
+						<th>Item Description</th>
+						<th>
+							<label for="price">Price</label>
+						</th>
+						<th>
+							<label for="quantity">Quantity</label>
+						</th>
+						<th>
 						<label for="itemList[]">ADD</th>
-					</tr></thead>
+					</tr>
+				</thead>
 					
         <tbody>
             <?php
@@ -77,15 +87,13 @@
     </tbody>
 	
    </table>
-
-	<button class="btn btn-primary btn-md" type="submit">
+   </div>
+	</form>
+	<div class="col-sm-6">
+	<button class="sub" type="submit">
 		<span class="glyphicon glyphicon-download-alt"> </span> Save
 	</button>
-	
-	</form>
-	
-	
-	
+	</div>
 	</div>
 </body>
 </html>

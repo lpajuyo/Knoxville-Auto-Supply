@@ -52,6 +52,9 @@ label{
 .control-label, .form-control{
 	margin-top: 8px;
 }
+#userId{
+	color: #34495E;
+}
 .form-control{
 	width: 60%;
 	height: 30px;

@@ -1,24 +1,16 @@
 <!DOCTYPE html>
-
-	<a href="<?php echo base_url('knoxville/addDeliverer')?>"><button class="btn btn-primary" type="button" id="addButton"><span class="glyphicon glyphicon-plus"> </span>Add Deliverer</button></a>
+<div class="tab-content">
+	<a href="<?php echo base_url('knoxville/addDeliverer')?>" class="addLink"><span class="glyphicon glyphicon-plus"> </span>&nbsp;Add Deliverer</a>
 	
-	<div id="table">
-    <div id="myModal" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-            </div>
-        </div>
-    </div>
-    
-        <div class="table-responsive">
-            <table class="table table-striped">
+<div class="table-responsive table">
+    <table class="table table-striped">
                 <thead>
                     <tr id="trHead">
-						<th class="info">Deliverer ID</th>
-						<th class="info">Vehicle</th>
-						<th class="info">Contact Number</th>
-						<th class="info">Assigned</th>
-						<th class="info">ACTION</th>
+						<th>Deliverer ID</th>
+						<th>Vehicle</th>
+						<th>Contact Number</th>
+						<th>Assigned</th>
+						<th>ACTION</th>
 					</tr>
 				</thead>
         <tbody>
@@ -33,5 +25,6 @@
     </table>
     </div>
 </div>
+
 </body>
 </html>

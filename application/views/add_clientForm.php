@@ -7,7 +7,7 @@
 <div>&nbsp;</div>
   <h2 class="text-center">ADD SALES AGENT</h2>
   <div class="container ClientForm">
-    <div>
+    <div class="form-group">
 		<label class="control-label" for="cname">Client Name:</label>
 		<?php echo form_error('cname', '<p class="text-danger">', '</p>'); ?>
 		<input class="form-control" type="text" name="cname" value="<?php echo set_value('cname'); ?>" id="cname" />
