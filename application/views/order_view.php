@@ -1,13 +1,10 @@
 <!DOCTYPE html>
-
-<html>
-<head>
-    <title>View Orders</title>
-</head>
-<body>
-    <table>
+<div class="tab-content">
+<a href="<?php echo base_url('knoxville/addOrder')?>" class="addLink"><span class="glyphicon glyphicon-plus"></span>&nbsp;Add Order</a>
+<div class="table-responsive table">
+    <table class="table table-striped">
         <thead>
-            <tr>
+            <tr id="trHead">
 				<th>Order#</th>
                 <th>Client Name</th>
                 <th>Date</th>
@@ -28,14 +25,14 @@
 						echo $i['client_name'];
 					}	
 					echo "</td><td>".$c['date']."</td><td>".$c['time']."</td><td>".$c['due']
-                    .'</td><td><a href="'.base_url('knoxville/viewTransaction/'.$c['orderID'].'').'">>>View Order Details</a> | <a onclick="confirmDelete('.$c['orderID'].')">Delete</a></td></tr>';
+                    .'</td><td><a href="'.base_url('knoxville/viewTransaction/'.$c['orderID'].'').'">View Order Details</a> | <a onclick="confirmDelete('.$c['orderID'].')">Delete</a></td></tr>';
                     //echo base_url('knoxville/delClient/'.c['clientID'])
 					}
             ?>
 			
         </tbody>
     </table>
-    <a href="<?php echo base_url('knoxville/addOrder')?>">Add Order</a>
+</div>
     
     <script>
     function confirmDelete(orderID){

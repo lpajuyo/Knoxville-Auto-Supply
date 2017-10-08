@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <div class="tab-content">
    
-	<a href="<?php echo base_url('knoxville/addClient')?>"class="addLink"><span class="glyphicon glyphicon-plus"> </span>&nbsp;Add Client</a>
+	<a href="<?php echo base_url('knoxville/addClient')?>" class="addLink"><span class="glyphicon glyphicon-plus"> </span>&nbsp;Add Client</a>
     <div id="table">
     
     <!--<div id="myModal" class="modal fade" role="dialog">
@@ -33,6 +33,7 @@
         </tbody>
     </table>
     </div>
+</div>
 </div>
     
 </body>

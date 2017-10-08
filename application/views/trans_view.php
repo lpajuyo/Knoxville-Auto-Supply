@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-
+<div class="tab-content">
 <div class="margin left">
 	<p class="font">Client name: <?php echo $cname?></p><br />
 	<p class="font">Address: <?php echo $cadd?></p><br />
@@ -7,18 +7,16 @@
 	<p><a href="<?php echo base_url('knoxville/addDeliverySched/'.$orderID.'') ?>" ><b> >>Schedule items for delivery</b></a></p>
 </div>
 
-
-<div id="table" class="margin">
-	<div class="table-responsive ">
+	<div class="table-responsive table">
     <table class="table table-striped">
         <thead>
             <tr id="trHead">
-                <th class="info">Item Name</th>
-				<th class="info">Price</th>
-				<th class="info">Quantity</th>
-                <th class="info">Date</th>
-                <th class="info">Status</th>
-                <th class="info">Action</th>
+                <th>Item Name</th>
+				<th>Price</th>
+				<th>Quantity</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -41,11 +39,13 @@
 			
         </tbody>
     </table>
+	</div>
+	<a href="<?php echo base_url('knoxville/addPurchase/'.$orderID.'') ?>" class="sub">
+    <span class="glyphicon glyphicon-plus"> </span>Purchase items</a>	
 	
-	<a href="<?php echo base_url('knoxville/addPurchase/'.$orderID.'') ?>" >
-    <button class="btn btn-primary" type="button" id="addButton"><span class="glyphicon glyphicon-plus"> </span>Purchase items</button></a>	
-	<a href="<?php echo base_url('knoxville/addRefund/'.$orderID.'') ?>" >
-	<button class="btn btn-primary" type="button" id="addButton"><span class="glyphicon glyphicon-plus"> </span>Cancel/Return Orders</button></a>
+	<a href="<?php echo base_url('knoxville/addRefund/'.$orderID.'') ?>" class="sub">
+	<span class="glyphicon glyphicon-plus"> </span>Cancel/Return Orders</a>
+
 </div>
 </div>
 </body>
