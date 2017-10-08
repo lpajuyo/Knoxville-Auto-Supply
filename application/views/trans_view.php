@@ -4,7 +4,7 @@
 	<p class="font">Client name: <?php echo $cname?></p><br />
 	<p class="font">Address: <?php echo $cadd?></p><br />
 	<p class="font">Contact no.: <?php echo $cnum?></p><br />
-	<p><a href="<?php echo base_url('knoxville/addDeliverySched/'.$orderID.'') ?>" ><b> >>Schedule items for delivery</b></a></p>
+	<p><a href="<?php echo base_url('knoxville/addSched/'.$orderID.'') ?>" ><b> >>Schedule items for delivery</b></a></p>
 </div>
 
 	<div class="table-responsive table">
@@ -34,7 +34,29 @@
                     //echo base_url('knoxville/delClient/'.c['clientID'])
 					}
             ?>
-
+			
+			
+			
+        </tbody>
+    </table>
+	   <table class="table table-striped">
+        <thead>
+            <tr id="trHead">
+                <th>Tracking No.</th>
+				<th>Status</th>
+				<th>Date</th>
+                <th>Time</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+				 foreach($ship as $s){
+			 
+                echo '<tr><td>'.$s['shipID'].'</td><td>'.$s['status'].'</td><td>'.$s['date'].'</td><td>'.$s['time'].'</td>
+				<td><a href="">Edit</a> | <a href="">Delete</a></td></tr>';
+				 }
+            ?>
 			
 			
         </tbody>
