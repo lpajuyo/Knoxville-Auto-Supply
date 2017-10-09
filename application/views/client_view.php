@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <div class="tab-content">
-   
+Search: <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Type any value" title="Type ANY value">
 	<a href="<?php echo base_url('knoxville/addClient')?>" class="addLink"><span class="glyphicon glyphicon-plus"> </span>&nbsp;Add Client</a>
     <div id="table">
     
@@ -12,7 +12,7 @@
     </div>-->
     
         <div class="table-responsive table">
-            <table class="table table-striped">
+            <table class="table table-striped" id="myTable">
                 <thead>
                     <tr id="trHead">
                         <th>Client ID</th>
