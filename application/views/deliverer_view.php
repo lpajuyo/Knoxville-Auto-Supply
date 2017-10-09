@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <div class="tab-content">
+Search: <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Type any value" title="Type ANY value">
 	<a href="<?php echo base_url('knoxville/addDeliverer')?>" class="addLink"><span class="glyphicon glyphicon-plus"> </span>&nbsp;Add Deliverer</a>
 	
 <div class="table-responsive table">
