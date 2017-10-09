@@ -4,7 +4,7 @@ Search: <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Type
 	<a href="<?php echo base_url('knoxville/addDeliverer')?>" class="addLink"><span class="glyphicon glyphicon-plus"> </span>&nbsp;Add Deliverer</a>
 	
 <div class="table-responsive table">
-    <table class="table table-striped">
+    <table class="table table-striped" id="myTable">
                 <thead>
                     <tr id="trHead">
 						<th>Deliverer ID</th>

@@ -12,7 +12,7 @@ Search: <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Type
     </div>-->
     
         <div class="table-responsive table">
-            <table class="table table-striped">
+            <table class="table table-striped" id="myTable">
                 <thead>
                     <tr id="trHead">
                         <th>Client ID</th>
