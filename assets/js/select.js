@@ -1,5 +1,5 @@
-function changetextbox()
-	{
-		if (document.getElementById("status").value == "Delivered")
-			document.getElementById("location").disabled=true;
-	}
+var status = document.getElementById("status"), text = document.getElementById("location");
+
+status.onchange = function(e) {
+  text.disabled = (status.value == "Delivered");
+};

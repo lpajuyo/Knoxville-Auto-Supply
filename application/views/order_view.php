@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <div class="tab-content">
 <a href="<?php echo base_url('knoxville/addOrder')?>" class="addLink"><span class="glyphicon glyphicon-plus"></span>&nbsp;Add Order</a>
-Search: <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Type any value" title="Type ANY value">
+Search: <input type="text" id="myInput" onkeyup="Order()" placeholder="Type any value" title="Type ANY value">
     </form><div class="table-responsive table">
     <table class="table table-striped" id="myTable">
         <thead>
