@@ -42,7 +42,6 @@
 	   <table class="table table-striped">
         <thead>
             <tr id="trHead">
-                <th>Tracking No.</th>
 				<th>Status</th>
 				<th>Date</th>
                 <th>Time</th>
@@ -51,11 +50,18 @@
         </thead>
         <tbody>
             <?php
+				foreach($ship as $s){
+				if($s['status']=='Scheduled'){
+				echo '<a href="'.base_url('knoxville/addDeliveryStatus/'.$orderID.'/'.$s['shipID'].'').'" class="sub">
+				<span class="glyphicon glyphicon-plus"> </span>Add Delivery Updates</a>';}
+				}
+				
+			
 				 foreach($ship as $s){
-			 
-                echo '<tr><td>'.$s['shipID'].'</td><td>'.$s['status'].'</td><td>'.$s['date'].'</td><td>'.$s['time'].'</td>
+                echo '<td>'.$s['status'].'</td><td>'.$s['date'].'</td><td>'.$s['time'].'</td>
 				<td><a href="">Edit</a> | <a href="">Delete</a></td></tr>';
 				 }
+				
             ?>
 			
 			

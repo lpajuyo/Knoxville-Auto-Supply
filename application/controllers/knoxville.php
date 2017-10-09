@@ -336,7 +336,7 @@ class Knoxville extends CI_Controller {
 		$condition = array('shipID' => $shipID);
 		$shipRec = $this->ShipStatus->read($condition);
 		$data['ship'] = $shipRec;
-		$header_data['title'] = "$orderID: Order Details";
+		$header_data['title'] = "Order#$orderID: Order Details";
 		$this->load->view('include/header',$header_data);
         $this->load->view('trans_view',$data);
     }
@@ -471,57 +471,47 @@ class Knoxville extends CI_Controller {
 		}
 	}
     
-	// public function add_DeliveryStatus($shipID){
-		// $data['shipID']=$orderID;
-		// $header_data['title'] = "Schedule For Delivery";
-		// $condition = array('orderID'=>$orderID);
-		// $orderRec = $this->Order->read($condition);
-		// $data['orderID'] = $orderID;
-		 // foreach($orderRec as $o){
-            // $clientID = $o['clientID'];
-        // }
-		// $condition = array('clientID' => $clientID);
-        // $clientRec = $this->Client->read($condition);
-		 // foreach($clientRec as $o){
-            // $data['cname'] = $o['client_name'];
-            // $data['cadd'] = $o['address'];
-			// $data['cnum'] = $o['contact_no'];
-        // }
-		// $itemsRec = $this->Item->read();
-		// $data['items'] = $itemsRec;
-		// $condition = '(orderID = "'.$orderID.'" and status = "Purchased")';
-		// $PRec = $this->Transaction->read($condition);
-		// $data['Prec'] = $PRec;
-		// $TransRec = $this->Transaction->read($condition);
-		// $data['trans'] = $TransRec;
-		// $TransRec = $this->Transaction->read($condition);
-		// $data['trans'] = $TransRec;
-		 // $rules = array(
-                    // array('field'=>'delivererID', 'label'=>'Assigned Personnel', 'rules'=>'required'),
-                // );
-		// if($this->form_validation->run()==FALSE){
-		// $this->load->view('include/header',$header_data);
-		// $this->load->view('add_deliveryschedForm',$data);
-		// }
-		// else{
-        // $ShipRecord=array('shipID'=>'001','delivererID'=>$_POST['delivererID'],'orderID'=>$orderID);
-		// $this->Shipment->create($ShipRecord);
-		// $shipID=$this->Shipment->getLastRecordID();
-		// $ShipStatus=array('shipID'=>$shipID,'date'=>$_POST['date'],'time'=>$_POST['time'],'status'=>'Scheduled');
-		// redirect('knoxville/viewItems/'.$orderID.'');
-		// }
+	public function addDeliveryStatus($orderID,$shipID){
+		$data['shipID']=$shipID;
+		$header_data['title'] = "Schedule For Delivery";
+		$condition = array('orderID'=>$orderID);
+		$orderRec = $this->Order->read($condition);
+		$data['orderID'] = $orderID;
+		 foreach($orderRec as $o){
+            $clientID = $o['clientID'];
+        }
+		$condition = array('clientID' => $clientID);
+        $clientRec = $this->Client->read($condition);
+		 foreach($clientRec as $o){
+            $data['cname'] = $o['client_name'];
+            $data['cadd'] = $o['address'];
+			$data['cnum'] = $o['contact_no'];
+        }
+		 $rules = array(
+                    array('field'=>'status', 'label'=>'Status', 'rules'=>'required'),
+                    array('field'=>'location', 'label'=>'Location', 'rules'=>'required'),
+                );
+		if($this->form_validation->run()==FALSE){
+		$this->load->view('include/header',$header_data);
+		$this->load->view('add_DeliveryStatus',$data);
+		}
+		else{
+		$ShipStatus=array('shipID'=>$shipID,'date'=>$_POST['date'],'time'=>$_POST['time'],'status'=>$_POST['status'].' '.$_POST['location']);
+		$this->ShipStatus->create($ShipStatus);
+		redirect('knoxville/viewTransaction/'.$orderID.'');
+		}
             
-	// }
+	}
 	
 	
-    // public function viewItems(){
-        // $result_array = $this->Item->read();
+    public function viewItems(){
+        $result_array = $this->Item->read();
         
-        // $data['item'] = $result_array; 
-		// $header_data['title'] = "View Inventory";
-		// $this->load->view('include/header',$header_data);
-        // $this->load->view('item_view',$data);
-    // }
+        $data['item'] = $result_array; 
+		$header_data['title'] = "View Inventory";
+		$this->load->view('include/header',$header_data);
+        $this->load->view('item_view',$data);
+    }
     
     public function addItem(){
         //load the view
