@@ -31,11 +31,6 @@
     </div>
     
     <div>
-		<label class="control-label col-sm-4" for="age">Age:</label>
-		<input class="form-control col-sm-4" type="text" name="age" id="age" value="<?php echo $age?>" />
-    </div>
-    
-    <div>
 		<label class="control-label col-sm-4" for="email">Email:</label>
 		<input class="form-control col-sm-4" type="email" name="email" id="email" value="<?php echo $email?>" />
     </div>
