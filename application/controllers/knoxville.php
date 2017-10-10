@@ -39,11 +39,12 @@ class Knoxville extends CI_Controller {
             
             $totalQuantity = 0;
             $totalRevenue = 0;
-            foreach($transData as $t){
-                $totalQuantity += $t['quantity'];
-                $totalRevenue += $t['quantity']*$t['unit_price'];
+            if($transData != false){
+                foreach($transData as $t){
+                    $totalQuantity += $t['quantity'];
+                    $totalRevenue += $t['quantity']*$t['unit_price'];
+                }
             }
-            
             $data['totalQuantity'] = $totalQuantity;
             $data['totalRevenue'] = $totalRevenue;
             $data['range'] = 'This Week';
@@ -58,11 +59,12 @@ class Knoxville extends CI_Controller {
             
             $totalQuantity = 0;
             $totalRevenue = 0;
-            foreach($transData as $t){
-                $totalQuantity += $t['quantity'];
-                $totalRevenue += $t['quantity']*$t['unit_price'];
+            if($transData != false){
+                foreach($transData as $t){
+                    $totalQuantity += $t['quantity'];
+                    $totalRevenue += $t['quantity']*$t['unit_price'];
+                }
             }
-            
             $data['totalQuantity'] = $totalQuantity;
             $data['totalRevenue'] = $totalRevenue;
             $data['range'] = 'This Month';
@@ -329,11 +331,16 @@ class Knoxville extends CI_Controller {
 		$data['items'] = $result_array;
 		
 		$ShipRec = $this->Shipment->read($condition);
-		 foreach($ShipRec as $s){
-            $shipID = $s['shipID'];
+        $shipRec = false;
+        if($ShipRec != false){
+             foreach($ShipRec as $s){
+                $shipID = $s['shipID'];
+            }
+            $condition = array('shipID' => $shipID);
+            $shipRec = $this->ShipStatus->read($condition);
         }
-		$condition = array('shipID' => $shipID);
-		$shipRec = $this->ShipStatus->read($condition);
+		
+		
 		$data['ship'] = $shipRec;
 		$header_data['title'] = "Order#$orderID: Order Details";
 		$this->load->view('include/header',$header_data);

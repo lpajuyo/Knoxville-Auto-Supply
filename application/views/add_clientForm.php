@@ -28,10 +28,6 @@
 		<input class="form-control col-sm-6" type="text" name="caddress" value="<?php echo set_value('caddress'); ?>" id="caddress" />
      </div>
 	
-    <div class="col-sm-6">
-		<label for="isAdmin">Admin?</label>
-		<input class="check" type="checkbox" name="isAdmin" id="isAdmin" />
-	</div>
 	<div class="col-sm-6">
 		<input class="sub" type="submit" value="SUBMIT"/>
 	</div>

@@ -50,6 +50,7 @@
         </thead>
         <tbody>
             <?php
+            if($ship != false ){
 				foreach($ship as $s){
 				if($s['status']=='Scheduled'){
 				echo '<a href="'.base_url('knoxville/addDeliveryStatus/'.$orderID.'/'.$s['shipID'].'').'" class="sub">
@@ -61,6 +62,7 @@
                 echo '<td>'.$s['status'].'</td><td>'.$s['date'].'</td><td>'.$s['time'].'</td>
 				<td><a href="">Edit</a> | <a href="'.base_url('knoxville/delDeliveryStatus/'.$s['shipID'].'/'.$orderID).'">Delete</a></td></tr>';
 				 }
+            }
 				
             ?>
 			
