@@ -22,8 +22,9 @@ class Shipment_status_model extends CI_Model {
         
     }
     
-    function update($newRecord){
-        $this->db->replace($this->table,$newRecord);
+    function update($newRecord, $statusID){
+        $this->db->where('statusID', $statusID);
+        $this->db->update($this->table,$newRecord);
     }
     
     function del($where_array){

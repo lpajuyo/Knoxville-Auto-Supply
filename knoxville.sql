@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 10, 2017 at 02:44 PM
+-- Generation Time: Oct 10, 2017 at 05:50 PM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 5.6.24
 
@@ -153,7 +153,8 @@ CREATE TABLE `shipment` (
 INSERT INTO `shipment` (`shipID`, `delivererID`, `orderID`) VALUES
 (1, 2, 23),
 (2, 2, 23),
-(3, 2, 23);
+(4, 2, 23),
+(5, 2, 23);
 
 -- --------------------------------------------------------
 
@@ -162,8 +163,10 @@ INSERT INTO `shipment` (`shipID`, `delivererID`, `orderID`) VALUES
 --
 
 CREATE TABLE `shipment_status` (
+  `statusID` int(11) NOT NULL,
   `shipID` int(11) NOT NULL,
   `status` varchar(30) NOT NULL,
+  `location` varchar(20) NOT NULL,
   `date` date NOT NULL,
   `time` time(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -172,12 +175,9 @@ CREATE TABLE `shipment_status` (
 -- Dumping data for table `shipment_status`
 --
 
-INSERT INTO `shipment_status` (`shipID`, `status`, `date`, `time`) VALUES
-(2, 'Scheduled', '2017-10-08', '20:00:00.000000'),
-(2, ' ', '2017-10-09', '23:04:00.000000'),
-(2, 'Arrived at ', '2017-10-10', '17:14:00.000000'),
-(2, 'Arrived at dsa', '2017-10-10', '17:16:00.000000'),
-(3, 'Scheduled', '2017-10-10', '17:18:00.000000');
+INSERT INTO `shipment_status` (`statusID`, `shipID`, `status`, `location`, `date`, `time`) VALUES
+(4, 5, 'Scheduled', '', '2017-10-10', '23:28:00.000000'),
+(6, 5, 'Forwarded to', 'dsad', '2017-10-10', '23:40:00.000000');
 
 -- --------------------------------------------------------
 
@@ -270,6 +270,7 @@ ALTER TABLE `shipment`
 -- Indexes for table `shipment_status`
 --
 ALTER TABLE `shipment_status`
+  ADD PRIMARY KEY (`statusID`),
   ADD KEY `ship_id` (`shipID`);
 
 --
@@ -308,7 +309,12 @@ ALTER TABLE `item`
 -- AUTO_INCREMENT for table `shipment`
 --
 ALTER TABLE `shipment`
-  MODIFY `shipID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `shipID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `shipment_status`
+--
+ALTER TABLE `shipment_status`
+  MODIFY `statusID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `transaction`
 --
