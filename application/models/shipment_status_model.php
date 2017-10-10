@@ -30,5 +30,13 @@ class Shipment_status_model extends CI_Model {
     function del($where_array){
         $this->db->delete($this->table,$where_array);
     }
+    
+    function getLatestRecord($shipID){
+        $this->db->select_max('statusID');
+        $this->db->where('shipID', $shipID)
+        $query = $this->db->get($this->table,1);
+        
+        return $query->row_array();
+    }
 }
 ?>
