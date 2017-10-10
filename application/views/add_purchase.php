@@ -12,7 +12,9 @@
  		<label class="control-label col-sm-4" for="date">Time: &nbsp;</label>		
 		<input class="form-control col-sm-4" type="time" name="time" value="<?php date_default_timezone_set('Asia/Manila'); echo  date("H:i"); ?>"/>
     </div>
-	<table class="table table-striped" id="myTable">
+
+	<div>Search: <input type="text" id="myInput" onkeyup="Trans()" placeholder="Type any value" title="Type ANY value"></div>
+	<table class="table" id="myTable">
                 <thead>
                     <tr id="trHead">
 						<th>Item Description</th>

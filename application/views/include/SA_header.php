@@ -20,11 +20,12 @@
         <div class="row">
             <ul class="nav nav-tabs">
                <ul class="nav navbar-nav">
-					<li><a href="<?php echo base_url('knoxville/viewSalesAgents')?>" class="navigation active">SALES AGENT MANAGEMENT<p>Manage sales agent</p></a></li>
+					
 					<li><a href="<?php echo base_url('knoxville/viewClients')?>" class="navigation">CLIENT MANAGEMENT<p>Manage client</p></a></li>
 					<li><a href="<?php echo base_url('knoxville/viewOrders')?>" class="navigation">SALES MANAGEMENT<p>Manage sales management</p></a></li>
 					<li><a href="<?php echo base_url('knoxville/viewItems')?>" class="navigation">INVENTORY MANAGEMENT<p>Manage inventory</p></a></li>
 					<li><a href="<?php echo base_url('knoxville/viewDeliverer')?>" class="navigation">DELIVERER MANAGEMENT<p>Manage delivery</p></a></li>
+					
 				</ul>
             </ul>
 

@@ -6,7 +6,7 @@
 		Search: <input type="text" id="myInput" onkeyup="Client()" placeholder="Type any value" title="Type ANY value">
     </div>
     
-        <div class="table-responsive table">
+        <div class="table-responsive table" id="myTable">
             <table class="table table-striped">
                 <thead>
                     <tr id="trHead">
