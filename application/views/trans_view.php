@@ -43,6 +43,7 @@
         <thead>
             <tr id="trHead">
 				<th>Status</th>
+                <th>Location</th>
 				<th>Date</th>
                 <th>Time</th>
                 <th>Action</th>
@@ -59,8 +60,8 @@
 				
 			
 				 foreach($ship as $s){
-                echo '<td>'.$s['status'].'</td><td>'.$s['date'].'</td><td>'.$s['time'].'</td>
-				<td><a href="">Edit</a> | <a href="'.base_url('knoxville/delDeliveryStatus/'.$s['shipID'].'/'.$orderID).'">Delete</a></td></tr>';
+                echo '<td>'.$s['status'].'</td><td>'.$s['location'].'</td><td>'.$s['date'].'</td><td>'.$s['time'].'</td>
+				<td><a href="'.base_url('knoxville/updateDeliveryStatus/'.$s['statusID'].'/'.$orderID).'">Edit</a> | <a href="'.base_url('knoxville/delDeliveryStatus/'.$s['statusID'].'/'.$orderID).'">Delete</a></td></tr>';
 				 }
             }
 				

@@ -503,20 +503,48 @@ class Knoxville extends CI_Controller {
             $this->load->view('add_DeliveryStatus',$data);
 		}
 		else{
-            print_r($_POST);
-            $ShipStatus=array('shipID'=>$shipID,'date'=>$_POST['date'],'time'=>$_POST['time'],'status'=>$_POST['status'].' '.$_POST['location']);
-            print_r($ShipStatus);
+            $ShipStatus=array('shipID'=>$shipID,'date'=>$_POST['date'],'time'=>$_POST['time'],'status'=>$_POST['status'],'location' => $_POST['location']);
             $this->ShipStatus->create($ShipStatus);
             redirect('knoxville/viewTransaction/'.$orderID.'');
 		}
             
 	}
 	
-    public function delDeliveryStatus($transID, $orderID){
-        $where_array = array('transID'=>$transID);
-        $this->Transaction->del($where_array);
+    public function delDeliveryStatus($statusID, $orderID){
+        $where_array = array('statusID'=>$statusID);
+        $this->ShipStatus->del($where_array);
         //$this->viewTransaction($orderID);
         redirect('knoxville/viewTransaction/'.$orderID);
+    }
+    
+    public function updateDeliveryStatus($statusID, $orderID){
+        $data['statusID']=$statusID;
+        $data['orderID']=$orderID;
+        $condition = array('statusID'=>$statusID);
+        $oldRecord = $this->ShipStatus->read($condition);
+        foreach($oldRecord as $o){
+            $data['status'] = $o['status'];
+            $data['date'] = $o['date'];
+            $data['time'] = $o['time'];
+            $data['location'] = $o['location'];
+        }
+        $rules = array(
+                    array('field'=>'status', 'label'=>'Status', 'rules'=>'required'),
+                    array('field'=>'location', 'label'=>'Location', 'rules'=>'required'),
+                    array('field'=>'date', 'label'=>'Date', 'rules'=>'required'),
+                    array('field'=>'time', 'label'=>'Time', 'rules'=>'required')
+                );
+        $this->form_validation->set_rules($rules);
+        if($this->form_validation->run()==false){
+            $header_data['title']='Update Delivery Status';
+            $this->load->view('include/header',$header_data);
+            $this->load->view('update_DeliveryStatus',$data);
+        }
+        else{
+            $ShipStatus=array('date'=>$_POST['date'],'time'=>$_POST['time'],'status'=>$_POST['status'],'location'=>$_POST['location']);
+            $this->ShipStatus->update($ShipStatus,$statusID);
+            redirect('knoxville/viewTransaction/'.$orderID.'');
+        }
     }
 	
     public function viewItems(){
