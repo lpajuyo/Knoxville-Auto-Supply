@@ -16,6 +16,7 @@
 </head>
 <body>
 <div class="container">
+<h2 class="text-center">KNOXVILLE AUTO SUPPLY</h2>
     <div class="tabbable">
         <div class="row">
             <ul class="nav nav-tabs">
