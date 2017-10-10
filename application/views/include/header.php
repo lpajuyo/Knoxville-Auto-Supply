@@ -16,7 +16,7 @@
 </head>
 <body>
 <div class="container">
-<h2 class="text-center">KNOXVILLE AUTO SUPPLY</h2>
+<a class="headKnox" href="<?php echo base_url("knoxville")?>"><h2 class="text-center heads">KNOXVILLE AUTO SUPPLY</h2></a>
     <div class="tabbable">
         <div class="row">
             <ul class="nav nav-tabs">

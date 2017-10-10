@@ -10,9 +10,22 @@ body{
 .table{
 	margin: 10px 45px 150px;
 	width:90%;
+	max-height: 700px;
+	overflow: scroll;
 }
-#myTable{
-	margin: 10px 15px;
+.tables{
+	margin: 10px 45px 0px;
+	width:90%;
+	min-height: 30px;
+	max-height: 300px;
+	overflow: scroll;
+}
+.tbls{
+	margin: 0px 45px 0px;
+	width:90%;
+	min-height: 30px;
+	max-height: 300px;
+	overflow: scroll;
 }
 
 .search{
@@ -29,6 +42,12 @@ body{
 	margin-top: 35px;
 	margin-bottom: 10px;
 }
+.searchLeft{
+	color: #34495E;
+	float: right;
+	margin-right: 570px;
+	margin-top: 35px;
+}
 .searchMid{
 	color: #34495E;
 	float: right;
@@ -38,6 +57,44 @@ body{
 }
 .searchbox{
 	margin-left: 10px;
+}
+.report{
+	font-family: verdana;
+	font-size: 20px;
+	color: #fff;
+}
+.hdr{
+	font-family: verdana;
+	font-size: 20px;
+	color: #1A5276;
+}
+.sales{
+	border: 1px solid #34495E;
+	padding: 20px;
+	background: #1A5276;
+	color: #fff;
+	width: 80%;
+	margin-left: 100px;
+}
+.tbl{
+	padding: 20px;
+	color: #fff;
+	width: 100%;
+	margin-left: 0px;
+}
+.select{
+	color: #1A5276;
+}
+.headKnox{
+	color: #1A5276;
+	text-decoration: none;
+}
+.headKnox:hover{
+	text-decoration: none;
+}
+.heads{
+	margin-top: 20px;
+	color: #1A5276;
 }
 div#table_include{
   width:500px;
@@ -238,7 +295,7 @@ div#login{
 	font-size: 30px;
 }
 .tabbable{
-	margin: 90px 0px;
+	margin: 30px 0px;
 }
 .nav-tabs {
    float:left;
@@ -322,6 +379,7 @@ div#login{
 {
 	margin-top:-30px;
 	margin-left: 100px;
+	text-transform: uppercase;
 }
 .contentNested{
 	width: 90%;

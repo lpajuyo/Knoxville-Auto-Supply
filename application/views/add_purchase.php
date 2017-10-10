@@ -45,11 +45,11 @@
 							echo $i['item_desc'];
 						}	
 						echo '</td>
-							<td class="col-sm-2">
+							<td class="col-sm-4">
 
 								<input type="number" class="form-control" id="price'.$counter.'" value="'.$Q['unit_price'].'" name="price[]">
 							</td>
-							<td class="col-sm-2">							
+							<td class="col-sm-4">							
 								<input type="number" class="form-control" id="quantity'.$counter.'"  name="quantity[]" value="'.$Q['quantity'].'">
 							</td>
 							

@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <div class="tab-content">
 <div class="contentNested">
-	<div class="text">
-		<p class="font">Client name: </p> <p class="text1"><?php echo $cname?></p>
+	<div class="sales">
+		<p class="font"><b>Client name:</b></p> <p class="text1"><?php echo $cname?></p>
 	
 
-		<p class="font">Address:</p> <p class="text1"> <?php echo $cadd?> </p>
-		<p class="font">Contact no.:</p> <p class="text1"><?php echo $cnum?></p> 
+		<p class="font"><b>Address:</b></p> <p class="text1"> <?php echo $cadd?> </p>
+		<p class="font"><b>Contact no.:</b></p> <p class="text1"><?php echo $cnum?></p> 
 	
 		<br />
 	</div>
 	<br />
 	<br />
-	<p class="text1"><a href="<?php echo base_url('knoxville/addSched/'.$orderID) ?>" ><b> >>Schedule items for delivery</b></a></p>
+	<p class="text1"><a href="<?php echo base_url('knoxville/addSched/'.$orderID) ?>"><span class="glyphicon glyphicon-plus"> </span>Schedule Delivery</a></a></p>
 		<div class="search1">
 			Search: <input type="text" id="myInput" onkeyup="Transaction()" placeholder="Type any value" title="Type ANY value">
 		</div>
