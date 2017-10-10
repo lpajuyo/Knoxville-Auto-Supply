@@ -1,15 +1,10 @@
 <!DOCTYPE html>
 <div class="tab-content">
-Search: <input type="text" id="myInput" onkeyup="Client()" placeholder="Type any value" title="Type ANY value">
+
 	<a href="<?php echo base_url('knoxville/addClient')?>" class="addLink"><span class="glyphicon glyphicon-plus"> </span>&nbsp;Add Client</a>
-    <div id="table">
-    
-    <!--<div id="myModal" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-            </div>
-        </div>
-    </div>-->
+    <div class="searchClient">
+		Search: <input type="text" id="myInput" onkeyup="Client()" placeholder="Type any value" title="Type ANY value">
+    </div>
     
         <div class="table-responsive table">
             <table class="table table-striped" id="myTable">
