@@ -28,16 +28,12 @@ class Knoxville extends CI_Controller {
 				$condition = "$stock>=1";
 				$result_array = $this->Item->read($condition);
 				$data['onStock'] = $result_array; 
+				$shipped = $this->Shipment->read();
+				$orders = $this->Order->read();
+				$data['shipped'] = $shipped;
+				$data['orders'] = $orders;
 				$this->load->view('include/header',$header_data);
                 $this->load->view('management_dashboard',$data);
-				$orders = $this->Order->read();
-				$condition = array('orderID'=>$o['orderID']);
-				$result_array = $this->Shipment->read($condition);
-				$records=array();
-				foreach($result_array as o){
-				$records[]=$this->ShipStatus->getLatestRecord($o['shipID']);
-				}
-				$data['records'] = $records;
 				
             }
         }
