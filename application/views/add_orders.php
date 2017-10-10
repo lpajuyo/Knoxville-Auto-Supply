@@ -9,7 +9,7 @@
 	<div class="container ClientForm">
 		<div>
 			<label class="control-label col-sm-4" for="company">Company: &nbsp; </label>
-		<div class="form-control col-sm-4" id="userID">
+		<div class="col-sm-4 user1" id="userID">
 		<?php
 		echo '<select name="clientid" form="order">';
 			echo '<option selected disabled hidden>Company Name</option>';
@@ -45,21 +45,22 @@
 		<input class="form-control col-sm-4" type="date" name="duedate" value="<?php echo date('Y-m-d', strtotime( date('Y-m-d'). ' + 7 days'))?>"/>
 		
     </div>
-	Search: <input type="text" id="myInput" onkeyup="Item()" placeholder="Type any value" title="Type ANY value">
-    </form><div class="table-responsive table">
-	<div class="table-responsive table">
+	<div class="searchMid">
+		Search: <input class="searchbox" type="text" id="myInput" onkeyup="Item()" placeholder="Type any value" title="Type ANY value">
+	</div>
+	<div>
     <table class="table table-striped" id="myTable">
                 <thead>
                     <tr id="trHead">
 						<th>Item Description</th>
 						<th>
-							<label for="price">Price</label>
+							<label class="thHead" for="price">Price</label>
 						</th>
 						<th>
-							<label for="quantity">Quantity</label>
+							<label class="thHead" for="quantity">Quantity</label>
 						</th>
 						<th>
-						<label for="itemList[]">ADD</th>
+						<label class="thHead" for="itemList[]">ADD</th>
 					</tr>
 				</thead>
 					
@@ -93,7 +94,7 @@
    </div>
 	</form>
 	<div class="col-sm-6">
-	<button class="sub" type="submit">
+	<button class="subOrder" type="submit">
 		<span class="glyphicon glyphicon-download-alt"> </span> Save
 	</button>
 	</div>

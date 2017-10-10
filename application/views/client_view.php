@@ -2,12 +2,12 @@
 <div class="tab-content">
 
 	<a href="<?php echo base_url('knoxville/addClient')?>" class="addLink"><span class="glyphicon glyphicon-plus"> </span>&nbsp;Add Client</a>
-    <div class="searchClient">
+    <div class="search1">
 		Search: <input type="text" id="myInput" onkeyup="Client()" placeholder="Type any value" title="Type ANY value">
     </div>
     
         <div class="table-responsive table">
-            <table class="table table-striped" id="myTable">
+            <table class="table table-striped">
                 <thead>
                     <tr id="trHead">
                         <th>Client ID</th>
