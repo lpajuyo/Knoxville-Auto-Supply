@@ -6,9 +6,10 @@
 	<p class="font">Contact no.: <?php echo $cnum?></p><br />
 	<p><a href="<?php echo base_url('knoxville/addSched/'.$orderID) ?>" ><b> >>Schedule items for delivery</b></a></p>
 </div>
-
-	<div class="table-responsive table">
-    <table class="table table-striped">
+Search: <input type="text" id="myInput" onkeyup="Transaction()" placeholder="Type any value" title="Type ANY value">
+    </form><div class="table-responsive table">
+	<div class="table-responsive table" >
+    <table class="table table-striped" id="myTable">
         <thead>
             <tr id="trHead">
                 <th>Item Name</th>
