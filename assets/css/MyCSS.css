@@ -10,16 +10,22 @@ body{
 .table{
 	margin: 10px 45px 150px;
 	width:90%;
+	max-height: 700px;
+	overflow: scroll;
 }
 .tables{
 	margin: 10px 45px 0px;
 	width:90%;
 	min-height: 30px;
+	max-height: 300px;
+	overflow: scroll;
 }
 .tbls{
 	margin: 0px 45px 0px;
 	width:90%;
 	min-height: 30px;
+	max-height: 300px;
+	overflow: scroll;
 }
 
 .search{
@@ -373,6 +379,7 @@ div#login{
 {
 	margin-top:-30px;
 	margin-left: 100px;
+	text-transform: uppercase;
 }
 .contentNested{
 	width: 90%;
