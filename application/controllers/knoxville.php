@@ -76,16 +76,18 @@ class Knoxville extends CI_Controller {
             
             $totalQuantity = 0;
             $totalRevenue = 0;
-            foreach($transData as $t){
-                $totalQuantity += $t['quantity'];
-                $totalRevenue += $t['quantity']*$t['unit_price'];
+            if($transData!=false){
+                foreach($transData as $t){
+                    $totalQuantity += $t['quantity'];
+                    $totalRevenue += $t['quantity']*$t['unit_price'];
+                }
             }
-            
             $data['totalQuantity'] = $totalQuantity;
             $data['totalRevenue'] = $totalRevenue;
             $data['range'] = 'Today';
             $data['date'] = $date;
             echo $this->load->view('sales_report',$data,TRUE);
+           
         }
     }
     
@@ -488,18 +490,27 @@ class Knoxville extends CI_Controller {
                     array('field'=>'status', 'label'=>'Status', 'rules'=>'required'),
                     array('field'=>'location', 'label'=>'Location', 'rules'=>'required'),
                 );
+        $this->form_validation->set_rules($rules);
 		if($this->form_validation->run()==FALSE){
-		$this->load->view('include/header',$header_data);
-		$this->load->view('add_DeliveryStatus',$data);
+            $this->load->view('include/header',$header_data);
+            $this->load->view('add_DeliveryStatus',$data);
 		}
 		else{
-		$ShipStatus=array('shipID'=>$shipID,'date'=>$_POST['date'],'time'=>$_POST['time'],'status'=>$_POST['status'].' '.$_POST['location']);
-		$this->ShipStatus->create($ShipStatus);
-		redirect('knoxville/viewTransaction/'.$orderID.'');
+            print_r($_POST);
+            $ShipStatus=array('shipID'=>$shipID,'date'=>$_POST['date'],'time'=>$_POST['time'],'status'=>$_POST['status'].' '.$_POST['location']);
+            print_r($ShipStatus);
+            $this->ShipStatus->create($ShipStatus);
+            redirect('knoxville/viewTransaction/'.$orderID.'');
 		}
             
 	}
 	
+    public function delDeliveryStatus($transID, $orderID){
+        $where_array = array('transID'=>$transID);
+        $this->Transaction->del($where_array);
+        //$this->viewTransaction($orderID);
+        redirect('knoxville/viewTransaction/'.$orderID);
+    }
 	
     public function viewItems(){
         $result_array = $this->Item->read();

@@ -59,7 +59,7 @@
 			
 				 foreach($ship as $s){
                 echo '<td>'.$s['status'].'</td><td>'.$s['date'].'</td><td>'.$s['time'].'</td>
-				<td><a href="">Edit</a> | <a href="">Delete</a></td></tr>';
+				<td><a href="">Edit</a> | <a href="'.base_url('knoxville/delDeliveryStatus/'.$s['shipID'].'/'.$orderID).'">Delete</a></td></tr>';
 				 }
 				
             ?>
