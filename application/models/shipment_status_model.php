@@ -36,7 +36,12 @@ class Shipment_status_model extends CI_Model {
         $this->db->where('shipID', $shipID);
         $query = $this->db->get($this->table,1);
         
-        return $query->row_array();
+        $record = $query->row_array();
+        $record = $record['statusID'];
+        $condition = array('statusID'=>$record);
+        $record = $this->read($condition);
+        
+        return $record[0];
     }
 }
 ?>
