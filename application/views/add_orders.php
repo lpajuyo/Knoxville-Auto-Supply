@@ -65,22 +65,24 @@
         <tbody>
             <?php
 				$counter = 0;
-                foreach($items as $c){  
-				$counter++;
-                    echo '<tr><td>'.$c['item_desc'].'</td>
-						<td class="col-sm-2">
+                if($items != false){
+                    foreach($items as $c){  
+                    $counter++;
+                        echo '<tr><td>'.$c['item_desc'].'</td>
+                            <td class="col-sm-2">
 
-							<input type="number" class="form-control" id="price'.$counter.'"  name="price[]" value="0" disabled />
-						</td>
-						<td class="col-sm-2">							
-							<input type="number" class="form-control" id="quantity'.$counter.'"  name="quantity[]" value="0" disabled />
-						</td>
-						
-						<td><input type="checkbox" name="itemList[]" id="items'.$counter.'" value="'.$c['itemID'].'" onClick="toggle('."'items".$counter."'".', '."'price".$counter."'".', '."'quantity".$counter."'".')"  /></td>
-						
-						';
-						
-						
+                                <input type="number" class="form-control" id="price'.$counter.'"  name="price[]" value="0" disabled />
+                            </td>
+                            <td class="col-sm-2">							
+                                <input type="number" class="form-control" id="quantity'.$counter.'"  name="quantity[]" value="0" disabled />
+                            </td>
+                            
+                            <td><input type="checkbox" name="itemList[]" id="items'.$counter.'" value="'.$c['itemID'].'" onClick="toggle('."'items".$counter."'".', '."'price".$counter."'".', '."'quantity".$counter."'".')"  /></td>
+                            
+                            ';
+                            
+                            
+                    }
                 }
             ?>
 			

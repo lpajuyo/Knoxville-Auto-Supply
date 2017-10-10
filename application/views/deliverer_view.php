@@ -16,11 +16,13 @@ Search: <input type="text" id="myInput" onkeyup="Deliverer()" placeholder="Type 
 				</thead>
         <tbody>
             <?php
+            if($deliverer != false){
                 foreach($deliverer as $c){  
                     echo "<tr><td>".$c['delivererID']."</td><td>".$c['vehicle']."<td>".$c['contact_no']."</td><td>".$c['assigned']
                     .'</td><td><a href="'.base_url('knoxville/updateDeliverer/'.$c['delivererID']).'">Edit</a> | <a href="'.base_url('knoxville/delDeliverer/'.$c['delivererID']).'">Delete</a></td></tr>';
                     //echo base_url('knoxville/delClient/'.c['clientID'])
                 }
+            }
             ?>
         </tbody>
     </table>

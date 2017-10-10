@@ -17,7 +17,7 @@ Search: <input type="text" id="myInput" onkeyup="Order()" placeholder="Type any 
         <tbody>
             <?php
 			
-			 
+			if($orders != false){
                 foreach($orders as $c){ //Array ( [clientID] => 1 [client_name] => dsa [address] => dsa [contact_no] => 123 ) 
                     echo "<tr><td>".$c['orderID']."<td>";
 					foreach($clients as $i)
@@ -29,6 +29,7 @@ Search: <input type="text" id="myInput" onkeyup="Order()" placeholder="Type any 
                     .'</td><td><a href="'.base_url('knoxville/viewTransaction/'.$c['orderID'].'').'">View Order Details</a> | <a onclick="confirmDelete('.$c['orderID'].')">Delete</a></td></tr>';
                     //echo base_url('knoxville/delClient/'.c['clientID'])
 					}
+            }
             ?>
 			
         </tbody>
