@@ -24,24 +24,12 @@ class Knoxville extends CI_Controller {
             $data['userID']=$this->session->userdata('userID');
             if($this->session->userdata('isAdmin')>0){
 				$header_data['title'] = "Management Dashboard";
-				$stock='stocks';
-				$condition = "$stock>=1";
-				$result_array = $this->Item->read($condition);
-				$data['onStock'] = $result_array; 
 				$this->load->view('include/header',$header_data);
                 $this->load->view('management_dashboard',$data);
-				$orders = $this->Order->read();
-				$condition = array('orderID'=>$o['orderID']);
-				$result_array = $this->Shipment->read($condition);
-				$records=array();
-				foreach($result_array as o){
-				$records[]=$this->ShipStatus->getLatestRecord($o['shipID']);
-				}
-				$data['records'] = $records;
-				
             }
         }
 	}
+    
     public function viewSalesReport(){
         if($_POST['range']=='week'){
             $startDate = date('Y-m-d',strtotime('next sunday - 1 week'));
