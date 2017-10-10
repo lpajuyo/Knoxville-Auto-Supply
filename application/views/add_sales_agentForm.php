@@ -36,7 +36,7 @@
     </div>
     
     <div>
-		<label class="control-label col-sm-4" for="cnum">Contact No.:</label>
+		<label class="control-label col-sm-4" for="cnum">Contact Number:</label>
 		<input class="form-control col-sm-4" type="text" name="cnum" id="cnum" />
     </div>
     
@@ -45,7 +45,7 @@
 		<input class="check" type="checkbox" name="isAdmin" id="isAdmin" />
 	</div>
 	<div class="col-sm-6">
-		<input class="sub" type="submit" value="SUBMIT"/>
+		<input class="subUpdate" type="submit" value="SUBMIT"/>
 	</div>
   </form>
   </div>

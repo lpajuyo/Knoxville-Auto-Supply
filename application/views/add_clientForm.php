@@ -29,7 +29,7 @@
      </div>
 	
 	<div class="col-sm-6">
-		<input class="sub" type="submit" value="SUBMIT"/>
+		<input class="subUpdate" type="submit" value="SUBMIT"/>
 	</div>
   </form>
   </div>

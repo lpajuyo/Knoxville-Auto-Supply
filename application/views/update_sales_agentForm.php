@@ -12,7 +12,7 @@
   <div class="container ClientForm">
     <div>
 		<label class="control-label col-sm-4" for="userID">UserID:</label>
-		<input class="form-control" type="text" name="userID" id="userID" value="<?php echo $userID?>" readonly />
+		<input class="form-control col-sm-4 user" type="text" name="userID" id="userID" value="<?php echo $userID?>" readonly />
     </div>
     
     <div>
