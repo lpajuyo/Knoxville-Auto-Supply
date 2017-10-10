@@ -107,7 +107,6 @@ class Knoxville extends CI_Controller {
                     array('field'=>'pass', 'label'=>'Password', 'rules'=>'required'),
                     array('field'=>'name', 'label'=>'Full Name', 'rules'=>'required'),
                     array('field'=>'bday', 'label'=>'Birthdate', 'rules'=>'required'),
-                    array('field'=>'age', 'label'=>'Age', 'rules'=>'required'),
                     array('field'=>'email', 'label'=>'Email', 'rules'=>'required'),
                     array('field'=>'cnum', 'label'=>'Contact No.', 'rules'=>'required')
                     //array('field'=>'isAdmin', 'label'=>'Admin?', 'rules'=>'required'),
@@ -123,7 +122,7 @@ class Knoxville extends CI_Controller {
                 $isAdmin=1;
             else
                 $isAdmin=0;
-            $salesAgentRecord=array('userID'=>$_POST['userID'],'password'=>$_POST['pass'],'fullname'=>$_POST['name'],'birthdate'=>$_POST['bday'],'age'=>$_POST['age'],'email'=>$_POST['email'],'contact_no'=>$_POST['cnum'],'isAdmin'=>$isAdmin);
+            $salesAgentRecord=array('userID'=>$_POST['userID'],'password'=>$_POST['pass'],'fullname'=>$_POST['name'],'birthdate'=>$_POST['bday'],'email'=>$_POST['email'],'contact_no'=>$_POST['cnum'],'isAdmin'=>$isAdmin);
             $this->SalesAgent->create($salesAgentRecord);
             redirect('knoxville/viewSalesAgents');
         }
@@ -138,7 +137,6 @@ class Knoxville extends CI_Controller {
             $data['pass'] = $o['password'];
             $data['name'] = $o['fullname'];
             $data['bday'] = $o['birthdate'];
-            $data['age'] = $o['age'];
             $data['email'] = $o['email'];
             $data['cnum'] = $o['contact_no'];
             if($o['isAdmin']>0)
@@ -152,7 +150,6 @@ class Knoxville extends CI_Controller {
                     array('field'=>'pass', 'label'=>'Password', 'rules'=>'required'),
                     array('field'=>'name', 'label'=>'Full Name', 'rules'=>'required'),
                     array('field'=>'bday', 'label'=>'Birthdate', 'rules'=>'required'),
-                    array('field'=>'age', 'label'=>'Age', 'rules'=>'required'),
                     array('field'=>'email', 'label'=>'Email', 'rules'=>'required'),
                     array('field'=>'cnum', 'label'=>'Contact No.', 'rules'=>'required')
                     //array('field'=>'isAdmin', 'label'=>'Admin?', 'rules'=>'required'),
@@ -168,7 +165,7 @@ class Knoxville extends CI_Controller {
                 $isAdmin=1;
             else
                 $isAdmin=0;
-            $newRecord=array('userID'=>$_POST['userID'],'password'=>$_POST['pass'],'fullname'=>$_POST['name'],'birthdate'=>$_POST['bday'],'age'=>$_POST['age'],'email'=>$_POST['email'],'contact_no'=>$_POST['cnum'],'isAdmin'=>$isAdmin);
+            $newRecord=array('userID'=>$_POST['userID'],'password'=>$_POST['pass'],'fullname'=>$_POST['name'],'birthdate'=>$_POST['bday'],'email'=>$_POST['email'],'contact_no'=>$_POST['cnum'],'isAdmin'=>$isAdmin);
             $this->SalesAgent->update($newRecord);
             redirect('knoxville/viewSalesAgents');
         }

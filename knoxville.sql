@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 08, 2017 at 01:16 PM
+-- Generation Time: Oct 10, 2017 at 01:51 AM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -32,7 +32,7 @@ CREATE TABLE `client` (
   `clientID` int(11) NOT NULL,
   `client_name` varchar(50) NOT NULL,
   `address` varchar(50) NOT NULL,
-  `contact_no` int(11) NOT NULL
+  `contact_no` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -40,7 +40,7 @@ CREATE TABLE `client` (
 --
 
 INSERT INTO `client` (`clientID`, `client_name`, `address`, `contact_no`) VALUES
-(1, 'dsa', 'dsad', 123);
+(1, 'dsa', 'dsad', '123');
 
 -- --------------------------------------------------------
 
@@ -122,9 +122,8 @@ CREATE TABLE `sales_agent` (
   `userID` varchar(20) NOT NULL,
   `password` varchar(20) NOT NULL,
   `birthdate` date NOT NULL,
-  `age` int(2) NOT NULL,
   `email` varchar(30) NOT NULL,
-  `contact_no` int(11) NOT NULL,
+  `contact_no` varchar(11) NOT NULL,
   `fullname` varchar(50) NOT NULL,
   `isAdmin` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -133,8 +132,9 @@ CREATE TABLE `sales_agent` (
 -- Dumping data for table `sales_agent`
 --
 
-INSERT INTO `sales_agent` (`userID`, `password`, `birthdate`, `age`, `email`, `contact_no`, `fullname`, `isAdmin`) VALUES
-('admin', '1234', '2017-09-01', 1, 'lala', 123, 'lala', 1);
+INSERT INTO `sales_agent` (`userID`, `password`, `birthdate`, `email`, `contact_no`, `fullname`, `isAdmin`) VALUES
+('admin', '1234', '2017-09-01', 'lala', '123', 'lala', 1),
+('auds', '1234', '1998-11-12', 'anwaje@yahoo.com', '0919123456', 'Audrey Waje', 0);
 
 -- --------------------------------------------------------
 
@@ -153,7 +153,8 @@ CREATE TABLE `shipment` (
 --
 
 INSERT INTO `shipment` (`shipID`, `delivererID`, `orderID`) VALUES
-(1, 2, 23);
+(1, 2, 23),
+(2, 2, 23);
 
 -- --------------------------------------------------------
 
@@ -167,6 +168,14 @@ CREATE TABLE `shipment_status` (
   `date` date NOT NULL,
   `time` time(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `shipment_status`
+--
+
+INSERT INTO `shipment_status` (`shipID`, `status`, `date`, `time`) VALUES
+(2, 'Scheduled', '2017-10-08', '20:00:00.000000'),
+(2, ' ', '2017-10-09', '23:04:00.000000');
 
 -- --------------------------------------------------------
 
@@ -277,7 +286,7 @@ ALTER TABLE `transaction`
 -- AUTO_INCREMENT for table `client`
 --
 ALTER TABLE `client`
-  MODIFY `clientID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `clientID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `client_order`
 --
@@ -287,17 +296,17 @@ ALTER TABLE `client_order`
 -- AUTO_INCREMENT for table `deliverer`
 --
 ALTER TABLE `deliverer`
-  MODIFY `delivererID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `delivererID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `item`
 --
 ALTER TABLE `item`
-  MODIFY `itemID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `itemID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `shipment`
 --
 ALTER TABLE `shipment`
-  MODIFY `shipID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `shipID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `transaction`
 --
