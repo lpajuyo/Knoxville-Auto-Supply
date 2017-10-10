@@ -1,4 +1,6 @@
-
+<div class="tab-content">	
+<div class="content">
+<div class="content1">
 	<?php echo validation_errors(); ?>
 	<?php echo form_open('knoxville/addSched/'.$orderID,'id="delivery"'); //this is equal to <form method="post" accept-charset="utf-8" action="http://localhost/Knoxville-Auto-Supply/knoxville/addClient">
                                      //to add attributes, edit to: echo form('knoxville/addClient','class="lala" id="lala"'); 
@@ -15,9 +17,15 @@
 		
 		<label>Date:</label>
  		<input type="date" name="date" value="<?php echo date('Y-m-d'); ?>" />
+		<br />
  		<label>Time: &nbsp;</label>		
 		<input type="time" name="time" value="<?php date_default_timezone_set('Asia/Manila'); echo  date("H:i"); ?>"/>
-        <input type="submit">
+        <br />
+		<input class="subUpdate" type="submit">
 	</form>
+</div>
+</div>
+</div>
+
 </body>
 </html>

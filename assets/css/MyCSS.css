@@ -303,3 +303,37 @@ div#login{
    background:#3a425b;
    font-weight:bold;	
 }
+.font{
+   margin-left:5px;
+   font-family: sans-serif;
+   font-weight: bold;
+   font-size: 14px;
+   
+
+}
+.text{
+	margin-top:50px;
+	margin-left: 350px;
+	width: 150px;
+	height: 90px;
+	font-size: 16px;
+}
+.text1
+{
+	margin-top:-30px;
+	margin-left: 100px;
+}
+.contentNested{
+	width: 90%;
+	margin-top: 50px;
+	margin-left: 45px;
+	border: 1px solid black;
+}
+.content{
+	margin: 50px;
+	padding: 100px;
+}
+.content1{
+	margin: 10px 100px;
+	padding: 10px;
+}

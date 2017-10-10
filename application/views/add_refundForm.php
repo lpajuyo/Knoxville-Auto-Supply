@@ -1,28 +1,27 @@
-<html>
-<body>
-	<div class="cntr">
-	<p class="boxhead">Refund</p> <br />
+<div class="tab-content">
 	
 	<?php echo form_open('knoxville/addRefund/'.$orderID.'','id="refund"'); //this is equal to <form method="post" accept-charset="utf-8" action="http://localhost/Knoxville-Auto-Supply/knoxville/addClient">
                                      //to add attributes, edit to: echo form('knoxville/addClient','class="lala" id="lala"'); 
 	?>
+	<br />
+	<div class="container ClientForm">
 	<div class="form-group">
-		<label class="date-label" for="date">Date(dd/mm/yyyy):&nbsp; </label>
- 		<input type="date" name="date" value="<?php echo date('Y-m-d'); ?>" />		 
- 		<label class="date-label" for="date">Time: &nbsp;</label>		
-		<input type="time" name="time" value="<?php date_default_timezone_set('Asia/Manila'); echo  date("H:i"); ?>"/>
+		<label class="control-label col-sm-4" for="date">Date:&nbsp; </label>
+ 		<input class="form-control col-sm-4" type="date" name="date" value="<?php echo date('Y-m-d'); ?>" />		 
+ 		<label class="control-label col-sm-4" for="date">Time: &nbsp;</label>		
+		<input class="form-control col-sm-4" type="time" name="time" value="<?php date_default_timezone_set('Asia/Manila'); echo  date("H:i"); ?>"/>
     </div>
-	<table class="table">
+	<table class="table table-striped" id="myTable">
                 <thead>
                     <tr id="trHead">
-						<th class="info">Item Description</th>
-						<th class="info">
+						<th>Item Description</th>
+						<th class="thHead">
 						<label for="price">Price</label></th>
-						<th class="info">
+						<th class="thHead">
 						<label for="quantity">Quantity</label></th>
-						<th class="info">
+						<th class="thHead">
 						<label for="trans">Cancel/Return</label></th>
-						<th class="info">
+						<th class="thHead">
 						<label for="itemList[]">ADD</th>
 					</tr></thead>
 					
@@ -73,7 +72,7 @@
 	
    </table>
 
-	<button class="btn btn-primary btn-md" type="submit">
+	<button class="subUpdate" type="submit">
 		<span class="glyphicon glyphicon-download-alt"> </span> Refund
 	</button>
 	
@@ -81,6 +80,7 @@
 	
 	
 	
+	</div>
 	</div>
 </body>
 </html>

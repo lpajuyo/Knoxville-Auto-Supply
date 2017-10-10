@@ -42,7 +42,7 @@ class Knoxville extends CI_Controller {
         if($_POST['range']=='week'){
             $startDate = date('Y-m-d',strtotime('next sunday - 1 week'));
             $endDate = date('Y-m-d',strtotime('next sunday - 1 second'));
-            $condition = "status='Purchased' AND date BETWEEN '$startDate' AND '$endDate'";
+            $condition = "(status='Cancelled' OR status='Returned' or status='Purchased') AND date BETWEEN '$startDate' AND '$endDate'";
             $transData=$this->Transaction->read($condition);
             
             $totalQuantity = 0;
@@ -62,15 +62,21 @@ class Knoxville extends CI_Controller {
         else if($_POST['range']=='month'){
             $startDate = date('Y-m-d',strtotime('first day of this month'));
             $endDate = date('Y-m-d',strtotime('last day of this month'));
-            $condition = "status='Purchased' AND date BETWEEN '$startDate' AND '$endDate'";
+            $condition = "(status='Cancelled' OR status='Returned' or status='Purchased') AND date BETWEEN '$startDate' AND '$endDate'";
             $transData=$this->Transaction->read($condition);
             
             $totalQuantity = 0;
             $totalRevenue = 0;
-            if($transData != false){
+            if($transData!=false){
                 foreach($transData as $t){
-                    $totalQuantity += $t['quantity'];
-                    $totalRevenue += $t['quantity']*$t['unit_price'];
+                    if($t['status']=='Purchased'){
+                        $totalQuantity += $t['quantity'];
+                        $totalRevenue += $t['quantity']*$t['unit_price'];
+                    }
+                    else{
+                        $totalQuantity -= $t['quantity'];
+                        $totalRevenue -= $t['quantity']*$t['unit_price'];
+                    }
                 }
             }
             $data['totalQuantity'] = $totalQuantity;
@@ -81,15 +87,22 @@ class Knoxville extends CI_Controller {
         }
         else if($_POST['range']=='day'){
             $date = date('Y-m-d',strtotime('today'));
-            $condition=array('date'=>$date, 'status'=>'Purchased');
+            //$condition=array('date'=>$date, 'status'=>'Purchased');
+            $condition= "date='$date' AND (status='Cancelled' OR status='Returned' or status='Purchased')";
             $transData=$this->Transaction->read($condition);
             
             $totalQuantity = 0;
             $totalRevenue = 0;
             if($transData!=false){
                 foreach($transData as $t){
-                    $totalQuantity += $t['quantity'];
-                    $totalRevenue += $t['quantity']*$t['unit_price'];
+                    if($t['status']=='Purchased'){
+                        $totalQuantity += $t['quantity'];
+                        $totalRevenue += $t['quantity']*$t['unit_price'];
+                    }
+                    else{
+                        $totalQuantity -= $t['quantity'];
+                        $totalRevenue -= $t['quantity']*$t['unit_price'];
+                    }
                 }
             }
             $data['totalQuantity'] = $totalQuantity;
