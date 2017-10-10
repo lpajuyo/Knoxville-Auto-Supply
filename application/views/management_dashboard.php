@@ -41,15 +41,14 @@
     </script>
 	
 	
-Search stocks: <input type="text" id="myInput" onkeyup="Item()" placeholder="Type any value" title="Type ANY value">
-	<a href="<?php echo base_url('knoxville/addItem')?>" class="addLink"><span class="glyphicon glyphicon-plus"> </span>&nbsp;Add Item</a>
+Search stocks: <input type="text" id="myInput" onkeyup="Item()" placeholder="Type any value" title="Type ANY value"/>
 
     
         <div class="table-responsive table">
             <table class="table table-striped" id="myTable">
                 <thead>
                     <tr id="trHead">
-						<th>Item Description</th>
+						<th>Items on Stock</th>
 						<th>Stocks</th>
 						<th>ACTION</th>
 					</tr>
@@ -61,6 +60,37 @@ Search stocks: <input type="text" id="myInput" onkeyup="Item()" placeholder="Typ
 						echo "<tr><td>".$c['item_desc']."</td><td>".$c['stocks']
 						.'</td><td><a href="'.base_url('knoxville/updateItem/'.$c['itemID']).'">Edit</a> | <a href="'.base_url('knoxville/delItem/'.$c['itemID']).'">Delete</a></td></tr>';
 						//echo base_url('knoxville/delClient/'.c['clientID'])
+					}
+                }
+				?>
+			</tbody>
+		</table>
+    </div>
+	
+	 <div class="table-responsive table">
+            <table class="table table-striped" id="Table">
+                <thead>
+                    <tr id="trHead">
+						<th>OrderID</th>
+						<th>Status</th>
+						<th>Schedule For Delivery</th>
+					</tr>
+				</thead>
+			<tbody>
+				<?php
+				
+                if($orders != false){
+					foreach($orders as $o){  
+						$sched=0;
+						foreach($shipped as $s){
+							if($s['orderID'] == $o['orderID'])
+							$sched++;
+						}
+						if($sched==0){
+							echo '<tr><td><a href="'.base_url('knoxville/viewTransaction/'.$o['orderID']).'">Order#'.$o['orderID'].'</a></td><td>Delivery Unscheduled</td>
+						<td><a href="'.base_url('knoxville/addDeliverySched/'.$o['orderID']).'">Add a schedule</a></td></tr>';
+						//echo base_url('knoxville/delClient/'.c['clientID'])
+						}
 					}
                 }
 				?>
