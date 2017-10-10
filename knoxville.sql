@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
--- https://www.phpmyadmin.net/
+-- version 4.5.1
+-- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 10, 2017 at 01:51 AM
--- Server version: 10.1.26-MariaDB
--- PHP Version: 7.1.8
+-- Generation Time: Oct 10, 2017 at 02:44 PM
+-- Server version: 10.1.16-MariaDB
+-- PHP Version: 5.6.24
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -154,7 +152,8 @@ CREATE TABLE `shipment` (
 
 INSERT INTO `shipment` (`shipID`, `delivererID`, `orderID`) VALUES
 (1, 2, 23),
-(2, 2, 23);
+(2, 2, 23),
+(3, 2, 23);
 
 -- --------------------------------------------------------
 
@@ -164,7 +163,7 @@ INSERT INTO `shipment` (`shipID`, `delivererID`, `orderID`) VALUES
 
 CREATE TABLE `shipment_status` (
   `shipID` int(11) NOT NULL,
-  `status` varchar(11) NOT NULL,
+  `status` varchar(30) NOT NULL,
   `date` date NOT NULL,
   `time` time(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -175,7 +174,10 @@ CREATE TABLE `shipment_status` (
 
 INSERT INTO `shipment_status` (`shipID`, `status`, `date`, `time`) VALUES
 (2, 'Scheduled', '2017-10-08', '20:00:00.000000'),
-(2, ' ', '2017-10-09', '23:04:00.000000');
+(2, ' ', '2017-10-09', '23:04:00.000000'),
+(2, 'Arrived at ', '2017-10-10', '17:14:00.000000'),
+(2, 'Arrived at dsa', '2017-10-10', '17:16:00.000000'),
+(3, 'Scheduled', '2017-10-10', '17:18:00.000000');
 
 -- --------------------------------------------------------
 
@@ -306,7 +308,7 @@ ALTER TABLE `item`
 -- AUTO_INCREMENT for table `shipment`
 --
 ALTER TABLE `shipment`
-  MODIFY `shipID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `shipID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `transaction`
 --
@@ -342,7 +344,6 @@ ALTER TABLE `shipment_status`
 ALTER TABLE `transaction`
   ADD CONSTRAINT `transaction_ibfk_1` FOREIGN KEY (`itemID`) REFERENCES `item` (`itemID`) ON DELETE CASCADE,
   ADD CONSTRAINT `transaction_ibfk_2` FOREIGN KEY (`orderID`) REFERENCES `client_order` (`orderID`) ON DELETE CASCADE;
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
