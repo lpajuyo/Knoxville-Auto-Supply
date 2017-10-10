@@ -45,9 +45,10 @@
 		<input class="form-control col-sm-4" type="date" name="duedate" value="<?php echo date('Y-m-d', strtotime( date('Y-m-d'). ' + 7 days'))?>"/>
 		
     </div>
-	
+	Search: <input type="text" id="myInput" onkeyup="Item()" placeholder="Type any value" title="Type ANY value">
+    </form><div class="table-responsive table">
 	<div class="table-responsive table">
-    <table class="table table-striped">
+    <table class="table table-striped" id="myTable">
                 <thead>
                     <tr id="trHead">
 						<th>Item Description</th>
