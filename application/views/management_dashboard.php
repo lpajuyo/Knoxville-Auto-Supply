@@ -1,15 +1,16 @@
-    <p>Sales Report</p>
+<div class="tab-content">
+    <div class="sales">
+		<p class="text-center report">Sales Report</p>
     
-    <div id="range-dropdown">
-        <select name='range'>
-            <option value="day" selected>Today</option>
-            <option value="week">This week</option>
-            <option value="month">This month</option>
-        </select>
-    </div>
- 
-    <div id="sales_report">
-    </div>
+		<div id="range-dropdown">
+			<select class="select" name='range'>
+				<option value="day" selected>Today</option>
+				<option value="week">This week</option>
+				<option value="month">This month</option>
+			</select>
+		</div>
+		<div id="sales_report"></div>
+
 	 <script>
         $(document).ready(function(){
             $.ajax({
@@ -39,12 +40,49 @@
             });
         });
     </script>
+	</div>
 	
-	
-Search stocks: <input type="text" id="myInput" onkeyup="Item2()" placeholder="Type any value" title="Type ANY value"/>
-
-    
-        <div class="table-responsive table">
+	<div class="tbl">
+	<p class="text-center report hdr">Unscheduled Deliveries</p>
+	<div class="searchLeft">
+	Search Orders <input type="text" id="Input" onkeyup="Und()" placeholder="Type any value" title="Type ANY value"/>
+	</div>
+	<div class="table-responsive tbls">
+            <table class="table table-striped" id="Table">
+                <thead>
+                    <tr id="trHead">
+						<th>OrderID</th>
+						<th>Status</th>
+						<th>Schedule For Delivery</th>
+					</tr>
+				</thead>
+			<tbody>
+				<?php
+				
+                if($orders != false){
+					foreach($orders as $o){  
+						$sched=0;
+						foreach($shipped as $s){
+							if($s['orderID'] == $o['orderID'])
+							$sched++;
+						}
+						if($sched==0){
+							echo '<tr><td><a href="'.base_url('knoxville/viewTransaction/'.$o['orderID']).'">Order#'.$o['orderID'].'</a></td><td>Delivery Unscheduled</td>
+						<td><a href="'.base_url('knoxville/addSched/'.$o['orderID']).'">Add a schedule</a></td></tr>';
+						//echo base_url('knoxville/delClient/'.c['clientID'])
+						}
+					}
+                }
+				?>
+			</tbody>
+		</table>
+    </div>
+	<p class="text-center report hdr">Items on Stock</p>
+	<div class="searchLeft">
+		Search stocks: <input type="text" id="myInput" onkeyup="Item2()" placeholder="Type any value" title="Type ANY value"/>
+	</div>
+        <div class="table-responsive tbls">
+		
             <table class="table table-striped" id="myTable">
                 <thead>
                     <tr id="trHead">
@@ -66,37 +104,9 @@ Search stocks: <input type="text" id="myInput" onkeyup="Item2()" placeholder="Ty
 			</tbody>
 		</table>
     </div>
-	
-	 <div class="table-responsive table">
-            <table class="table table-striped" id="Table">
-                <thead>
-                    <tr id="trHead">
-						<th>OrderID</th>
-						<th>Status</th>
-						<th>Schedule For Delivery</th>
-					</tr>
-				</thead>
-			<tbody>
-				<?php
-				
-                if($orders != false){
-					foreach($orders as $o){  
-						$sched=0;
-						foreach($shipped as $s){
-							if($s['orderID'] == $o['orderID'])
-							$sched++;
-						}
-						if($sched==0){
-							echo '<tr><td><a href="'.base_url('knoxville/viewTransaction/'.$o['orderID']).'">Order#'.$o['orderID'].'</a></td><td>Delivery Unscheduled</td>
-						<td><a href="'.base_url('knoxville/addDeliverySched/'.$o['orderID']).'">Add a schedule</a></td></tr>';
-						//echo base_url('knoxville/delClient/'.c['clientID'])
-						}
-					}
-                }
-				?>
-			</tbody>
-		</table>
     </div>
+	
+</div>
 
 </body>
 </html>
