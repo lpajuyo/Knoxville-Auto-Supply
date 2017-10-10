@@ -16,7 +16,7 @@
 		Search: <input type="text" id="myInput" onkeyup="Sales()" placeholder="Type any value" title="Type ANY value">
 	</div>
         <div class="table-responsive table">
-            <table class="table table-striped" id="myTable">
+            <table class="table table-striped">
                 <thead>
                     <tr id="trHead">
 						<th>User ID</th>
