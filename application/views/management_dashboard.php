@@ -41,7 +41,7 @@
     </script>
 	
 	
-Search stocks: <input type="text" id="myInput" onkeyup="Item()" placeholder="Type any value" title="Type ANY value"/>
+Search stocks: <input type="text" id="myInput" onkeyup="Item2()" placeholder="Type any value" title="Type ANY value"/>
 
     
         <div class="table-responsive table">
