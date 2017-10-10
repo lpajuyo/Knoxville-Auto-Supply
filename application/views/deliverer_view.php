@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <div class="tab-content">
-Search: <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Type any value" title="Type ANY value">
+Search: <input type="text" id="myInput" onkeyup="Deliverer()" placeholder="Type any value" title="Type ANY value">
 	<a href="<?php echo base_url('knoxville/addDeliverer')?>" class="addLink"><span class="glyphicon glyphicon-plus"> </span>&nbsp;Add Deliverer</a>
 	
 <div class="table-responsive table">
@@ -17,7 +17,7 @@ Search: <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Type
         <tbody>
             <?php
                 foreach($deliverer as $c){  
-                    echo "<tr><td>".$c['delivererID']."</td><td>".$c['vehicle']."<tr><td>".$c['contact_no']."</td><td>".$c['assigned']
+                    echo "<tr><td>".$c['delivererID']."</td><td>".$c['vehicle']."<td>".$c['contact_no']."</td><td>".$c['assigned']
                     .'</td><td><a href="'.base_url('knoxville/updateDeliverer/'.$c['delivererID']).'">Edit</a> | <a href="'.base_url('knoxville/delDeliverer/'.$c['delivererID']).'">Delete</a></td></tr>';
                     //echo base_url('knoxville/delClient/'.c['clientID'])
                 }

@@ -4,7 +4,7 @@
 	?>
 	
 		
-		<select name="status" id="status" onChange="changetextbox();">
+		<select name="status" id='status' form="delivery">
 			<option selected disabled hidden>Status</option>
 				<option value="Forwarded to">Forwarded</option>
 				<option value="Arrived at">Arrived</option>
@@ -13,7 +13,6 @@
 		
 		<label>to</label>
  		<input type="text" name="location" placeholder="location" id="location"/>
-		
 		<label>Date:</label>
  		<input type="date" name="date" value="<?php echo date('Y-m-d'); ?>" />
  		<label>Time: &nbsp;</label>		
