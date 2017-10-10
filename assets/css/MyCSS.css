@@ -11,6 +11,20 @@ body{
 	margin: 5px 45px 100px;
 	width:90%;
 }
+.search{
+	color: #34495E;
+	float: right;
+	margin-right: 300px;
+	margin-top: 15px;
+	margin-bottom: 10px;
+}
+.searchClient{
+	color: #34495E;
+	float: right;
+	margin-right: 335px;
+	margin-top: 15px;
+	margin-bottom: 10px;
+}
 div#table_include{
   width:500px;
   height:300px;
@@ -31,7 +45,7 @@ tbody{
 	text-decoration: underline;
 	font-family: verdana;
 	font-size: 15px;
-	margin: 15px 90px 5px;
+	margin: 20px 90px 5px;
 	float: right;
 }
 #users{
