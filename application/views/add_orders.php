@@ -48,11 +48,11 @@
 	<div class="searchMid">
 		Search: <input class="searchbox" type="text" id="myInput" onkeyup="Item()" placeholder="Type any value" title="Type ANY value">
 	</div>
-	<div>
+	<div style="margin-left: -30px;">
     <table class="table table-striped" id="myTable">
                 <thead>
                     <tr id="trHead">
-						<th>Item Description</th>
+						<th><label class="thHead">Item Description</label></th>
 						<th>
 							<label class="thHead" for="price">Price</label>
 						</th>
@@ -71,15 +71,16 @@
                     foreach($items as $c){  
                     $counter++;
                         echo '<tr><td>'.$c['item_desc'].'</td>
-                            <td class="col-sm-2">
+                            <td class="col-sm-2" >
 
-                                <input type="number" class="form-control" id="price'.$counter.'"  name="price[]" value="0" disabled />
+                                <input style="width: 60px;" type="number" class="form-control" id="price'.$counter.'"  name="price[]" value="0" disabled />
                             </td>
                             <td class="col-sm-2">							
-                                <input type="number" class="form-control" id="quantity'.$counter.'"  name="quantity[]" value="0" disabled />
+                                <input style="width: 60px;" type="number" class="form-control" id="quantity'.$counter.'"  name="quantity[]" value="0" disabled />
                             </td>
                             
-                            <td><input type="checkbox" name="itemList[]" id="items'.$counter.'" value="'.$c['itemID'].'" onClick="toggle('."'items".$counter."'".', '."'price".$counter."'".', '."'quantity".$counter."'".')"  /></td>
+                            <td>
+							<input   style="margin: 15px;" type="checkbox" name="itemList[]" id="items'.$counter.'" value="'.$c['itemID'].'" onClick="toggle('."'items".$counter."'".', '."'price".$counter."'".', '."'quantity".$counter."'".')"  /></td>
                             
                             ';
                             
@@ -93,7 +94,7 @@
    </table>
    </div>
 	</form>
-	<div class="col-sm-6">
+	<div class="col-sm-6" style="margin-top: -120px;">
 	<button class="subOrder" type="submit">
 		<span class="glyphicon glyphicon-download-alt"> </span> Save
 	</button>
