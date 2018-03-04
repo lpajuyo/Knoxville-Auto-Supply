@@ -17,7 +17,7 @@
 <body>
 <div class="container">
 <a class="headKnox" href="<?php echo base_url("knoxville")?>"><h2 class="text-center heads">KNOXVILLE AUTO SUPPLY</h2></a>
-    <div class="tabbable">
+<a href="<?php echo base_url('logout');?>"><span class="glyphicon glyphicon-log-out"> Logout</span></a>
         <div class="row">
             <ul class="nav nav-tabs">
                <ul class="nav navbar-nav">
