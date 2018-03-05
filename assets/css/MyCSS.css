@@ -43,7 +43,7 @@ body{
    font-size: 13px;
    display:block;
    margin:0 0 0 1px;
-   padding: 6px 8px 6px 16px;
+   padding: 6px 2px 6px 16px;
    background: #E5E7E9;
    color:#1B2631;
    text-decoration:none;
@@ -64,6 +64,8 @@ body{
    background:#3a425b;
    font-weight:bold;	
 }
+
+
 .tab-content{
 	margin-left: 200px;
 	width: 80%;	
@@ -91,6 +93,7 @@ body{
 	max-height: 300px;
 	overflow: scroll;
 }
+
 
 .search{
 	color: #34495E;
@@ -183,6 +186,7 @@ tbody{
 	font-family: verdana;
 	font-size: 13px;
 }
+.logout{font-family: verdana; font-size: 16px;}
 .addLink{
 	text-decoration: underline;
 	font-family: verdana;
