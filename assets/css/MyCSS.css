@@ -1,9 +1,73 @@
 body{
 	background-color: #F7F9F9;
 }
+.sidenav {
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+.sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 15px;
+    color: #818181;
+    display: block;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+.nav-tabs {
+  
+   height: 100%;
+   width: 200px;
+   position: fixed;
+   z-index: 1;
+   top: 0;
+   left: 0;
+   background-color: #111;
+   overflow-x: hidden;
+   padding-top: 20px;
+}
+
+.nav-tabs a {
+   font-family: sans-serif;
+   font-weight: bold;
+   font-size: 13px;
+   display:block;
+   margin:0 0 0 1px;
+   padding: 6px 8px 6px 16px;
+   background: #E5E7E9;
+   color:#1B2631;
+   text-decoration:none;
+   line-height:1.3em;
+}
+
+.nav-tabs ul li a:hover {
+   background:#34495E;
+   color:#fff;
+}
+.nav-tabs ul li a.active{
+   background:#34495E;
+   color:#fff;	
+}
+
+.nav-tabs ul li a.active:hover {
+   color:#fff;
+   background:#3a425b;
+   font-weight:bold;	
+}
 .tab-content{
-	margin-left: 120px;
+	margin-left: 200px;
 	width: 80%;	
+	
 	background-color: #FBFCFC;
 	box-shadow: 1px 1px 10px #B0C4DE;
 }
@@ -297,69 +361,7 @@ div#login{
 .tabbable{
 	margin: 30px 0px;
 }
-.nav-tabs {
-   float:left;
-   width:100%;
-   background:#F8F8FF;
-   border-bottom:4px solid #3a425b;
-   overflow:hidden;
-   position:relative;
-}
-.nav-tabs ul {
-   clear:left;
-   float:left;
-   list-style:none;
-   margin:0;
-   padding:0;
-   position:relative;
-   left:50%;
-   text-align:center;
-}
-.nav-tabs ul li {
-   display:block;
-   float:left;
-   list-style:none;
-   margin:0;
-   padding:0;
-   position:relative;
-   right:50%;
-}
-.nav-tabs ul li a {
-   font-family: sans-serif;
-   font-weight: bold;
-   font-size: 13px;
-   display:block;
-   margin:0 0 0 1px;
-   padding:10px 19px;
-   background: #E5E7E9;
-   color:#1B2631;
-   text-decoration:none;
-   line-height:1.3em;
-}
-.nav-tabs ul li a p {
-   font-family: sans-serif;
-   font-size: 12px;
-   display:block;
-   margin:0 0 0 1px;
-   background: #E5E7E9;
-   color:#424949;
-   text-decoration:none;
-   line-height:1.3em;
-}
-.nav-tabs ul li a p:hover, .nav-tabs ul li a:hover {
-   background:#34495E;
-   color:#fff;
-}
-.nav-tabs ul li a.active, .nav-tabs ul li p.active{
-   background:#34495E;
-   color:#fff;	
-}
 
-.nav-tabs ul li a.active:hover, .nav-tabs ul li p.active:hover {
-   color:#fff;
-   background:#3a425b;
-   font-weight:bold;	
-}
 .font{
    margin-left:5px;
    font-family: sans-serif;
@@ -397,4 +399,7 @@ div#login{
 }
 .lefty{
 	margin-left:75px;
+}
+.tex{
+	margin-left: 80px;
 }
