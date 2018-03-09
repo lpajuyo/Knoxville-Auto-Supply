@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <div class="tab-content">
 <?php echo validation_errors(); ?>
-<div class="card-body">
+<div class="card-body" style="padding: 10px;">
 
-	<button data-toggle="modal" data-target="#squarespaceModal"><span class="glyphicon glyphicon-plus"> </span>&nbsp;Add Order</button>
+	<button data-toggle="modal" data-target="#squarespaceModal" style="margin-left: 88%;"><span class="glyphicon glyphicon-plus"> </span>&nbsp;Add Order</button>
 	
 
 <div class="modal fade" id="squarespaceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
@@ -15,7 +15,7 @@
 		</div>
 		<div class="modal-body">
 		<div>&nbsp;</div>
-  <div class="container ClientForm">
+  <div class="container ">
 		<div>
 			<label class="control-label col-sm-4" for="company">Company: &nbsp; </label>
 		<div class="col-sm-4 user1" id="userID">
@@ -30,30 +30,39 @@
 		</div>
 	</div>
 	
-	<div>
+	<div class="ClientForm">
 		<label class="control-label col-sm-4" for="date">Date:</label>
  		<input class="form-control col-sm-4" type="date" name="date" value="<?php echo date('Y-m-d'); ?>" />
 	</div>
-	<div>
+	<div class="ClientForm">
  		<label class="control-label col-sm-4" for="date">Time: &nbsp;</label>		
 		<input class="form-control col-sm-4" type="time" name="time" value="<?php date_default_timezone_set('Asia/Manila'); echo  date("H:i"); ?>"/>
 	</div>	
     
 	
-	<div>
+	<div class="ClientForm">
 	
 		<label class="control-label col-sm-4" for="transaction">Transaction: &nbsp;</label>		
 		<select class="form-control col-sm-4" name="trans" id="trans">
 			<option value="Quoted">Quote</option>
 			<option value="Purchased">Purchase</option>
 		</select>
-	<div>
-	</div>					
+	
+				
 							
 		<label class="control-label col-sm-4" for="duedate">Due Date: </label>
 		<input class="form-control col-sm-4" type="date" name="duedate" value="<?php echo date('Y-m-d', strtotime( date('Y-m-d'). ' + 7 days'))?>"/>
-		
+	
+
+		<div style="margin-left: 28%;" >
+			<input class="subUpdate" type="submit" value="SUBMIT"/>
+		</div>	
+	
     </div>
+	
+		
+	
+	
     </div>
     </div>
     </div>

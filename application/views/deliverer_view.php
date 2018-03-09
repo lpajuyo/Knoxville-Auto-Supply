@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <div class="tab-content">
   <?php echo validation_errors(); ?>
-<div class="card-body">
-	<button data-toggle="modal" data-target="#squarespaceModal"><span class="glyphicon glyphicon-plus"> </span>&nbsp;Add Deliverer</button>
+<div class="card-body" style="padding: 10px;"> 
+	<button data-toggle="modal" data-target="#squarespaceModal" style="margin-left: 87%;" ><span class="glyphicon glyphicon-plus"> </span>&nbsp;Add Deliverer</button>
 	
 
 <div class="modal fade" id="squarespaceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
@@ -14,24 +14,24 @@
 		</div>
 		<div class="modal-body">
 		<div>&nbsp;</div>
-  <div class="container ClientForm">
+  <div class="container">
  
-    <div>
+    <div class="ClientForm">
 		<label class="control-label col-sm-4" for="vehicle">Vehicle:</label>
 		<input class="form-control col-sm-4" type="text" name="vehicle" id="vehicle" />
     </div>
     
-    <div>
+    <div class="ClientForm">
 		<label class="control-label col-sm-4" for="cnum">Contact Number:</label>
 		<input class="form-control col-sm-4" type="text" name="cnum" id="cnum" />
     </div>
     
-    <div class="text-center col-sm-6">
-		<label class="control-label" for="assigned">Assigned personnel</label>
+    <div class="ClientForm">
+		<label class="control-label col-sm-4" for="assigned">Assigned personnel </label>
 	    <input class="form-control" type="text" name="assigned" id="assigned" />
 	</div>
 	
-	<div class="col-sm-6">
+	<div class="col-sm-6" style="margin-left: 150px;">
 		<input class="subUpdate" type="submit" value="SUBMIT"/>
 	</div>
   </div>

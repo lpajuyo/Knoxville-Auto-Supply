@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <div class="tab-content">
 <?php echo validation_errors(); ?>
-<div class="card-body">
-	<button data-toggle="modal" data-target="#squarespaceModal"><span class="glyphicon glyphicon-plus"> </span>&nbsp;Add Item</button>
+<div class="card-body" style="padding: 10px;">
+	<button data-toggle="modal" data-target="#squarespaceModal" style="margin-left: 88%;"><span class="glyphicon glyphicon-plus"> </span>&nbsp;Add Item</button>
 	
 
 <div class="modal fade" id="squarespaceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
@@ -13,19 +13,19 @@
 			<h3 class="modal-title" id="lineModalLabel">Add Item</h3>
 		</div>
 		<div class="modal-body">
- <div class="container ClientForm">
+ <div class="container">
  
-    <div>
+    <div class="ClientForm">
 		<label class="control-label col-sm-4" for="idesc">Item Desc.:</label>
 		<input class="form-control col-sm-4" type="text" name="idesc" id="idesc" />
     </div>
     
-    <div>
+    <div class="ClientForm">
 		<label class="control-label col-sm-4" for="stocks">Stocks:</label>
 		<input class="form-control col-sm-4" type="text" name="stocks" id="stocks" />
     </div>
     
-	<div class="col-sm-6">
+	<div class="col-sm-6" style="margin-left: 150px;">
 		<input class="subUpdate" type="submit" value="SUBMIT"/>
 	</div>
   </form>
