@@ -1,8 +1,39 @@
 <!DOCTYPE html>
 <div class="tab-content">
+<?php echo validation_errors(); ?>
+<div class="card-body">
+	<button data-toggle="modal" data-target="#squarespaceModal"><span class="glyphicon glyphicon-plus"> </span>&nbsp;Add Item</button>
+	
 
-	<a href="<?php echo base_url('knoxville/addItem')?>" class="addLink"><span class="glyphicon glyphicon-plus"> </span>&nbsp;Add Item</a>
-
+<div class="modal fade" id="squarespaceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+	<div class="modal-content">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+			<h3 class="modal-title" id="lineModalLabel">Add Item</h3>
+		</div>
+		<div class="modal-body">
+ <div class="container ClientForm">
+ 
+    <div>
+		<label class="control-label col-sm-4" for="idesc">Item Desc.:</label>
+		<input class="form-control col-sm-4" type="text" name="idesc" id="idesc" />
+    </div>
+    
+    <div>
+		<label class="control-label col-sm-4" for="stocks">Stocks:</label>
+		<input class="form-control col-sm-4" type="text" name="stocks" id="stocks" />
+    </div>
+    
+	<div class="col-sm-6">
+		<input class="subUpdate" type="submit" value="SUBMIT"/>
+	</div>
+  </form>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
 	<div class="search1">
 		Search: <input type="text" id="myInput" onkeyup="Item()" placeholder="Type any value" title="Type ANY value">
 	</div>
