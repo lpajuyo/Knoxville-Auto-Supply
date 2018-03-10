@@ -13,7 +13,11 @@
 		<div class="modal-body">
      <div>&nbsp;</div>
     <div class="container ">
- 
+  <?php echo validation_errors(); ?>
+  
+  <?php echo form_open('knoxville/addSalesAgent'); //this is equal to <form method="post" accept-charset="utf-8" action="http://localhost/Knoxville-Auto-Supply/knoxville/addClient">
+                                     //to add attributes, edit to: echo form('knoxville/addClient','class="lala" id="lala"'); 
+  ?> 
     <div class="ClientForm">
 		<label class="control-label col-sm-4" for="userID">UserID:</label>
 		<input class="form-control col-sm-4" type="text" name="userID" id="userID" />

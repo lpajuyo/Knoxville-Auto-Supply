@@ -5,6 +5,7 @@
 	
 
 <div class="modal fade" id="squarespaceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+
   <div class="modal-dialog">
 	<div class="modal-content">
 		<div class="modal-header">
@@ -13,7 +14,12 @@
 		</div>
 		<div class="modal-body">
   <div class="container">
- 
+	<?php echo validation_errors(); ?>
+  
+
+  <?php echo form_open('knoxville/addClient'); //this is equal to <form method="post" accept-charset="utf-8" action="http://localhost/Knoxville-Auto-Supply/knoxville/addClient">
+                                     //to add attributes, edit to: echo form('knoxville/addClient','class="lala" id="lala"'); 
+  ?> 
     <div class="Client">
 		<label class="control-label col-sm-4" for="cname">Client Name:</label>
 		<?php echo form_error('cname', '<p class="text-danger">', '</p>'); ?>

@@ -312,7 +312,7 @@ class Knoxville extends CI_Controller {
                      }
                  }
             }
-             redirect('knoxville/viewOrders');
+             redirect('knoxville/viewOrders'); 
 		}
 	}
     

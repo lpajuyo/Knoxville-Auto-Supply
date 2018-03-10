@@ -29,7 +29,9 @@
         <tbody>
             <?php
 				$counter = 0;
+				if($Qrec != NULL)
                 foreach($Qrec as $Q){
+					
 					$y = 0;
 				foreach($trans as $c)
 					{
