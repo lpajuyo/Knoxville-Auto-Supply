@@ -77,21 +77,19 @@ body{
 	margin: 10px 45px 150px;
 	width:90%;
 	max-height: 700px;
-	overflow: scroll;
 }
 .tables{
 	margin: 10px 45px 0px;
 	width:90%;
 	min-height: 30px;
 	max-height: 300px;
-	overflow: scroll;
+	
 }
 .tbls{
 	margin: 0px 45px 0px;
 	width:90%;
 	min-height: 30px;
 	max-height: 300px;
-	overflow: scroll;
 }
 
 
@@ -185,6 +183,8 @@ tr#trHead{
 tbody{
 	font-family: verdana;
 	font-size: 13px;
+	overflow-y: scroll;
+	
 }
 .logout{font-family: verdana; font-size: 16px;}
 .addLink{
