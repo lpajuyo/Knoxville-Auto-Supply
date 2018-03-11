@@ -69,7 +69,7 @@ body{
 .tab-content{
 	margin-left: 200px;
 	width: 80%;	
-	
+	border-radius: 15px;
 	background-color: #FBFCFC;
 	box-shadow: 1px 1px 10px #B0C4DE;
 }
@@ -179,6 +179,7 @@ tr#trHead{
 	font-size: 13.5px;
 	color:#FAFAFA;
 	background-color: #1A5276;
+	
 }
 tbody{
 	font-family: verdana;
