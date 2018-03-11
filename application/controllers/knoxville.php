@@ -42,8 +42,8 @@ class Knoxville extends CI_Controller {
 	}
     public function viewSalesReport(){
         if($_POST['range']=='week'){
-            $startDate = date('Y-m-d',strtotime('next sunday - 1 week'));
-            $endDate = date('Y-m-d',strtotime('next sunday - 1 second'));
+            $startDate = date('jS F, Y',strtotime('next sunday - 1 week'));
+            $endDate = date('jS F, Y',strtotime('next sunday - 1 second'));
             $condition = "(status='Cancelled' OR status='Returned' or status='Purchased') AND date BETWEEN '$startDate' AND '$endDate'";
             $transData=$this->Transaction->read($condition);
             
@@ -62,8 +62,8 @@ class Knoxville extends CI_Controller {
             echo $this->load->view('sales_report',$data,TRUE);
         }
         else if($_POST['range']=='month'){
-            $startDate = date('Y-m-d',strtotime('first day of this month'));
-            $endDate = date('Y-m-d',strtotime('last day of this month'));
+            $startDate = date('jS F, Y',strtotime('first day of this month'));
+            $endDate = date('jS F, Y',strtotime('last day of this month'));
             $condition = "(status='Cancelled' OR status='Returned' or status='Purchased') AND date BETWEEN '$startDate' AND '$endDate'";
             $transData=$this->Transaction->read($condition);
             
@@ -88,7 +88,7 @@ class Knoxville extends CI_Controller {
             echo $this->load->view('sales_report',$data,TRUE);
         }
         else if($_POST['range']=='day'){
-            $date = date('Y-m-d',strtotime('today'));
+            $date = date('jS F, Y',strtotime('today'));
             //$condition=array('date'=>$date, 'status'=>'Purchased');
             $condition= "date='$date' AND (status='Cancelled' OR status='Returned' or status='Purchased')";
             $transData=$this->Transaction->read($condition);
