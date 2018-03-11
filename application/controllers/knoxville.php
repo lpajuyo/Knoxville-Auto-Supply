@@ -32,6 +32,8 @@ class Knoxville extends CI_Controller {
 				$orders = $this->Order->read();
 				$data['shipped'] = $shipped;
 				$data['orders'] = $orders;
+                $sales = $this->SalesAgent->read();
+                $data['sales'] = $sales;
 				$this->load->view('include/header',$header_data);
                 $this->load->view('management_dashboard',$data);
 				

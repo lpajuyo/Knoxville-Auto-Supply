@@ -77,6 +77,7 @@
 			</tbody>
 		</table>
     </div>
+    </div>
 	<p class="text-center report hdr">Items on Stock</p>
 	<div class="searchLeft">
 		Search stocks: <input type="text" id="myInput" onkeyup="Item2()" placeholder="Type any value" title="Type ANY value"/>
@@ -102,10 +103,34 @@
                 }
 				?>
 			</tbody>
-		</table>
-    </div>
-    </div>
-	
+			</table>
+   		</div>
+   	<p class="text-center report hdr">Sales</p>
+   	<div class="searchLeft">
+		Search sales: <input type="text" id="myInput" onkeyup="alapa()" placeholder="Type any value" title="Type ANY value"/>
+	</div>
+   	<div class="table-responsive tbls">
+		
+            <table class="table table-striped" id="myTable">
+                <thead>
+                    <tr id="trHead">
+						<th>User ID</th>
+						<th>Name</th>
+						<th>Total Sales</th>
+					</tr>
+				</thead>
+			<tbody>
+				<?php
+                if($sales != false){
+					foreach($sales as $c){  
+						echo "<tr><td>".$c['userID']."</td><td>".$c['fullname']
+						.'</td></tr>';
+					}
+                }
+				?>
+			</tbody>
+			</table>
+   		</div>
 </div>
 
 </body>
