@@ -117,11 +117,21 @@ class Knoxville extends CI_Controller {
     }
     
     public function viewSalesAgents(){
-        $result_array = $this->SalesAgent->read();
-        
-        $data['sales_agents'] = $result_array; 
+        $userID =  $this->session->userdata('userID');
+        $data['userID']=$userID;
+        $condition = array('userID' => $userID);
+        $result_array = $this->SalesAgent->read($condition);
+         foreach($result_array as $o){
+            $data['userID'] = $o['userID'];
+            $data['pass'] = $o['password'];
+            $data['name'] = $o['fullname'];
+            $data['bday'] = $o['birthdate'];
+            $data['email'] = $o['email'];
+            $data['cnum'] = $o['contact_no'];
+            $data['photo'] = $o['photo'];
+        }
 		$header_data['title'] = "View Sales Agents";
-			$this->load->view('include/header',$header_data);
+	    $this->load->view('include/header',$header_data);
         $this->load->view('sales_agent_view',$data);
     }
     
@@ -166,11 +176,14 @@ class Knoxville extends CI_Controller {
             $data['bday'] = $o['birthdate'];
             $data['email'] = $o['email'];
             $data['cnum'] = $o['contact_no'];
+            $data['photo'] = $o['photo'];
+            $url = $o['photo'];
             if($o['isAdmin']>0)
                 $isAdmin='checked';
             else
                 $isAdmin='';
             $data['isAdmin'] = $isAdmin;
+
         }
         $rules = array(
                     array('field'=>'userID', 'label'=>'User ID', 'rules'=>'required'),
@@ -192,7 +205,8 @@ class Knoxville extends CI_Controller {
                 $isAdmin=1;
             else
                 $isAdmin=0;
-            $newRecord=array('userID'=>$_POST['userID'],'password'=>$_POST['pass'],'fullname'=>$_POST['name'],'birthdate'=>$_POST['bday'],'email'=>$_POST['email'],'contact_no'=>$_POST['cnum'],'isAdmin'=>$isAdmin);
+            $url = $this->do_upload($_POST['file']);
+            $newRecord=array('userID'=>$_POST['userID'],'password'=>$_POST['pass'],'fullname'=>$_POST['name'],'birthdate'=>$_POST['bday'],'email'=>$_POST['email'],'contact_no'=>$_POST['cnum'],'isAdmin'=>$isAdmin,'photo'=>$url);
             $this->SalesAgent->update($newRecord);
             redirect('knoxville/viewSalesAgents');
         }
@@ -695,4 +709,45 @@ class Knoxville extends CI_Controller {
         $this->Deliverer->del($where_array);
         redirect('knoxville/viewDeliverer');
     }
+    public function changepass(){
+        $user =  $this->session->userdata('userID');
+        $condition = array('userID' => $user);
+        $array = $this->SalesAgent->read($condition);
+        foreach($array as $o){
+                    $password = $o['password'];
+                    $userID = $o['userID'];   
+        }
+        $rules = array(
+                    array('field'=>'password', 'label'=>'Password', 'rules'=>'required|matches['.$password.']'),
+                    array('field'=>'confirm_password', 'label'=>'New Password', 'rules'=>'required'),
+                    array('field'=>'new_password', 'label'=>'Re-enter New Password', 'rules'=>'required|matches[confirm_password]')
+        );
+        $this->form_validation->set_rules($rules);
+        $this->form_validation->set_error_delimiters('<p class="error">', '</p>');
+        if($this->form_validation->run()==FALSE){
+            $user =  $this->session->userdata('userID');
+            $condition = array('userID' => $user);
+            $result_array = $this->SalesAgent->read($condition);
+            $data['d'] = $result_array;
+            $header_data['title'] = "CHANGE PASSWORD";
+            $this->load->view('include/header',$header_data);       
+            $this->load->view('changepass',$data);
+        }else{
+            $user =  $this->session->userdata('userID');
+            $change=array('userID'=>$userID,'password'=>$_POST['new_password']);
+            $this->SalesAgent->update($change);
+            redirect(knoxville/viewSalesAgents);
+        }
+    }
+    public function do_upload()
+        {
+            $type = explode('.', $_FILES["file"]["name"]);
+            $type = strtolower($type[count($type)-1]);
+            $url = "./assets/uploads/".uniqid(rand()).'.'.$type;
+            if(in_array($type, array("jpg", "jpeg", "gif", "png")))
+                if(is_uploaded_file($_FILES["file"]["tmp_name"]))
+                    if(move_uploaded_file($_FILES["file"]["tmp_name"],$url))
+                        return $url;
+            return "";
+        }
 }

@@ -1,14 +1,24 @@
 <!DOCTYPE html>
 
 <div class="tab-content">
-
+<div>&nbsp;</div>
+<h2 class="text-center">UPDATE PROFILE</h2>
+<div class="profile-userpic">
+          
+        <img src="<?php echo base_url($photo);?>" class="img-responsive img-circle" alt="profilepic" name="photo" id="photo">
+        <label>Change your profile picture : </label>
+        
+      <?php echo form_open_multipart('knoxville/updateSalesAgent/'.$userID.''); //this is equal to <form role="form" method="post" enctype="multipart/form-data" accept-charset="utf-8" action="http://localhost/Knoxville-Auto-Supply/knoxville/updateSalesAgent"?>
+        <input class="text-center" id="file" name="file" type="file" />
+        
+</div>
   <?php echo validation_errors(); ?>
   
   <?php echo form_open('knoxville/updateSalesAgent'); //this is equal to <form method="post" accept-charset="utf-8" action="http://localhost/Knoxville-Auto-Supply/knoxville/addClient">
                                      //to add attributes, edit to: echo form('knoxville/addClient','class="lala" id="lala"'); 
   ?> 
   <div>&nbsp;</div>
-  <h2 class="text-center">UPDATE SALES AGENT</h2>
+  
   <div class="container ClientForm">
     <div>
 		<label class="control-label col-sm-4" for="userID">UserID:</label>
@@ -39,11 +49,6 @@
 		<label class="control-label col-sm-4" for="cnum">Contact Number:</label>
 		<input class="form-control col-sm-4" type="text" name="cnum" id="cnum" value="<?php echo $cnum?>" />
     </div>
-    
-    <div class="col-sm-4">
-		<label for="isAdmin">Admin?</label>
-		<input class="check"  type="checkbox" name="isAdmin" id="isAdmin" <?php echo $isAdmin?> />
-	</div>
     <div class="col-sm-6">
 		<input class="subUpdate" type="submit" value="SUBMIT" />
 	</div>
