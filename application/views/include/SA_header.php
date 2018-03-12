@@ -16,15 +16,17 @@
 </head>
 <body>
 <div class="container">
+<a class="headKnox" href="<?php echo base_url("knoxville")?>"><h2 class="text-center heads tex">KNOXVILLE AUTO SUPPLY</h2></a>
+<a href="<?php echo base_url('logout');?>" style="float:right;" class="logout"><span class="glyphicon glyphicon-log-out ">LOGOUT</a><br/><br/>
     <div class="tabbable">
         <div class="row">
             <ul class="nav nav-tabs">
                <ul class="nav navbar-nav">
-					
-					<li><a href="<?php echo base_url('knoxville/viewClients')?>" class="navigation">CLIENT MANAGEMENT<p>Manage client</p></a></li>
-					<li><a href="<?php echo base_url('knoxville/viewOrders')?>" class="navigation">SALES MANAGEMENT<p>Manage sales management</p></a></li>
-					<li><a href="<?php echo base_url('knoxville/viewItems')?>" class="navigation">INVENTORY MANAGEMENT<p>Manage inventory</p></a></li>
-					<li><a href="<?php echo base_url('knoxville/viewDeliverer')?>" class="navigation">DELIVERER MANAGEMENT<p>Manage delivery</p></a></li>
+					<li><a href="<?php echo base_url('SalesAgent/viewSalesAgent')?>" class="navigation">SALES AGENT<p>Manage client</p></a></li>
+					<li><a href="<?php echo base_url('SalesAgent/viewClients')?>" class="navigation">CLIENT MANAGEMENT<p>Manage client</p></a></li>
+					<li><a href="<?php echo base_url('SalesAgent/viewOrders')?>" class="navigation">SALES MANAGEMENT<p>Manage sales management</p></a></li>
+					<li><a href="<?php echo base_url('SalesAgent/viewItems')?>" class="navigation">INVENTORY MANAGEMENT<p>Manage inventory</p></a></li>
+					<li><a href="<?php echo base_url('SalesAgent/viewDeliverer')?>" class="navigation">DELIVERER MANAGEMENT<p>Manage delivery</p></a></li>
 					
 				</ul>
             </ul>

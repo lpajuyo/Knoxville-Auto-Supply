@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Knoxville extends CI_Controller {
+class SalesAgent extends CI_Controller {
     public function __construct(){
         parent::__construct();
         $this->load->model('client_model','Client');
@@ -22,11 +22,9 @@ class Knoxville extends CI_Controller {
         if($this->session->userdata('userID')){
             //$session_data=$this->session->userdata('logged_in');
             $data['userID']=$this->session->userdata('userID');
-            if($this->session->userdata('isAdmin')>0){
 				$header_data['title'] = "Management Dashboard";
-				$this->load->view('include/header',$header_data);
+				$this->load->view('include/SA_header',$header_data);
                 $this->load->view('management_dashboard',$data);
-            }
         }
 	}
     
@@ -93,13 +91,23 @@ class Knoxville extends CI_Controller {
         }
     }
     
-    public function viewSalesAgents(){
-        $result_array = $this->SalesAgent->read();
-        
-        $data['sales_agents'] = $result_array; 
+   	 public function viewSalesAgent(){
+        $userID =  $this->session->userdata('userID');
+        $data['userID']=$userID;
+        $condition = array('userID' => $userID);
+        $result_array = $this->SalesAgent->read($condition);
+         foreach($result_array as $o){
+            $data['userID'] = $o['userID'];
+            $data['pass'] = $o['password'];
+            $data['name'] = $o['fullname'];
+            $data['bday'] = $o['birthdate'];
+            $data['email'] = $o['email'];
+            $data['cnum'] = $o['contact_no'];
+            $data['photo'] = $o['photo'];
+        }
 		$header_data['title'] = "View Sales Agents";
-			$this->load->view('include/header',$header_data);
-        $this->load->view('sales_agent_view',$data);
+	    $this->load->view('include/SA_header',$header_data);
+	    $this->load->view('sales_agent_profile',$data);
     }
     
     public function addSalesAgent(){
@@ -118,7 +126,7 @@ class Knoxville extends CI_Controller {
         $this->form_validation->set_rules($rules);
         if($this->form_validation->run()==FALSE){
 			$header_data['title'] = "Add Sales Agent";
-			$this->load->view('include/header',$header_data);
+			$this->load->view('include/SA_header',$header_data);
             $this->load->view('add_sales_agentForm');
         }
         else{
@@ -161,7 +169,7 @@ class Knoxville extends CI_Controller {
         $this->form_validation->set_rules($rules);
         if($this->form_validation->run()==FALSE){
 			$title['title']="Update Sales Agent";
-            $this->load->view('include/header',$title);
+            $this->load->view('include/SA_header',$title);
             $this->load->view('update_sales_agentForm',$data);
         }
         else{
@@ -186,7 +194,7 @@ class Knoxville extends CI_Controller {
         
         $data['clients'] = $result_array; //Array ( [clientID] => 1 [client_name] => dsa [address] => dsa [contact_no] => 123 )
 		$header_data['title'] = "View Clients";
-        $this->load->view('include/header',$header_data);
+        $this->load->view('include/SA_header',$header_data);
         $this->load->view('client_view',$data);
     }
     
@@ -203,7 +211,7 @@ class Knoxville extends CI_Controller {
 		$this->form_validation->set_error_delimiters('<p class="error">', '</p>');
         if($this->form_validation->run()==FALSE){
 			$header_data['title'] = "Add Client";
-            $this->load->view('include/header',$header_data);
+            $this->load->view('include/SA_header',$header_data);
             $this->load->view('add_clientForm');
         }
         else{
@@ -230,7 +238,7 @@ class Knoxville extends CI_Controller {
         $this->form_validation->set_rules($rules);
         if($this->form_validation->run()==FALSE){
 			$header_data['title'] = "Update Clients";
-            $this->load->view('include/header',$header_data);
+            $this->load->view('include/SA_header',$header_data);
             $this->load->view('update_clientForm',$data);
         }
         else{
@@ -264,7 +272,7 @@ class Knoxville extends CI_Controller {
 			$this->load->model('item_model','Item');
 			$result_array = $this->Item->read();
 			$data['items'] = $result_array;
-			$this->load->view('include/header',$header_data);
+			$this->load->view('include/SA_header',$header_data);
 			$this->load->view('add_orders',$data);
         }
         else{
@@ -307,7 +315,7 @@ class Knoxville extends CI_Controller {
 		$result_array = $this->Client->read();
 		$data['clients'] = $result_array;
 		$header_data['title'] = "View Sales";
-		$this->load->view('include/header',$header_data);
+		$this->load->view('include/SA_header',$header_data);
         $this->load->view('order_view',$data);
     }
 	public function viewTransaction($orderID){
@@ -343,7 +351,7 @@ class Knoxville extends CI_Controller {
 		
 		$data['ship'] = $shipRec;
 		$header_data['title'] = "Order#$orderID: Order Details";
-		$this->load->view('include/header',$header_data);
+		$this->load->view('include/SA_header',$header_data);
         $this->load->view('trans_view',$data);
     }
     
@@ -369,7 +377,7 @@ class Knoxville extends CI_Controller {
         $this->form_validation->set_rules($rules);
         if($this->form_validation->run()==FALSE){
 			$header_data['title'] = "Update Transaction";
-            $this->load->view('include/header',$header_data);
+            $this->load->view('include/SA_header',$header_data);
             $this->load->view('update_transForm',$data);
         }
         else{
@@ -397,7 +405,7 @@ class Knoxville extends CI_Controller {
 		$data['Qrec'] = $QRec;
 		$itemsRec = $this->Item->read();
 		$data['items'] = $itemsRec;
-		 $this->load->view('include/header',$header_data);
+		 $this->load->view('include/SA_header',$header_data);
 		 $this->load->view('add_purchase',$data);
 		$count = 0; 
 		 if(!empty($_POST['itemList'])) {
@@ -431,7 +439,7 @@ class Knoxville extends CI_Controller {
 		$data['Prec'] = $PRec;
 		$itemsRec = $this->Item->read();
 		$data['items'] = $itemsRec;
-		 $this->load->view('include/header',$header_data);
+		 $this->load->view('include/SA_header',$header_data);
 		 $this->load->view('add_refundForm',$data);
 		$count = 0; 
 		 if(!empty($_POST['itemList'])) {
@@ -464,7 +472,7 @@ class Knoxville extends CI_Controller {
                 );
 		$this->form_validation->set_rules($rules);
 		if($this->form_validation->run()==FALSE){
-            $this->load->view('include/header',$header_data);
+            $this->load->view('include/SA_header',$header_data);
             $this->load->view('add_schedForm',$data);
 		}
 		else{
@@ -499,7 +507,7 @@ class Knoxville extends CI_Controller {
                 );
         $this->form_validation->set_rules($rules);
 		if($this->form_validation->run()==FALSE){
-            $this->load->view('include/header',$header_data);
+            $this->load->view('include/SA_header',$header_data);
             $this->load->view('add_DeliveryStatus',$data);
 		}
 		else{
@@ -524,7 +532,7 @@ class Knoxville extends CI_Controller {
         
         $data['item'] = $result_array; 
 		$header_data['title'] = "View Inventory";
-		$this->load->view('include/header',$header_data);
+		$this->load->view('include/SA_header',$header_data);
         $this->load->view('item_view',$data);
     }
     
@@ -540,7 +548,7 @@ class Knoxville extends CI_Controller {
 		$this->form_validation->set_error_delimiters('<p class="error">', '</p>');
         if($this->form_validation->run()==FALSE){
 			$header_data['title'] = "Add Item";
-            $this->load->view('include/header',$header_data);
+            $this->load->view('include/SA_header',$header_data);
             $this->load->view('add_itemForm');
         }
         else{
@@ -571,7 +579,7 @@ class Knoxville extends CI_Controller {
         $this->form_validation->set_rules($rules);
         if($this->form_validation->run()==FALSE){
 			$header_data['title'] = "Update Item";
-            $this->load->view('include/header',$header_data);
+            $this->load->view('include/SA_header',$header_data);
             $this->load->view('update_itemForm',$data);
         }
         else{
@@ -586,7 +594,7 @@ class Knoxville extends CI_Controller {
         
         $data['deliverer'] = $result_array; 
 		$header_data['title'] = "View Deliverers";
-		$this->load->view('include/header',$header_data);
+		$this->load->view('include/SA_header',$header_data);
         $this->load->view('deliverer_view',$data);
     }
     
@@ -602,7 +610,7 @@ class Knoxville extends CI_Controller {
         $this->form_validation->set_rules($rules);
         if($this->form_validation->run()==FALSE){
 			$header_data['title'] = "Add Deliverer";
-			$this->load->view('include/header',$header_data);
+			$this->load->view('include/SA_header',$header_data);
             $this->load->view('add_delivererForm');
         }
         else{
@@ -629,7 +637,7 @@ class Knoxville extends CI_Controller {
         $this->form_validation->set_rules($rules);
         if($this->form_validation->run()==FALSE){
 			$title['title']="Update Deliverer";
-            $this->load->view('include/header',$title);
+            $this->load->view('include/SA_header',$title);
             $this->load->view('update_delivererForm',$data);
         }
         else{
