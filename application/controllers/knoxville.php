@@ -117,21 +117,11 @@ class Knoxville extends CI_Controller {
     }
     
     public function viewSalesAgents(){
-        $userID =  $this->session->userdata('userID');
-        $data['userID']=$userID;
-        $condition = array('userID' => $userID);
-        $result_array = $this->SalesAgent->read($condition);
-         foreach($result_array as $o){
-            $data['userID'] = $o['userID'];
-            $data['pass'] = $o['password'];
-            $data['name'] = $o['fullname'];
-            $data['bday'] = $o['birthdate'];
-            $data['email'] = $o['email'];
-            $data['cnum'] = $o['contact_no'];
-            $data['photo'] = $o['photo'];
-        }
-		$header_data['title'] = "View Sales Agents";
-	    $this->load->view('include/header',$header_data);
+        $result_array = $this->SalesAgent->read();
+        
+        $data['sales_agents'] = $result_array; 
+        $header_data['title'] = "View Sales Agents";
+            $this->load->view('include/header',$header_data);
         $this->load->view('sales_agent_view',$data);
     }
     
