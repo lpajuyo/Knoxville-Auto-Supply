@@ -53,7 +53,9 @@
                     <tr id="trHead">
 						<th>OrderID</th>
 						<th>Status</th>
+						<th>Assigned Sales Agent</th>
 						<th>Schedule For Delivery</th>
+
 					</tr>
 				</thead>
 			<tbody>
@@ -67,8 +69,12 @@
 							$sched++;
 						}
 						if($sched==0){
-							echo '<tr><td><a href="'.base_url('knoxville/viewTransaction/'.$o['orderID']).'">Order#'.$o['orderID'].'</a></td><td>Delivery Unscheduled</td>
-						<td><a href="'.base_url('knoxville/addSched/'.$o['orderID']).'">Add a schedule</a></td></tr>';
+							echo '<tr>
+							<td><a href="'.base_url('knoxville/viewTransaction/'.$o['orderID']).'">Order#'.$o['orderID'].'</a></td>
+							<td>Delivery Unscheduled</td>
+							<td>'.$o['userID'].'</td>
+							<td><a href="'.base_url('knoxville/addSched/'.$o['orderID']).'">Add a schedule</a></td>
+							</tr>';
 						//echo base_url('knoxville/delClient/'.c['clientID'])
 						}
 					}
