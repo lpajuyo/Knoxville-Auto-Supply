@@ -38,5 +38,12 @@ class Order_model extends CI_Model {
         
         return $query->row_array();
     }
+
+    function count(){
+        $this->db->select('*');
+        $this->db->from($this->table);
+        $query = $this->db->get();
+        return $query->num_rows();
+    }
 }
 ?>

@@ -20,7 +20,7 @@
   ?> 
     <div class="ClientForm">
         <label class="control-label col-sm-4" for="userID">UserID:</label>
-        <input class="form-control col-sm-4" type="text" name="userID" id="userID" />
+        <input class="form-control col-sm-4" type="text" name="userID" id="userID" value="<?php echo date("y").'-002-'.str_pad($id, 3, '0', STR_PAD_LEFT) ?>" disabled />
     </div>
     
     <div class="ClientForm">
@@ -85,7 +85,9 @@
             <tbody>
                 <?php
                     foreach($sales_agents as $c){  
-                        echo "<tr><td>".$c['userID']."</td><td>".$c['password']."</td><td>".$c['fullname']."</td><td>".$c['birthdate']."</td><td>".$c['email']."</td><td>".$c['contact_no'].'</td><td><a href="'.base_url('knoxville/updateSalesAgent/'.$c['userID']).'">Edit</a> | <a href="'.base_url('knoxville/delSalesAgent/'.$c['userID']).'">Delete</a></td></tr>';
+                        $time = strtotime($c['birthdate']);
+
+                        echo "<tr><td>".$c['userID']."</td><td>".$c['password']."</td><td>".$c['fullname']."</td><td>".date('m/d/y',$time)."</td><td>".$c['email']."</td><td>".$c['contact_no'].'</td><td><a href="'.base_url('knoxville/updateSalesAgent/'.$c['userID']).'">Edit</a> | <a href="'.base_url('knoxville/delSalesAgent/'.$c['userID']).'">Delete</a></td></tr>';
                         //echo base_url('knoxville/delClient/'.c['clientID'])
                     }
                 ?>

@@ -30,5 +30,10 @@ class Sales_agent_model extends CI_Model {
     function del($where_array){
         $this->db->delete($this->table,$where_array);
     }
+
+    function count(){
+    $query = $this->db->query('SELECT * FROM sales_agent');
+    return $query->num_rows();
+    }
 }
 ?>
