@@ -238,7 +238,7 @@ class Knoxville extends CI_Controller {
         else{
             $count = $this->Client->count();
             $cid = (string) $count++;
-            $id = str_pad($cid, 11, '0', STR_PAD_LEFT)
+            $id = str_pad($cid, 11, '0', STR_PAD_LEFT);
             $clientRecord=array('clientID'=>$id,'client_name'=>$_POST['cname'],'address'=>$_POST['caddress'],'contact_no'=>$_POST['cnum']);
             $this->Client->create($clientRecord);
             redirect('knoxville/viewClients');
