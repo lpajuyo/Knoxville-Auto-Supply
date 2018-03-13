@@ -70,7 +70,7 @@
             if($deliverer != false){
                 foreach($deliverer as $c){  
                     echo "<tr><td>".$c['delivererID']."</td><td>".$c['vehicle']."<td>".$c['contact_no']."</td><td>".$c['assigned']
-                    .'</td><td><a href="'.base_url('knoxville/updateDeliverer/'.$c['delivererID']).'">Edit</a> | <a href="'.base_url('knoxville/delDeliverer/'.$c['delivererID']).'">Delete</a></td></tr>';
+                    .'</td><td><a href="'.base_url('knoxville/updateDeliverer/'.$c['delivererID']).'">Edit</a> | <a onclick="confirmDelete('.$c['delivererID'].')">Delete</a></td></tr>';
                     //echo base_url('knoxville/delClient/'.c['clientID'])
                 }
             }
@@ -79,6 +79,12 @@
     </table>
     </div>
 </div>
-
+<script>
+    function confirmDelete(delivererID){
+        var choice=confirm("Delete this deliverer?");
+        if(choice)
+            window.location.assign("<?php echo base_url('knoxville/delDeliverer'); ?>"+"/"+delivererID);
+    }
+    </script>
 </body>
 </html>
