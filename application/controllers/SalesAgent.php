@@ -22,9 +22,23 @@ class SalesAgent extends CI_Controller {
         if($this->session->userdata('userID')){
             //$session_data=$this->session->userdata('logged_in');
             $data['userID']=$this->session->userdata('userID');
-				$header_data['title'] = "Management Dashboard";
-				$this->load->view('include/SA_header',$header_data);
-                $this->load->view('management_dashboard',$data);
+			$header_data['title'] = "Management Dashboard";
+			$stock='stocks';
+			$condition = "$stock>=1";
+			$result_array = $this->Item->read($condition);
+			$data['onStock'] = $result_array; 
+			$shipped = $this->Shipment->read();
+			$data['shipped'] = $shipped;
+			$sales = $this->SalesAgent->read();
+            $data['sales'] = $sales;
+			if($userID=$this->session->userdata('userID')){
+       			$data['userID']=$userID;
+       			$condition = array('userID' => $userID);
+				$orders = $this->Order->read($condition);
+			}
+			$data['orders'] = $orders;
+			$this->load->view('include/SA_header',$header_data);
+            $this->load->view('management_dashboard',$data);
         }
 	}
     
@@ -310,8 +324,12 @@ class SalesAgent extends CI_Controller {
     }
 	
 	public function viewOrders(){
-        $result_array = $this->Order->read();
-        $data['orders'] = $result_array; 
+        if($userID=$this->session->userdata('userID')){
+       			$data['userID']=$userID;
+       			$condition = array('userID' => $userID);
+				$orders = $this->Order->read($condition);
+			}
+		$data['orders'] = $orders;
 		$result_array = $this->Client->read();
 		$data['clients'] = $result_array;
 		$header_data['title'] = "View Sales";
