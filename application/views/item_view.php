@@ -56,7 +56,9 @@
                 if($item != false){
 					foreach($item as $c){  
 						echo "<tr><td>".$c['item_desc']."</td><td>".$c['stocks']
-						.'</td><td><a href="'.base_url('knoxville/updateItem/'.$c['itemID']).'"><span class="glyphicon glyphicon-edit"></span></a> | <a href="'.base_url('knoxville/delItem/'.$c['itemID']).'"><span class="glyphicon glyphicon-trash"></span></a></td></tr>';
+
+						.'</td><td><a href="'.base_url('knoxville/updateItem/'.$c['itemID']).'"><span class="glyphicon glyphicon-edit"></span></a> | <a onclick="confirmDelete('.$c['itemID'].')"><span class="glyphicon glyphicon-trash"></span></a></td></tr>';
+
 						//echo base_url('knoxville/delClient/'.c['clientID'])
 					}
                 }
@@ -68,5 +70,12 @@
 </div>
 </div>
 </div>
+<script>
+    function confirmDelete(itemID){
+        var choice=confirm("Delete this item?");
+        if(choice)
+            window.location.assign("<?php echo base_url('knoxville/delItem'); ?>"+"/"+itemID);
+    }
+    </script>
 </body>
 </html>

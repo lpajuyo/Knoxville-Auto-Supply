@@ -74,7 +74,9 @@
                 if($clients != false){
                     foreach($clients as $c){ //Array ( [clientID] => 1 [client_name] => dsa [address] => dsa [contact_no] => 123 ) 
                         echo "<tr><td>".$c['clientID']."</td><td>".$c['client_name']."</td><td>".$c['address']."</td><td>".$c['contact_no']
-                        .'</td><td><a href="'.base_url('knoxville/updateClient/'.$c['clientID']).'"><span class="glyphicon glyphicon-edit"></span></a> | <a href="'.base_url('knoxville/delClient/'.$c['clientID']).'"><span class="glyphicon glyphicon-trash"></span></a></td></tr>';
+
+                        .'</td><td><a href="'.base_url('knoxville/updateClient/'.$c['clientID']).'"><span class="glyphicon glyphicon-edit"></span></a> | <a onclick="confirmDelete('.$c['clientID'].')"><span class="glyphicon glyphicon-trash"></span></a></td></tr>';
+
                         //echo base_url('knoxville/delClient/'.c['clientID'])
                     }
                 }
@@ -84,6 +86,12 @@
     </div>
 </div>
 </div>
-    
+    <script>
+    function confirmDelete(clientID){
+        var choice=confirm("Delete this client?");
+        if(choice)
+            window.location.assign("<?php echo base_url('knoxville/delClient'); ?>"+"/"+clientID);
+    }
+    </script>
 </body>
 </html>

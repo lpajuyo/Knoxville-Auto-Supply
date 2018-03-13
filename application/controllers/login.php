@@ -12,7 +12,12 @@ class Login extends CI_Controller {
             $this->load->view('login_view');
         }
         else {
-            redirect(base_url('knoxville'));
+            if($this->session->userdata('isAdmin')>0){
+                 redirect(base_url('knoxville'));
+            }
+            else{
+                redirect(base_url('SalesAgent'));
+            }
         }
 	}
     

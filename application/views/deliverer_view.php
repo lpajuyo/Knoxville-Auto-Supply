@@ -22,7 +22,12 @@
                                      //to add attributes, edit to: echo form('knoxville/addClient','class="lala" id="lala"'); 
   ?> 
     <div class="ClientForm">
-		<label class="control-label col-sm-4" for="vehicle">Vehicle:</label>
+    <label class="control-label col-sm-4" for="vehicle">Deliverer ID:</label>
+    <input class="form-control col-sm-4" type="text" name="delivererID" id="delivererID" value="<?php echo date("y").'-003-'.str_pad($id, 3, '0', STR_PAD_LEFT) ?>" disabled/>
+    </div>
+
+    <div class="ClientForm">
+	 	<label class="control-label col-sm-4" for="vehicle">Vehicle:</label>
 		<input class="form-control col-sm-4" type="text" name="vehicle" id="vehicle" />
     </div>
     
@@ -66,7 +71,9 @@
             if($deliverer != false){
                 foreach($deliverer as $c){  
                     echo "<tr><td>".$c['delivererID']."</td><td>".$c['vehicle']."<td>".$c['contact_no']."</td><td>".$c['assigned']
-                    .'</td><td><a href="'.base_url('knoxville/updateDeliverer/'.$c['delivererID']).'"><span class="glyphicon glyphicon-edit"></span></a> | <a href="'.base_url('knoxville/delDeliverer/'.$c['delivererID']).'"><span class="glyphicon glyphicon-trash"></span></a></td></tr>';
+
+                    .'</td><td><a href="'.base_url('knoxville/updateDeliverer/'.$c['delivererID']).'"><span class="glyphicon glyphicon-edit"></span></a> | <a onclick="confirmDelete('.$c['delivererID'].')"><span class="glyphicon glyphicon-trash"></span></a></td></tr>';
+
                     //echo base_url('knoxville/delClient/'.c['clientID'])
                 }
             }
@@ -75,6 +82,12 @@
     </table>
     </div>
 </div>
-
+<script>
+    function confirmDelete(delivererID){
+        var choice=confirm("Delete this deliverer?");
+        if(choice)
+            window.location.assign("<?php echo base_url('knoxville/delDeliverer'); ?>"+"/"+delivererID);
+    }
+    </script>
 </body>
 </html>

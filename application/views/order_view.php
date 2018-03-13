@@ -31,9 +31,14 @@
 					{
 						if ($c['clientID'] == $i['clientID'])
 						echo $i['client_name'];
-					}	
-					echo "</td><td>".$c['date']."</td><td>".$c['time']."</td><td>".$c['due']
-                    .'</td><td><a href="'.base_url('knoxville/viewTransaction/'.$c['orderID'].'').'"><span class="glyphicon glyphicon-eye-open"></span></a> | <a onclick="confirmDelete('.$c['orderID'].')"><span class="glyphicon glyphicon-trash"></span></a></td></tr>';
+
+					}
+                    $date = strtotime($c['date']);
+                    $time = strtotime($c['time']);
+                    $due = strtotime($c['due']);
+
+					echo "</td><td>".date('Y/m/d', $date)."</td><td>".date("h:i A",$time)."</td><td>".date('Y/m/d', $due).'</td><td><a href="'.base_url('knoxville/viewTransaction/'.$c['orderID'].'').'"><span class="glyphicon glyphicon-eye-open"></span></a> | <a onclick="confirmDelete('.$c['orderID'].')"><span class="glyphicon glyphicon-trash"></span></a></td></tr>';
+
                     //echo base_url('knoxville/delClient/'.c['clientID'])
 					}
             }

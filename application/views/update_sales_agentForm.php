@@ -2,16 +2,7 @@
 
 <div class="tab-content">
 <div>&nbsp;</div>
-<h2 class="text-center">UPDATE PROFILE</h2>
-<div class="profile-userpic">
-          
-        <img src="<?php echo base_url($photo);?>" class="img-responsive img-circle" alt="profilepic" name="photo" id="photo">
-        <label>Change your profile picture : </label>
-        
-      <?php echo form_open_multipart('knoxville/updateSalesAgent/'.$userID.''); //this is equal to <form role="form" method="post" enctype="multipart/form-data" accept-charset="utf-8" action="http://localhost/Knoxville-Auto-Supply/knoxville/updateSalesAgent"?>
-        <input class="text-center" id="file" name="file" type="file" />
-        
-</div>
+<h2 class="text-center">UPDATE SALES AGENT</h2>
   <?php echo validation_errors(); ?>
   
   <?php echo form_open('knoxville/updateSalesAgent'); //this is equal to <form method="post" accept-charset="utf-8" action="http://localhost/Knoxville-Auto-Supply/knoxville/addClient">

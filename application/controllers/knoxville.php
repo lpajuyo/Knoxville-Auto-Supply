@@ -42,8 +42,8 @@ class Knoxville extends CI_Controller {
 	}
     public function viewSalesReport(){
         if($_POST['range']=='week'){
-            $startDate = date('Y-m-d',strtotime('next sunday - 1 week'));
-            $endDate = date('Y-m-d',strtotime('next sunday - 1 second'));
+            $startDate = date('jS F, Y',strtotime('next sunday - 1 week'));
+            $endDate = date('jS F, Y',strtotime('next sunday - 1 second'));
             $condition = "(status='Cancelled' OR status='Returned' or status='Purchased') AND date BETWEEN '$startDate' AND '$endDate'";
             $transData=$this->Transaction->read($condition);
             
@@ -62,8 +62,8 @@ class Knoxville extends CI_Controller {
             echo $this->load->view('sales_report',$data,TRUE);
         }
         else if($_POST['range']=='month'){
-            $startDate = date('Y-m-d',strtotime('first day of this month'));
-            $endDate = date('Y-m-d',strtotime('last day of this month'));
+            $startDate = date('jS F, Y',strtotime('first day of this month'));
+            $endDate = date('jS F, Y',strtotime('last day of this month'));
             $condition = "(status='Cancelled' OR status='Returned' or status='Purchased') AND date BETWEEN '$startDate' AND '$endDate'";
             $transData=$this->Transaction->read($condition);
             
@@ -88,7 +88,7 @@ class Knoxville extends CI_Controller {
             echo $this->load->view('sales_report',$data,TRUE);
         }
         else if($_POST['range']=='day'){
-            $date = date('Y-m-d',strtotime('today'));
+            $date = date('jS F, Y',strtotime('today'));
             //$condition=array('date'=>$date, 'status'=>'Purchased');
             $condition= "date='$date' AND (status='Cancelled' OR status='Returned' or status='Purchased')";
             $transData=$this->Transaction->read($condition);
@@ -117,21 +117,13 @@ class Knoxville extends CI_Controller {
     }
     
     public function viewSalesAgents(){
-        $userID =  $this->session->userdata('userID');
-        $data['userID']=$userID;
-        $condition = array('userID' => $userID);
-        $result_array = $this->SalesAgent->read($condition);
-         foreach($result_array as $o){
-            $data['userID'] = $o['userID'];
-            $data['pass'] = $o['password'];
-            $data['name'] = $o['fullname'];
-            $data['bday'] = $o['birthdate'];
-            $data['email'] = $o['email'];
-            $data['cnum'] = $o['contact_no'];
-            $data['photo'] = $o['photo'];
-        }
-		$header_data['title'] = "View Sales Agents";
-	    $this->load->view('include/header',$header_data);
+        $result_array = $this->SalesAgent->read();
+        
+        $data['sales_agents'] = $result_array; 
+        $id =  $this->SalesAgent->count();
+        $data['id'] = (string) $id++;
+        $header_data['title'] = "View Sales Agents";
+        $this->load->view('include/header',$header_data);
         $this->load->view('sales_agent_view',$data);
     }
     
@@ -151,7 +143,7 @@ class Knoxville extends CI_Controller {
         $this->form_validation->set_rules($rules);
         if($this->form_validation->run()==FALSE){
 			$header_data['title'] = "Add Sales Agent";
-			$this->load->view('include/header',$header_data);
+            $this->load->view('include/header',$header_data);
             $this->load->view('add_sales_agentForm');
         }
         else{
@@ -244,7 +236,10 @@ class Knoxville extends CI_Controller {
             $this->load->view('add_clientForm');
         }
         else{
-            $clientRecord=array('client_name'=>$_POST['cname'],'address'=>$_POST['caddress'],'contact_no'=>$_POST['cnum']);
+            $count = $this->Client->count();
+            $cid = (string) $count++;
+            $id = str_pad($cid, 11, '0', STR_PAD_LEFT);
+            $clientRecord=array('clientID'=>$id,'client_name'=>$_POST['cname'],'address'=>$_POST['caddress'],'contact_no'=>$_POST['cnum']);
             $this->Client->create($clientRecord);
             redirect('knoxville/viewClients');
         }
@@ -310,7 +305,11 @@ class Knoxville extends CI_Controller {
                  foreach($_POST['itemList'] as $check) {
                     $count++;
                  }
-                 $orderRecord=array('clientID'=>$_POST['clientid'],'date'=>$_POST['date'],'time'=>$_POST['time'],'due'=>$_POST['duedate'],'userID'=>$this->session->userdata('userID'));
+                 
+                 $last=$this->Order->count();
+                 $uid = (string) $last++;
+                 $id = date("ymd").'-'.substr(str_pad($uid, 4, '0', STR_PAD_LEFT),-4);
+                 $orderRecord=array('orderID'=>$id,'clientID'=>$_POST['clientid'],'date'=>$_POST['date'],'time'=>$_POST['time'],'due'=>$_POST['duedate'],'userID'=>$this->session->userdata('userID'));
                  $this->Order->create($orderRecord);
                  
                  $orderID=$this->Order->getLastRecordID();
@@ -651,6 +650,8 @@ class Knoxville extends CI_Controller {
         
         $data['deliverer'] = $result_array; 
 		$header_data['title'] = "View Deliverers";
+        $id =  $this->Deliverer->count();
+        $data['id'] = (string) $id++;
 		$this->load->view('include/header',$header_data);
         $this->load->view('deliverer_view',$data);
     }
@@ -671,7 +672,7 @@ class Knoxville extends CI_Controller {
             $this->load->view('add_delivererForm');
         }
         else{
-            $delivererRecord=array('vehicle'=>$_POST['vehicle'],'contact_no'=>$_POST['cnum'],'assigned'=>$_POST['assigned']);
+            $delivererRecord=array('delivererID'=>$_POST['delivererID'],'vehicle'=>$_POST['vehicle'],'contact_no'=>$_POST['cnum'],'assigned'=>$_POST['assigned']);
             $this->Deliverer->create($delivererRecord);
             redirect('knoxville/viewDeliverer');
         }
