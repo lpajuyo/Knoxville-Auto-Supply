@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <div class="tab-content">
+<h3 style="text-align: center; text-decoration: bold;" >SALES MANAGEMENT</h3>
 <?php echo validation_errors(); ?>
 
 <a href="<?php echo base_url('knoxville/addOrder')?>">Add Order</a>
@@ -32,7 +33,7 @@
 						echo $i['client_name'];
 					}	
 					echo "</td><td>".$c['date']."</td><td>".$c['time']."</td><td>".$c['due']
-                    .'</td><td><a href="'.base_url('knoxville/viewTransaction/'.$c['orderID'].'').'">View Order Details</a> | <a onclick="confirmDelete('.$c['orderID'].')">Delete</a></td></tr>';
+                    .'</td><td><a href="'.base_url('knoxville/viewTransaction/'.$c['orderID'].'').'"><span class="glyphicon glyphicon-eye-open"></span></a> | <a onclick="confirmDelete('.$c['orderID'].')"><span class="glyphicon glyphicon-trash"></span></a></td></tr>';
                     //echo base_url('knoxville/delClient/'.c['clientID'])
 					}
             }
