@@ -313,7 +313,7 @@ class Knoxville extends CI_Controller {
                  $this->Order->create($orderRecord);
                  
                  $orderID=$this->Order->getLastRecordID();
-                 $orderID = $orderID['orderID'];
+                 // $orderID = $orderID['orderID'];
                  $items=$_POST['itemList'];
                  $price=$_POST['price'];
                  $quantity=$_POST['quantity'];
