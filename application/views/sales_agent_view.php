@@ -87,7 +87,7 @@
                     foreach($sales_agents as $c){  
                         $time = strtotime($c['birthdate']);
 
-                        echo "<tr><td>".$c['userID']."</td><td>".$c['password']."</td><td>".$c['fullname']."</td><td>".date('m/d/y',$time)."</td><td>".$c['email']."</td><td>".$c['contact_no'].'</td><td><a href="'.base_url('knoxville/updateSalesAgent/'.$c['userID']).'">Edit</a> | <a href="'.base_url('knoxville/delSalesAgent/'.$c['userID']).'">Delete</a></td></tr>';
+                        echo "<tr><td>".$c['userID']."</td><td>".$c['password']."</td><td>".$c['fullname']."</td><td>".date('m/d/y',$time)."</td><td>".$c['email']."</td><td>".$c['contact_no'].'</td><td><a href="'.base_url('knoxville/updateSalesAgent/'.$c['userID']).'">Edit</a> | <a onclick="confirmDelete('.$c['userID'].')">Delete</a></td></tr>';
                         //echo base_url('knoxville/delClient/'.c['clientID'])
                     }
                 ?>
@@ -95,7 +95,13 @@
             </table>
         </div>
     </div>
-
+<script>
+    function confirmDelete(userID){
+        var choice=confirm("Delete this user?");
+        if(choice)
+            window.location.assign("<?php echo base_url('knoxville/delSalesAgent'); ?>"+"/"+userID);
+    }
+    </script>
 
 </body>
 </html>                
