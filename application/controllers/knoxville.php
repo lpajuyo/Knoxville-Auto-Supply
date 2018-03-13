@@ -37,19 +37,18 @@ class Knoxville extends CI_Controller {
 				$this->load->view('include/header',$header_data);
                 $this->load->view('management_dashboard',$data);
 				
+				
+				
             }
         }
 	}
     public function viewSalesReport(){
 	
-	
-	
         if($_POST['range']=='week'){
             $startDate = date('Y-m-d',strtotime('next sunday - 1 week'));
             $endDate = date('Y-m-d',strtotime('next sunday - 1 second'));
             $condition = "(status='Cancelled' OR status='Returned' or status='Purchased') AND date BETWEEN '$startDate' AND '$endDate'";
-            $transData=$this->Transaction->read(condition);
-            
+            $transData=$this->Transaction->read($condition);
             $totalQuantity = 0;
             $totalRevenue = 0;
             if($transData != false){
@@ -68,7 +67,7 @@ class Knoxville extends CI_Controller {
 					$tOrders = 0;
 					if($s['userID'] == $o['userID']){
 						$condition1 = "orderID='".$o['orderID']."'";
-						$trans = $this->Transaction->read($condition1." AND ".$condition);
+						$trans = $this->Transaction->read($condition." AND ".$condition1);
 						 foreach($trans as $t){
 							if($t['status']=='Purchased'){
 								$total += $t['quantity']*$t['unit_price'];
