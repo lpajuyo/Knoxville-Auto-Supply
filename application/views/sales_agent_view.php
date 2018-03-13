@@ -2,6 +2,7 @@
 <div class="tab-content">
    <?php echo validation_errors(); ?>
    <div class="card-body" style="padding: 10px;">
+   <h3 style="text-align: center; text-decoration: bold;" >SALES AGENT MANAGEMENT</h3>
     <button data-toggle="modal" data-target="#squarespaceModal"style="margin-left: 85%;" ><span class="glyphicon glyphicon-plus"> </span>&nbsp;Add Sales Agent</button>
     <div class="modal fade" id="squarespaceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -87,7 +88,7 @@
                     foreach($sales_agents as $c){  
                         $time = strtotime($c['birthdate']);
 
-                        echo "<tr><td>".$c['userID']."</td><td>".$c['password']."</td><td>".$c['fullname']."</td><td>".date('m/d/y',$time)."</td><td>".$c['email']."</td><td>".$c['contact_no'].'</td><td><a href="'.base_url('knoxville/updateSalesAgent/'.$c['userID']).'">Edit</a> | <a onclick="confirmDelete('.$c['userID'].')">Delete</a></td></tr>';
+                        echo "<tr><td>".$c['userID']."</td><td>".$c['password']."</td><td>".$c['fullname']."</td><td>".date('m/d/y',$time)."</td><td>".$c['email']."</td><td>".$c['contact_no'].'</td><td><a href="'.base_url('knoxville/updateSalesAgent/'.$c['userID']).'"><span class="glyphicon glyphicon-edit"></span></a> | <a onclick="confirmDelete('.$c['userID'].')"><span class="glyphicon glyphicon-trash"></span></a></td></tr>';
                         //echo base_url('knoxville/delClient/'.c['clientID'])
                     }
                 ?>
