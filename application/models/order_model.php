@@ -33,10 +33,12 @@ class Order_model extends CI_Model {
     }
     
     function getLastRecordID(){
-        $this->db->select_max('orderID');
-        $query = $this->db->get($this->table,1);
-        
-        return $query->row_array();
+       $this->db->select('*');
+        $this->db->from($this->table);
+        $this->db->order_by('orderID','asc');
+		$query = $this->db->get();
+		$row = $query->last_row();// To get last record form the table
+		return $row->orderID;
     }
 
     function count(){
