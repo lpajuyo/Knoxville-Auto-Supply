@@ -2,6 +2,7 @@
 <div class="tab-content">
   <?php echo validation_errors(); ?>
 <div class="card-body" style="padding: 10px;"> 
+<h3 style="text-align: center; text-decoration: bold;" >DELIVERER MANAGEMENT</h3>
 	<button data-toggle="modal" data-target="#squarespaceModal" style="margin-left: 87%;" ><span class="glyphicon glyphicon-plus"> </span>&nbsp;Add Deliverer</button>
 	
 
@@ -70,7 +71,9 @@
             if($deliverer != false){
                 foreach($deliverer as $c){  
                     echo "<tr><td>".$c['delivererID']."</td><td>".$c['vehicle']."<td>".$c['contact_no']."</td><td>".$c['assigned']
-                    .'</td><td><a href="'.base_url('knoxville/updateDeliverer/'.$c['delivererID']).'">Edit</a> | <a onclick="confirmDelete('.$c['delivererID'].')">Delete</a></td></tr>';
+
+                    .'</td><td><a href="'.base_url('knoxville/updateDeliverer/'.$c['delivererID']).'"><span class="glyphicon glyphicon-edit"></span></a> | <a onclick="confirmDelete('.$c['delivererID'].')"><span class="glyphicon glyphicon-trash"></span></a></td></tr>';
+
                     //echo base_url('knoxville/delClient/'.c['clientID'])
                 }
             }

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <div class="tab-content">
+<h3 style="text-align: center; text-decoration: bold;" >SALES MANAGEMENT</h3>
 <?php echo validation_errors(); ?>
 
 <a href="<?php echo base_url('knoxville/addOrder')?>">Add Order</a>
@@ -30,12 +31,14 @@
 					{
 						if ($c['clientID'] == $i['clientID'])
 						echo $i['client_name'];
+
 					}
                     $date = strtotime($c['date']);
                     $time = strtotime($c['time']);
                     $due = strtotime($c['due']);
 
-					echo "</td><td>".date('Y/m/d', $date)."</td><td>".date("h:i A",$time)."</td><td>".date('Y/m/d', $due).'</td><td><a href="'.base_url('knoxville/viewTransaction/'.$c['orderID'].'').'">View Order Details</a> | <a onclick="confirmDelete('.$c['orderID'].')">Delete</a></td></tr>';
+					echo "</td><td>".date('Y/m/d', $date)."</td><td>".date("h:i A",$time)."</td><td>".date('Y/m/d', $due).'</td><td><a href="'.base_url('knoxville/viewTransaction/'.$c['orderID'].'').'"><span class="glyphicon glyphicon-eye-open"></span></a> | <a onclick="confirmDelete('.$c['orderID'].')"><span class="glyphicon glyphicon-trash"></span></a></td></tr>';
+
                     //echo base_url('knoxville/delClient/'.c['clientID'])
 					}
             }

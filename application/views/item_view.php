@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <div class="tab-content">
 <?php echo validation_errors(); ?>
-<div class="card-body" style="padding: 10px;">
+<div class="card-body" style="padding: 10px;"><h3 style="text-align: center; text-decoration: bold;" >ITEM MANAGEMENT</h3>
 	<button data-toggle="modal" data-target="#squarespaceModal" style="margin-left: 88%;"><span class="glyphicon glyphicon-plus"> </span>&nbsp;Add Item</button>
 	
 
@@ -56,7 +56,9 @@
                 if($item != false){
 					foreach($item as $c){  
 						echo "<tr><td>".$c['item_desc']."</td><td>".$c['stocks']
-						.'</td><td><a href="'.base_url('knoxville/updateItem/'.$c['itemID']).'">Edit</a> | <a onclick="confirmDelete('.$c['itemID'].')">Delete</a></td></tr>';
+
+						.'</td><td><a href="'.base_url('knoxville/updateItem/'.$c['itemID']).'"><span class="glyphicon glyphicon-edit"></span></a> | <a onclick="confirmDelete('.$c['itemID'].')"><span class="glyphicon glyphicon-trash"></span></a></td></tr>';
+
 						//echo base_url('knoxville/delClient/'.c['clientID'])
 					}
                 }
