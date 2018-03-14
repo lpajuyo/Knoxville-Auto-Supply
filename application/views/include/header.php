@@ -10,8 +10,10 @@
 	<script src="<?php echo base_url('bootstrap/js/jquery.min.js'); ?>"></script>
 	<script src="<?php echo base_url('bootstrap/js/bootstrap.min.js'); ?>"></script>
   <script src="<?php echo base_url('assets/js/multiple_selection.js'); ?>"></script>
-  <script src="<?php echo base_url('assets/js/search.js'); ?>"></script>
+<script src="<?php echo base_url('assets/js/search.js'); ?>"></script>
   <script src="<?php echo base_url('assets/js/select.js'); ?>"></script>
+ 
+ 
 	
 </head>
 <body>
