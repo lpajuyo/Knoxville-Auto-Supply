@@ -31,7 +31,7 @@
     
     <div class="ClientForm">
         <label class="control-label col-sm-4" for="name">Name:</label>
-        <input class="form-control col-sm-4" type="text" name="name" id="name" />
+        <input class="form-control col-sm-4" type="text" name="name" id="name" placeholder="First Name, Last Name"/>
     </div>
     
     <div class="ClientForm">
@@ -41,12 +41,12 @@
     
     <div class="ClientForm">
         <label class="control-label col-sm-4" for="email">Email:</label>
-        <input class="form-control col-sm-4" type="email" name="email" id="email" />
+        <input class="form-control col-sm-4" type="email" name="email" id="email" placeholder="name@email.com" />
     </div>
     
     <div class="ClientForm">
         <label class="control-label col-sm-4" for="cnum">Contact Number:</label>
-        <input class="form-control col-sm-4" type="text" name="cnum" id="cnum" />
+        <input class="form-control col-sm-4" type="text" name="cnum" id="cnum" placeholder="09-XXX-XXX-XXX"/>
     </div>
    <div class="ClientForm">
     <div class="col-sm-4" style="; padding: 20px;">

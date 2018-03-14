@@ -24,13 +24,13 @@
     <div class="Client">
 		<label class="control-label col-sm-4" for="cname">Client Name:</label>
 		<?php echo form_error('cname', '<p class="text-danger">', '</p>'); ?>
-		<input class="form-control col-sm-4" type="text" name="cname" value="<?php echo set_value('cname'); ?>" id="cname" />
+		<input class="form-control col-sm-4" type="text" name="cname" value="<?php echo set_value('cname'); ?>" id="cname" placeholder="First name, Last name" />
     </div>
     
     <div class="Client">
 		<label class="control-label col-sm-4" for="cnum">Contact Number:</label>
 		<?php echo form_error('cnum', '<p class="text-danger">', '</p>'); ?>
-		<input class="form-control col-sm-4" type="text" name="cnum" value="<?php echo set_value('cnum'); ?>" id="cnum" />
+		<input class="form-control col-sm-4" type="text" name="cnum" value="<?php echo set_value('cnum'); ?>" id="cnum" placeholder="09-XXX-XXX-XXX"/>
     </div>
 	
      <div class="Client">

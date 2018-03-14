@@ -19,7 +19,7 @@
     <div class="container-fluid">
 		<!-- Brand and toggle get grouped for better mobile display -->
 		<div class="navbar-header">
-			<a class="navbar-brand" href="#">
+			<a class="navbar-brand" href="<?php echo base_url('knoxville/index'); ?>">
 			KNOXVILLE
 			</a>
 		</div>
@@ -32,7 +32,6 @@
 						Account
 						<span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
-							<li class="dropdown-header">SETTINGS</li>
 							<li><a href="<?php echo base_url('login/logout'); ?>"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
 						</ul>
 					</li>

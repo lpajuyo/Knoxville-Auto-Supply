@@ -26,20 +26,26 @@
     <input class="form-control col-sm-4" type="text" name="delivererID" id="delivererID" value="<?php echo date("y").'-003-'.str_pad($id, 3, '0', STR_PAD_LEFT) ?>" disabled/>
     </div>
 
+	 <div class="ClientForm">
+		<label class="control-label col-sm-4" for="assigned">Assigned personnel </label>
+	    <input class="form-control col-sm-4" type="text" name="assigned" id="assigned" placeholder="Name of personnel" />
+	</div>
+	
     <div class="ClientForm">
 	 	<label class="control-label col-sm-4" for="vehicle">Vehicle:</label>
-		<input class="form-control col-sm-4" type="text" name="vehicle" id="vehicle" />
+		<select class="form-control col-sm-4" name="vehicle" id="vehicle">
+			<option value="">Motorcycle</option>
+			<option value="">Bicycle</option>
+			<option value="">Car</option>
+			<option value="">Delivery Truck</option>
+		</select>
     </div>
     
     <div class="ClientForm">
 		<label class="control-label col-sm-4" for="cnum">Contact Number:</label>
-		<input class="form-control col-sm-4" type="text" name="cnum" id="cnum" />
+		<input class="form-control col-sm-4" type="text" name="cnum" id="cnum" placeholder="09-XXX-XXX-XXX" />
     </div>
     
-    <div class="ClientForm">
-		<label class="control-label col-sm-4" for="assigned">Assigned personnel </label>
-	    <input class="form-control" type="text" name="assigned" id="assigned" />
-	</div>
 	
 	<div class="col-sm-6" style="margin-left: 150px;">
 		<input class="subUpdate" type="submit" value="SUBMIT"/>

@@ -21,12 +21,12 @@
   ?> 
     <div class="ClientForm">
 		<label class="control-label col-sm-4" for="idesc">Item Desc.:</label>
-		<input class="form-control col-sm-4" type="text" name="idesc" id="idesc" />
+		<input class="form-control col-sm-4" type="text" name="idesc" id="idesc" placeholder="Name of item" />
     </div>
     
     <div class="ClientForm">
 		<label class="control-label col-sm-4" for="stocks">Stocks:</label>
-		<input class="form-control col-sm-4" type="text" name="stocks" id="stocks" />
+		<input class="form-control col-sm-4" type="text" name="stocks" id="stocks" placeholder="Number of stock"/>
     </div>
     
 	<div class="col-sm-6" style="margin-left: 150px;">
