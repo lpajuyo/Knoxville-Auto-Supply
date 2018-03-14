@@ -7,7 +7,7 @@
    
     <p>Sales Report</p>
     
-    <p>Total Revenue: <?php echo $totalRevenue; ?></p>
+    <p>Total Revenue: <?php echo $totalRevenue;	?></p>
     <p>Total Items Sold: <?php echo $totalQuantity; ?></p>
 	</div>
 	</div>

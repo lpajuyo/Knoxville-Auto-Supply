@@ -67,8 +67,8 @@ class Knoxville extends CI_Controller {
                     }
                 }
             }
-            $data['totalQuantity'] = $totalQuantity;
-            $data['totalRevenue'] = $totalRevenue;
+            $data['totalQuantity'] = number_format($totalQuantity);
+            $data['totalRevenue'] =  'PHP'.number_format($totalRevenue);
 			$sales = $this->SalesAgent->read();
 			$orders = $this->Order->read();
 			if($sales!=false){
@@ -97,7 +97,7 @@ class Knoxville extends CI_Controller {
 								
 							}
 						}
-					$data['sales'][] = array('fullname'=>$s['fullname'],'orders'=>$tOrders,'total'=>$total);
+					$data['sales'][] = array('fullname'=>$s['fullname'],'orders'=>number_format($tOrders),'total'=>number_format($total));
 					}
 			}
             $data['range'] = 'This Week';
@@ -126,8 +126,8 @@ class Knoxville extends CI_Controller {
                     }
                 }
             }
-            $data['totalQuantity'] = $totalQuantity;
-            $data['totalRevenue'] = $totalRevenue;
+            $data['totalQuantity'] = number_format($totalQuantity);
+            $data['totalRevenue'] = 'PHP'.number_format($totalRevenue);
 			$sales = $this->SalesAgent->read();
 			$orders = $this->Order->read();
 			if($sales!=false){
@@ -156,7 +156,7 @@ class Knoxville extends CI_Controller {
 							
 						}
 					}
-				$data['sales'][] = array('fullname'=>$s['fullname'],'orders'=>$tOrders,'total'=>$total);
+				$data['sales'][] = array('fullname'=>$s['fullname'],'orders'=>number_format($tOrders),'total'=>number_format($total));
 				}
 			}
             $data['range'] = 'This Month';
@@ -183,8 +183,8 @@ class Knoxville extends CI_Controller {
                     }
                 }
             }
-            $data['totalQuantity'] = $totalQuantity;
-            $data['totalRevenue'] = $totalRevenue;
+           $data['totalQuantity'] = 'PHP'.number_format($totalQuantity);
+            $data['totalRevenue'] =  'PHP'.number_format($totalRevenue);
 			$sales = $this->SalesAgent->read();
 			$orders = $this->Order->read();
 			if($sales!=false){
@@ -213,15 +213,17 @@ class Knoxville extends CI_Controller {
 							
 						}
 					}
-				$data['sales'][] = array('fullname'=>$s['fullname'],'orders'=>$tOrders,'total'=>$total);
+				$data['sales'][] = array('fullname'=>$s['fullname'],'orders'=>number_format($tOrders),'total'=>number_format($total));
 				}
 			}
             $data['range'] = 'Today';
 			$date = date('jS F, Y',strtotime('today'));
             $data['date'] = $date;
             echo $this->load->view('sales_report',$data,TRUE);
+			
            
         }
+				 $this->load->view('include/footer');
     }
     
     public function viewSalesAgents(){

@@ -555,12 +555,8 @@ class SalesAgent extends CI_Controller {
 		$this->form_validation->set_rules($rules);
 		if($this->form_validation->run()==FALSE){
             $this->load->view('include/SA_header',$header_data);
-<<<<<<< HEAD
-            $this->load->view('add_schedForm',$data);
-			$this->load->view('include/footer');
-=======
             $this->load->view('add_schedForm_user',$data);
->>>>>>> ca91011f14c47b13b057811fec6d059763ce9f17
+			$this->load->view('include/footer');
 		}
 		else{
 		$ShipRecord=array('delivererID'=>$_POST['deliverer'],'orderID'=>$orderID);
