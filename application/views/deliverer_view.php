@@ -63,11 +63,11 @@
     <table class="table table-striped">
                 <thead>
                     <tr id="trHead">
-						<th>Deliverer ID</th>
-						<th>Vehicle</th>
-						<th>Contact Number</th>
-						<th>Assigned</th>
-						<th>ACTION</th>
+						<th>Deliverer ID <span class="glyphicon glyphicon-sort" style="color: white;"></span></th>
+						<th>Vehicle <span class="glyphicon glyphicon-sort" style="color: white;"></span></th>
+						<th>Contact Number <span class="glyphicon glyphicon-sort" style="color: white;"></span></th>
+						<th>Assigned <span class="glyphicon glyphicon-sort" style="color: white;"></span></th>
+						<th>ACTION </th>
 					</tr>
 				</thead>
         <tbody>

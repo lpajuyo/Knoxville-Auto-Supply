@@ -16,11 +16,11 @@
     <table class="table table-striped">
         <thead>
             <tr id="trHead">
-				<th>Order#</th>
-                <th>Client Name</th>
-                <th>Date</th>
-                <th>Time</th>
-                <th>Duedate</th>
+				<th>Order# <span class="glyphicon glyphicon-sort" style="color: white;"></span></th>
+                <th>Client Name <span class="glyphicon glyphicon-sort" style="color: white;"></span></th>
+                <th>Date <span class="glyphicon glyphicon-sort" style="color: white;"></span></th>
+                <th>Time <span class="glyphicon glyphicon-sort" style="color: white;"></span></th>
+                <th>Duedate <span class="glyphicon glyphicon-sort" style="color: white;"></span></th>
                 <th>Action</th>
             </tr>
         </thead>

@@ -23,11 +23,11 @@
 		<table class="table table-striped">
 			<thead>
 				<tr id="trHead">
-					<th>Item Name</th>
-					<th>Price</th>
-					<th>Quantity</th>
-					<th>Date</th>
-					<th>Status</th>
+					<th>Item Name <span class="glyphicon glyphicon-sort" style="color: white;"></span></th>
+					<th>Price <span class="glyphicon glyphicon-sort" style="color: white;"></span></th>
+					<th>Quantity <span class="glyphicon glyphicon-sort" style="color: white;"></span></th>
+					<th>Date <span class="glyphicon glyphicon-sort" style="color: white;"></span></th>
+					<th>Status <span class="glyphicon glyphicon-sort" style="color: white;"></span></th>
 					<th>Action</th>
 				</tr>
 			</thead>

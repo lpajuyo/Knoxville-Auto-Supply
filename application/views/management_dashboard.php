@@ -53,10 +53,10 @@
             <table class="table table-striped" id="Table">
                 <thead>
                     <tr id="trHead">
-						<th>OrderID</th>
-						<th>Status</th>
-						<th>Assigned Sales Agent</th>
-						<th>Schedule For Delivery</th>
+						<th>OrderID <span class="glyphicon glyphicon-sort" style="color: white;"></span></th>
+						<th>Status <span class="glyphicon glyphicon-sort" style="color: white;"></span></th>
+						<th>Assigned Sales Agent <span class="glyphicon glyphicon-sort" style="color: white;"></span></th>
+						<th>Schedule For Delivery <span class="glyphicon glyphicon-sort" style="color: white;"></span></th>
 
 					</tr>
 				</thead>
@@ -95,8 +95,8 @@
             <table class="table table-striped" id="myTable">
                 <thead>
                     <tr id="trHead">
-						<th>Items on Stock</th>
-						<th>Stocks</th>
+						<th>Items on Stock <span class="glyphicon glyphicon-sort" style="color: white;"></span></th>
+						<th>Stocks <span class="glyphicon glyphicon-sort" style="color: white;"></span></th>
 						<th>ACTION</th>
 					</tr>
 				</thead>

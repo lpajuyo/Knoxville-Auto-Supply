@@ -21,9 +21,9 @@
             <table class="table table-striped" id="myTable">
                 <thead>
                     <tr id="trHead">
-						<th>Sales Agent</th>
-						<th>Total number of Orders</th>
-						<th>Total Amount of Sales</th>
+						<th>Sales Agent <span class="glyphicon glyphicon-sort" style="color: white;"></span></th>
+						<th>Total number of Orders <span class="glyphicon glyphicon-sort" style="color: white;"></span></th>
+						<th>Total Amount of Sales <span class="glyphicon glyphicon-sort" style="color: white;"></span></th>
 					</tr>
 				</thead>
 			<tbody>

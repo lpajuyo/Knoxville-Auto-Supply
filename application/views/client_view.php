@@ -8,7 +8,7 @@
 		
     
 	
-		<div class="search1">Search: <input type="text" id="myInput" onkeyup="Client()" placeholder="Type any value" title="Type ANY value">
+		<div class="search1">Search: <input type="text" id="myInput" onkeyup="Client()" placeholder="Type any value" title="Type ANY value" class="sround">
 		<a data-toggle="modal" data-target="#squarespaceModal" class="butt2"><span class="glyphicon glyphicon-plus"> </span>&nbsp;Add Client</a>
 		</div>
 	<div class="modal fade" id="squarespaceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
@@ -28,7 +28,7 @@
                                      //to add attributes, edit to: echo form('knoxville/addClient','class="lala" id="lala"'); 
   ?> 
     <div class="Client">
-		<label class="control-label col-sm-4" for="cname">Client Name:</label>
+		<label class="control-label col-sm-4" for="cname">Client Name: </label>
 		<?php echo form_error('cname', '<p class="text-danger">', '</p>'); ?>
 		<input class="form-control col-sm-4" type="text" name="cname" value="<?php echo set_value('cname'); ?>" id="cname" placeholder="First name, Last name" />
     </div>
@@ -65,9 +65,9 @@
                 <thead>
                     <tr id="trHead">
                       
-                        <th>Client Name</th>
-                        <th>Address </th>
-                        <th>Contact No.</th>
+                        <th>Client Name <span class="glyphicon glyphicon-sort" style="color: white;"></span></th>
+                        <th>Address <span class="glyphicon glyphicon-sort" style="color: white;"></span></th>
+                        <th>Contact No.<span class="glyphicon glyphicon-sort" style="color: white;"></span></th>
                         <th>Action </th>
                     </tr>
                 </thead>
