@@ -2,9 +2,10 @@
 <div class="tab-content">
 <?php echo validation_errors(); ?>
 <div class="card-body" style="padding: 10px;"><h3 style="text-align: center; text-decoration: bold;" >ITEM MANAGEMENT</h3>
-	<button data-toggle="modal" data-target="#squarespaceModal" style="margin-left: 88%;"><span class="glyphicon glyphicon-plus"> </span>&nbsp;Add Item</button>
+	<div class="search1">
+		Search: <input type="text" id="myInput" onkeyup="Item()" placeholder="Type any value" title="Type ANY value">
+		<a data-toggle="modal" data-target="#squarespaceModal" class="butt4"><span class="glyphicon glyphicon-plus"> </span>&nbsp;Add Item</a>
 	
-
 <div class="modal fade" id="squarespaceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
   <div class="modal-dialog">
 	<div class="modal-content">
@@ -38,8 +39,7 @@
   </div>
   </div>
   </div>
-	<div class="search1">
-		Search: <input type="text" id="myInput" onkeyup="Item()" placeholder="Type any value" title="Type ANY value">
+	
 	</div>
     
         <div class="table-responsive table" id="myTable">
