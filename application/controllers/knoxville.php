@@ -48,40 +48,54 @@ class Knoxville extends CI_Controller {
             $startDate = date('Y-m-d',strtotime('next sunday - 1 week'));
             $endDate = date('Y-m-d',strtotime('next sunday - 1 second'));
             $condition = "(status='Cancelled' OR status='Returned' or status='Purchased') AND date BETWEEN '$startDate' AND '$endDate'";
-            $transData=$this->Transaction->read(condition);
+            $transData=$this->Transaction->read($condition);
             
             $totalQuantity = 0;
             $totalRevenue = 0;
-            if($transData != false){
+            if($transData!=false){
                 foreach($transData as $t){
-                    $totalQuantity += $t['quantity'];
-                    $totalRevenue += $t['quantity']*$t['unit_price'];
+                    if($t['status']=='Purchased'){
+                        $totalQuantity += $t['quantity'];
+                        $totalRevenue += $t['quantity']*$t['unit_price'];
+                    }
+                    else{
+                        $totalQuantity -= $t['quantity'];
+                        $totalRevenue -= $t['quantity']*$t['unit_price'];
+                    }
                 }
             }
             $data['totalQuantity'] = $totalQuantity;
             $data['totalRevenue'] = $totalRevenue;
 			$sales = $this->SalesAgent->read();
 			$orders = $this->Order->read();
-			foreach($sales as $s){
-			$total = 0;
-				foreach($orders as $o){
-					$tOrders = 0;
-					if($s['userID'] == $o['userID']){
-						$condition1 = "orderID='".$o['orderID']."'";
-						$trans = $this->Transaction->read($condition1." AND ".$condition);
-						 foreach($trans as $t){
-							if($t['status']=='Purchased'){
-								$total += $t['quantity']*$t['unit_price'];
+			if($sales!=false){
+					foreach($sales as $s){
+					$total = 0;
+					if($orders!=false){
+							foreach($orders as $o){
+								$tOrders = 0;
+								if($s['userID'] == $o['userID']){
+									$condition1 = "orderID='".$o['orderID']."'";
+									if($transData!=false){
+										$trans = $this->Transaction->read($condition1." AND ".$condition);
+											if($trans!=false){
+											 foreach($trans as $t){
+												if($t['status']=='Purchased'){
+													$total += $t['quantity']*$t['unit_price'];
+												}
+												else{
+													$total -= $t['quantity']*$t['unit_price'];
+												}
+											}
+										}
+									}
+									$tOrders++;
+								}
+								
 							}
-							else{
-								$total -= $t['quantity']*$t['unit_price'];
-							}
-						 }	
-					
+						}
+					$data['sales'][] = array('fullname'=>$s['fullname'],'orders'=>$tOrders,'total'=>$total);
 					}
-					$tOrders++;
-				}
-			$data['sales'][] = array('fullname'=>$s['fullname'],'orders'=>$tOrders,'total'=>$total);
 			}
             $data['range'] = 'This Week';
             $data['date'] = $startDate.' to '.$endDate;
@@ -111,26 +125,34 @@ class Knoxville extends CI_Controller {
             $data['totalRevenue'] = $totalRevenue;
 			$sales = $this->SalesAgent->read();
 			$orders = $this->Order->read();
-			foreach($sales as $s){
-			$total = 0;
-				foreach($orders as $o){
-					$tOrders = 0;
-					if($s['userID'] == $o['userID']){
-						$condition1 = "orderID='".$o['orderID']."'";
-						$trans = $this->Transaction->read($condition1." AND ".$condition);
-						 foreach($trans as $t){
-							if($t['status']=='Purchased'){
-								$total += $t['quantity']*$t['unit_price'];
+			if($sales!=false){
+				foreach($sales as $s){
+				$total = 0;
+				if($orders!=false){
+						foreach($orders as $o){
+							$tOrders = 0;
+							if($s['userID'] == $o['userID']){
+								$condition1 = "orderID='".$o['orderID']."'";
+								if($transData!=false){
+									$trans = $this->Transaction->read($condition1." AND ".$condition);
+										if($trans!=false){
+										 foreach($trans as $t){
+											if($t['status']=='Purchased'){
+												$total += $t['quantity']*$t['unit_price'];
+											}
+											else{
+												$total -= $t['quantity']*$t['unit_price'];
+											}
+										}
+									}
+								}
+								$tOrders++;
 							}
-							else{
-								$total -= $t['quantity']*$t['unit_price'];
-							}
-						 }	
-					
+							
+						}
 					}
-					$tOrders++;
+				$data['sales'][] = array('fullname'=>$s['fullname'],'orders'=>$tOrders,'total'=>$total);
 				}
-			$data['sales'][] = array('fullname'=>$s['fullname'],'orders'=>$tOrders,'total'=>$total);
 			}
             $data['range'] = 'This Month';
             $data['date'] = $startDate.' to '.$endDate;
@@ -160,27 +182,34 @@ class Knoxville extends CI_Controller {
             $data['totalRevenue'] = $totalRevenue;
 			$sales = $this->SalesAgent->read();
 			$orders = $this->Order->read();
-			foreach($sales as $s){
-			$total = 0;
-				foreach($orders as $o){
-					$tOrders = 0;
-					if($s['userID'] == $o['userID']){
-						$condition1 = "orderID='".$o['orderID']."'";
-                        if($transData!=false){
-						$trans = $this->Transaction->read($condition1." AND ".$condition);
-						 foreach($trans as $t){
-							if($t['status']=='Purchased'){
-								$total += $t['quantity']*$t['unit_price'];
+			if($sales!=false){
+				foreach($sales as $s){
+				$total = 0;
+				if($orders!=false){
+						foreach($orders as $o){
+							$tOrders = 0;
+							if($s['userID'] == $o['userID']){
+								$condition1 = "orderID='".$o['orderID']."'";
+								if($transData!=false){
+									$trans = $this->Transaction->read($condition1." AND ".$condition);
+										if($trans!=false){
+										 foreach($trans as $t){
+											if($t['status']=='Purchased'){
+												$total += $t['quantity']*$t['unit_price'];
+											}
+											else{
+												$total -= $t['quantity']*$t['unit_price'];
+											}
+										}
+									}
+								}
+								$tOrders++;
 							}
-							else{
-								$total -= $t['quantity']*$t['unit_price'];
-							}
-						 }	
-					    }
+							
+						}
 					}
-					$tOrders++;
+				$data['sales'][] = array('fullname'=>$s['fullname'],'orders'=>$tOrders,'total'=>$total);
 				}
-			$data['sales'][] = array('fullname'=>$s['fullname'],'orders'=>$tOrders,'total'=>$total);
 			}
             $data['range'] = 'Today';
             $data['date'] = $date;
