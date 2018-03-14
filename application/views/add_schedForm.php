@@ -29,7 +29,7 @@
 				</div>
 				<br />
 				<div>
-				<input class="subUpdate" type="submit">
+				<input class="subUpdate sround" type="submit">
 				</div>
 			</form>
 		</div>
