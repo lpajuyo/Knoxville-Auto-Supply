@@ -35,10 +35,12 @@
     <div class="ClientForm">
 	 	<label class="control-label col-sm-4" for="vehicle">Vehicle:</label>
 		<select class="form-control col-sm-4" name="vehicle" id="vehicle">
-			<option value="">Motorcycle</option>
-			<option value="">Bicycle</option>
-			<option value="">Car</option>
-			<option value="">Delivery Truck</option>
+			<option value="Motor bike">Motor bike</option>
+			<option value="Jeep">Jeep</option>
+			<option value="Light duty truck">Light duty truck</option>
+			<option value="Heavy duty truck">Heavy duty truck</option>
+			<option value="Pick-up Truck">Pick-up Truck</option>
+			<option value="Delivery Truck">Delivery Truck</option>
 		</select>
     </div>
     

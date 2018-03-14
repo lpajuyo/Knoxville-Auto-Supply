@@ -73,10 +73,10 @@
                         echo '<tr><td>'.$c['item_desc'].'</td>
                             <td class="col-sm-2" >
 
-                                <input style="width: 60px;" type="number" class="form-control" id="price'.$counter.'"  name="price[]" value="0" disabled />
+                                <input style="width: 100px;" type="number" class="form-control" id="price'.$counter.'"  name="price[]" value="0" disabled />
                             </td>
                             <td class="col-sm-2">							
-                                <input style="width: 60px;" type="number" class="form-control" id="quantity'.$counter.'"  name="quantity[]" value="0" disabled />
+                                <input style="width: 100px;" type="number" class="form-control" id="quantity'.$counter.'"  name="quantity[]" value="0" disabled />
                             </td>
                             
                             <td>
