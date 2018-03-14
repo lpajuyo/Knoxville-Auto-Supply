@@ -7,14 +7,15 @@
    
     <p>Sales Report</p>
     
-    <p>Total Revenue: <?php echo $totalRevenue; ?></p>
+    <p>Total Revenue: <?php echo $totalRevenue;	?></p>
     <p>Total Items Sold: <?php echo $totalQuantity; ?></p>
 	</div>
 	</div>
 	</div>	<br />	<br />
 	<p class="text-center report x">Sales</p>
    	<div class="searchLeft1">
-		Search sales: <input type="text" id="myInput" onkeyup="alapa()" placeholder="Type any value" title="Type ANY value"class="sround"/>
+		Search sales: <input type="text" id="myInput" onkeyup="Items()" placeholder="Type any value" title="Type ANY value"class="sround"/>
+
 	</div>
    	<div class="table-responsive tbls">
 		

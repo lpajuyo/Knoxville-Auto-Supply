@@ -24,7 +24,7 @@
   ?> 
     <div class="ClientForm">
     <label class="control-label col-sm-4" for="vehicle">Deliverer ID:</label>
-    <input class="form-control col-sm-4" type="text" name="delivererID" id="delivererID" value="<?php echo date("y").'-003-'.str_pad($id, 3, '0', STR_PAD_LEFT) ?>"/>
+    <input class="form-control col-sm-4" type="text" name="delivererID" id="delivererID" value="<?php echo date("y").'-003-'.str_pad($id, 3, '0', STR_PAD_LEFT) ?>" readonly="readonly"/>
     </div>
 
 	 <div class="ClientForm">

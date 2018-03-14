@@ -42,7 +42,7 @@
 							if ($t['itemID'] == $i['itemID'])
 							echo $i['item_desc'];
 						}	
-						echo '</td><td>'.$t['unit_price'].'</td><td>'.$t['quantity'].'</td><td>'.$t['date'].'</td><td>'.$t['status'].'</td><td><a href="'.base_url('knoxville/updateTransaction/'.$t['transID']).'">Edit</a> | <a href="'.base_url('knoxville/delTransaction/'.$t['transID']).'/'.$orderID.'">Delete</a></td></tr>';
+						echo '</td><td>&#x20B1;'.number_format($t['unit_price']).'</td><td>'.$t['quantity'].'</td><td>'.$t['date'].'</td><td>'.$t['status'].'</td><td><a href="'.base_url('knoxville/updateTransaction/'.$t['transID']).'">Edit</a> | <a href="'.base_url('knoxville/delTransaction/'.$t['transID']).'/'.$orderID.'">Delete</a></td></tr>';
 						if($t['status'] == 'Purchased')
 							$totalPrice = $totalPrice + $t['unit_price'] * $t['quantity'];
 						elseif($t['status'] == 'Returned' || $t['status'] == 'Cancelled')
@@ -50,7 +50,7 @@
 						//echo base_url('knoxville/delClient/'.c['clientID'])
 						}
 
-						echo '<p><b>Subtotal: &#x20B1;</b> '. $totalPrice."</p>";
+						echo '<p><b>Subtotal: &#x20B1;</b> '. number_format($totalPrice)."</p>";
 				?>
 				
 				
