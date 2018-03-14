@@ -3,14 +3,15 @@
   <?php echo validation_errors(); ?>
 <div class="card-body" style="padding: 10px;"> 
 <h3 style="text-align: center; text-decoration: bold;" >DELIVERER MANAGEMENT</h3>
-	<button data-toggle="modal" data-target="#squarespaceModal" style="margin-left: 87%;" ><span class="glyphicon glyphicon-plus"> </span>&nbsp;Add Deliverer</button>
-	
+	<div class="search1">
+		Search: <input type="text" id="myInput" onkeyup="Deliverer()" placeholder="Type any value" title="Type ANY value">
+	<a data-toggle="modal" data-target="#squarespaceModal" class="butt5" ><span class="glyphicon glyphicon-plus"> </span>&nbsp;Add Deliverer</a>
 
 <div class="modal fade" id="squarespaceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
   <div class="modal-dialog">
 	<div class="modal-content">
 		<div class="modal-header">
-			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+			<button type="button" class="close" data-dismiss="modal" ><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
 			<h3 class="modal-title" id="lineModalLabel">Add Deliverer</h3>
 		</div>
 		<div class="modal-body">
@@ -57,9 +58,6 @@
   </div>
   </div>
   </div>
-  </div>
-	<div class="search1">
-		Search: <input type="text" id="myInput" onkeyup="Deliverer()" placeholder="Type any value" title="Type ANY value">
 	</div>
 <div class="table-responsive table" id="myTable">
     <table class="table table-striped">

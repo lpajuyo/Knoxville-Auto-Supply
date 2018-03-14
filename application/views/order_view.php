@@ -3,10 +3,11 @@
 <h3 style="text-align: center; text-decoration: bold;" >SALES MANAGEMENT</h3>
 <?php echo validation_errors(); ?>
 
-<a href="<?php echo base_url('knoxville/addOrder')?>" style="float: right; padding: 10px;">Add Order</a>
+
 
 <div class="search1">
 	Search: <input type="text" id="myInput" onkeyup="Order()" placeholder="Type any value" title="Type ANY value">
+	<a href="<?php echo base_url('knoxville/addOrder')?>" class="butt3"><span class="glyphicon glyphicon-plus"> </span>&nbsp;Add Order</a>
 </div>
 
 <div class="table-responsive table" id="myTable">

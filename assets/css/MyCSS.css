@@ -37,7 +37,7 @@ body{
    left: 0;
    background-color: #2C3E50  ;
    overflow-x: hidden;
-   padding-top: 50px;
+   padding-top: 45px;
 }
 
 .nav-tabs a {
@@ -67,7 +67,21 @@ body{
    background:#3a425b;
    font-weight:bold;	
 }
-
+.butt{
+	margin-left: 380px;
+}
+.butt2{
+	margin-left: 420px;
+}
+.butt3{
+	margin-left: 440px;
+}
+.butt4{
+	margin-left: 430px;
+}
+.butt5{
+	margin-left: 390px;
+}
 
 
 .tab-content{
@@ -106,10 +120,10 @@ body{
 }
 .search1{
 	color: #34495E;
-	float: right;
-	margin-right: 340px;
-	margin-top: 35px;
+	margin-left: 90px;
+	margin-top: 60px;
 	margin-bottom: 10px;
+	
 }
 .searchLeft{
 	color: #34495E;
