@@ -48,10 +48,10 @@
             <ul class="nav nav-tabs">
                <ul class="nav navbar-nav">
 					
-					<li><a href="<?php echo base_url('SalesAgent/viewClients')?>" class="navigation"><span class="glyphicon glyphicon-dashboard"></span> DASHBOARD&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
-					<li><a href="<?php echo base_url('SalesAgent/viewClients')?>" class="navigation">CLIENT MANAGEMENT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p>Manage client</p></a></li>
-					<li><a href="<?php echo base_url('SalesAgent/viewOrders')?>" class="navigation">SALES MANAGEMENT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p>Manage sales</p></a></li>
-					<li><a href="<?php echo base_url('SalesAgent/viewItems')?>" class="navigation">INVENTORY MANAGEMENT<p>Manage inventory</p></a></li>
+					<li><a href="<?php echo base_url('SalesAgent/index')?>" class="navigation"><span class="glyphicon glyphicon-dashboard"></span> DASHBOARD&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+					<li><a href="<?php echo base_url('SalesAgent/viewClients')?>" class="navigation"><span class="glyphicon glyphicon-user"></span>  CLIENT MANAGEMENT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+					<li><a href="<?php echo base_url('SalesAgent/viewOrders')?>" class="navigation"><span class="glyphicon glyphicon-stats"></span>  SALES MANAGEMENT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+					<li><a href="<?php echo base_url('SalesAgent/viewItems')?>" class="navigation"><span class="glyphicon glyphicon-filter"></span>  INVENTORY MANAGEMENT</a></li>
 					
 				</ul>
             </ul>

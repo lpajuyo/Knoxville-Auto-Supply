@@ -30,7 +30,7 @@
     <div class="Client">
 		<label class="control-label col-sm-4" for="cname">Client Name: </label>
 		<?php echo form_error('cname', '<p class="text-danger">', '</p>'); ?>
-		<input class="form-control col-sm-4" type="text" name="cname" value="<?php echo set_value('cname'); ?>" id="cname" placeholder="First name, Last name" />
+		<input class="form-control col-sm-4" type="text" name="cname" value="<?php echo set_value('cname'); ?>" id="cname" placeholder="Company name" />
     </div>
     
     <div class="Client">
@@ -48,7 +48,7 @@
 	 <div class="Client" style="margin-left: 150px;">
 	 
 		<div class="col-sm-6">
-			<input class="subUpdate" type="submit" value="SUBMIT"/>
+			<input class="subUpdate sround" type="submit" value="SUBMIT"/>
 		</div>
 	
 	</div>

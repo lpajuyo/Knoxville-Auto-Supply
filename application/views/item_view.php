@@ -32,7 +32,7 @@
     </div>
     
 	<div class="col-sm-12" style="margin-left: 100px;">
-		<input class="subUpdate" type="submit" value="SUBMIT"/>
+		<input class="subUpdate sround" type="submit" value="SUBMIT"/>
 	</div>
   </form>
   </div>

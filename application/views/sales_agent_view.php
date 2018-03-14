@@ -58,7 +58,7 @@
     </div>
     
     <div class="col-sm-4" style="padding: 30px;">
-        <input class="subUpdate" type="submit" value="SUBMIT"/>
+        <input class="subUpdate sround" type="submit" value="SUBMIT"/>
     </div>
     </div>
     

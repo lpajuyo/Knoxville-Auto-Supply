@@ -48,12 +48,12 @@
         <div class="row">
             <ul class="nav nav-tabs">
                <ul class="nav navbar-nav">
-			   <li><a href="<?php echo base_url('knoxville/index')?>" class="navigation">DASHBOARD&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
-					<li><a href="<?php echo base_url('knoxville/viewSalesAgents')?>" class="navigation">SALES AGENT MANAGEMENT</a></li>
-					<li><a href="<?php echo base_url('knoxville/viewClients')?>" class="navigation">CLIENT MANAGEMENT</a></li>
-					<li><a href="<?php echo base_url('knoxville/viewOrders')?>" class="navigation">SALES MANAGEMENT</a></li>
-					<li><a href="<?php echo base_url('knoxville/viewItems')?>" class="navigation">INVENTORY MANAGEMENT</a></li>
-					<li><a href="<?php echo base_url('knoxville/viewDeliverer')?>" class="navigation">DELIVERER MANAGEMENT</a></li>
+			   <li><a href="<?php echo base_url('knoxville/index')?>" class="navigation"><span class="glyphicon glyphicon-dashboard"></span> DASHBOARD&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+					<li><a href="<?php echo base_url('knoxville/viewSalesAgents')?>" class="navigation"><span class="glyphicon glyphicon-user"></span> SALES AGENT MANAGEMENT</a></li>
+					<li><a href="<?php echo base_url('knoxville/viewClients')?>" class="navigation"><span class="glyphicon glyphicon-dashboard"></span> CLIENT MANAGEMENT</a></li>
+					<li><a href="<?php echo base_url('knoxville/viewOrders')?>" class="navigation"><span class="glyphicon glyphicon-stats"></span> SALES MANAGEMENT</a></li>
+					<li><a href="<?php echo base_url('knoxville/viewItems')?>" class="navigation"><span class="glyphicon glyphicon-filter"></span> INVENTORY MANAGEMENT</a></li>
+					<li><a href="<?php echo base_url('knoxville/viewDeliverer')?>" class="navigation"><span class="glyphicon glyphicon-road"></span> DELIVERER MANAGEMENT</a></li>
 				
 				</ul>
             </ul>
