@@ -4,7 +4,7 @@
    <div class="card-body" style="padding: 10px;">
    <h3 style="text-align: center; text-decoration: bold;" >SALES AGENT MANAGEMENT</h3>
     <div class="search1">
-        Search: <input type="text" id="myInput" onkeyup="Sales()" placeholder="Type any value" title="Type ANY value">
+        Search: <input type="text" id="myInput" onkeyup="Sales()" placeholder="Type any value" title="Type ANY value"class="sround">
    
     <a data-toggle="modal" data-target="#squarespaceModal" class="butt" ><span class="glyphicon glyphicon-plus"> </span>&nbsp;Add Sales Agent</a>
     <div class="modal fade" id="squarespaceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
@@ -76,12 +76,12 @@
             <table class="table table-striped">
                 <thead>
                     <tr id="trHead">
-                        <th>User ID</th>
-                        <th>Password</th>
-                        <th>Name</th>
-                        <th>Birthdate</th>
-                        <th>Email</th>
-                        <th>Contact Number</th>
+                        <th>User ID <span class="glyphicon glyphicon-sort" style="color: white;"></span></th>
+                        <th>Password <span class="glyphicon glyphicon-sort" style="color: white;"></span></th>
+                        <th>Name <span class="glyphicon glyphicon-sort" style="color: white;"></span></th>
+                        <th>Birthdate <span class="glyphicon glyphicon-sort" style="color: white;"></span></th>
+                        <th>Email <span class="glyphicon glyphicon-sort" style="color: white;"></span></th>
+                        <th>Contact Number <span class="glyphicon glyphicon-sort" style="color: white;"></span></th>
                         <th>Action</th>
                     </tr>
                 </thead>

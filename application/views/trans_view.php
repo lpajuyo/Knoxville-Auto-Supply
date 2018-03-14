@@ -1,30 +1,33 @@
 <!DOCTYPE html>
 <div class="tab-content">
+<?php echo validation_errors(); ?>
+<div class="card-body" style="padding: 20px;">
+<h3 style="text-align: center; text-decoration: bold;" >TRANSACTION DETAILS</h3>
 <div class="contentNested">
-	<div class="sales">
-		<p class="font"><b>Client name:</b></p> <p class="text1"><?php echo $cname?></p>
+	<div class="sales text-center">
+		<p class="font"><b>Client name:</b></p> <?php echo $cname?></p>
 	
 
-		<p class="font"><b>Address:</b></p> <p class="text1"> <?php echo $cadd?> </p>
-		<p class="font"><b>Contact no.:</b></p> <p class="text1"><?php echo $cnum?></p> 
+		<p class="font"><b>Address:</b></p> <p > <?php echo $cadd?> </p>
+		<p class="font"><b>Contact no.:</b></p> <p ><?php echo $cnum?></p> 
 	
 		<br />
 	</div>
 	<br />
 	<br />
-	<p class="text1"><a href="<?php echo base_url('knoxville/addSched/'.$orderID) ?>"><span class="glyphicon glyphicon-plus"> </span>Schedule Delivery</a></a></p>
-		<div class="search1">
-			Search: <input type="text" id="myInput" onkeyup="Transaction()" placeholder="Type any value" title="Type ANY value">
+	<p class="xxx text-center"><a href="<?php echo base_url('knoxville/addSched/'.$orderID) ?>"><span class="glyphicon glyphicon-plus"> </span>Schedule Delivery</a></a></p>
+		<div class="searchLeft1">
+			Search: <input type="text" id="myInput" onkeyup="Transaction()" placeholder="Type any value" title="Type ANY value" class="sround">
 		</div>
 		<div class="table-responsive table">
 		<table class="table table-striped">
 			<thead>
 				<tr id="trHead">
-					<th>Item Name</th>
-					<th>Price</th>
-					<th>Quantity</th>
-					<th>Date</th>
-					<th>Status</th>
+					<th>Item Name <span class="glyphicon glyphicon-sort" style="color: white;"></span></th>
+					<th>Price <span class="glyphicon glyphicon-sort" style="color: white;"></span></th>
+					<th>Quantity <span class="glyphicon glyphicon-sort" style="color: white;"></span></th>
+					<th>Date <span class="glyphicon glyphicon-sort" style="color: white;"></span></th>
+					<th>Status <span class="glyphicon glyphicon-sort" style="color: white;"></span></th>
 					<th>Action</th>
 				</tr>
 			</thead>
@@ -47,7 +50,7 @@
 						//echo base_url('knoxville/delClient/'.c['clientID'])
 						}
 
-						echo '<p><b>Subtotal: PHP</b> '. $totalPrice."</p>";
+						echo '<p><b>Subtotal: &#x20B1;</b> '. $totalPrice."</p>";
 				?>
 				
 				

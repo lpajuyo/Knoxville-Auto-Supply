@@ -1,9 +1,10 @@
 <body>
 <div class="tab-content">
+<div class="card-body" style="padding: 20px;">
     <div class="">
-		<p class="text-center report">Sales Report</p>
+		<p class="text-center report x">Sales Report</p>
     
-		<div id="range-dropdown">
+		<div id="range-dropdown" class="text-center">
 			<select class="select" name='range'>
 				<option value="day" selected>Today</option>
 				<option value="week">This week</option>
@@ -44,18 +45,18 @@
 	</div>
 	
 	<div class="tbl">
-	<p class="text-center report hdr">Unscheduled Deliveries</p>
-	<div class="searchLeft">
-	Search Orders <input type="text" id="Input" onkeyup="Und()" placeholder="Type any value" title="Type ANY value"/>
+	<p class="text-center report x">Unscheduled Deliveries</p>
+	<div class="searchLeft2">
+	Search Orders <input type="text" id="Input" onkeyup="Und()" placeholder="Type any value" title="Type ANY value" class="sround"/>
 	</div>
 	<div class="table-responsive tbls">
             <table class="table table-striped" id="Table">
                 <thead>
                     <tr id="trHead">
-						<th>OrderID</th>
-						<th>Status</th>
-						<th>Assigned Sales Agent</th>
-						<th>Schedule For Delivery</th>
+						<th>OrderID <span class="glyphicon glyphicon-sort" style="color: white;"></span></th>
+						<th>Status <span class="glyphicon glyphicon-sort" style="color: white;"></span></th>
+						<th>Assigned Sales Agent <span class="glyphicon glyphicon-sort" style="color: white;"></span></th>
+						<th>Schedule For Delivery <span class="glyphicon glyphicon-sort" style="color: white;"></span></th>
 
 					</tr>
 				</thead>
@@ -85,17 +86,17 @@
 		</table>
     </div>
     </div>
-	<p class="text-center report hdr">Items on Stock</p>
-	<div class="searchLeft">
-		Search stocks: <input type="text" id="myInput" onkeyup="Item2()" placeholder="Type any value" title="Type ANY value"/>
+	<p class="text-center report x">Items on Stock</p>
+	<div class="searchLeft3">
+		Search stocks: <input type="text" id="myInput" onkeyup="Item2()" placeholder="Type any value" title="Type ANY value" class="sround"/>
 	</div>
         <div class="table-responsive tbls">
 		
             <table class="table table-striped" id="myTable">
                 <thead>
                     <tr id="trHead">
-						<th>Items on Stock</th>
-						<th>Stocks</th>
+						<th>Items on Stock <span class="glyphicon glyphicon-sort" style="color: white;"></span></th>
+						<th>Stocks <span class="glyphicon glyphicon-sort" style="color: white;"></span></th>
 						<th>ACTION</th>
 					</tr>
 				</thead>
@@ -104,7 +105,7 @@
                 if($onStock != false){
 					foreach($onStock as $c){  
 						echo "<tr><td>".$c['item_desc']."</td><td>".$c['stocks']
-						.'</td><td><a href="'.base_url('knoxville/updateItem/'.$c['itemID']).'">Edit</a> | <a onclick="confirmDelete('.$c['itemID'].')">Delete</a></td></tr>';
+						.'</td><td><a href="'.base_url('knoxville/updateItem/'.$c['itemID']).'"><span class="glyphicon glyphicon-edit"></span></a> | <a onclick="confirmDelete('.$c['itemID'].')"><span class="glyphicon glyphicon-trash"></span></a></td></tr>';
 						//echo base_url('knoxville/delClient/'.c['clientID'])
 					}
                 }
@@ -112,33 +113,7 @@
 			</tbody>
 			</table>
    		</div>
-   	<p class="text-center report hdr">Sales</p>
-   	<div class="searchLeft">
-		Search sales: <input type="text" id="myInput" onkeyup="alapa()" placeholder="Type any value" title="Type ANY value"/>
-	</div>
-   	<div class="table-responsive tbls">
-		
-            <table class="table table-striped" id="myTable">
-                <thead>
-                    <tr id="trHead">
-						<th>User ID</th>
-						<th>Name</th>
-						<th>Total Sales</th>
-					</tr>
-				</thead>
-			<tbody>
-				<?php
-                if($sales != false){
-					foreach($sales as $c){  
-						echo "<tr><td>".$c['userID']."</td><td>".$c['fullname']
-						.'</td></tr>';
-					}
-                }
-				?>
-			</tbody>
-			</table>
-   		</div>
-</div>
+   	
 <script>
 	    function confirmDelete(itemID){
 	        var choice=confirm("Delete this item?");

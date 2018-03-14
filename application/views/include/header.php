@@ -48,11 +48,12 @@
         <div class="row">
             <ul class="nav nav-tabs">
                <ul class="nav navbar-nav">
-					<li><a href="<?php echo base_url('knoxville/viewSalesAgents')?>" class="navigation active">SALES AGENT MANAGEMENT<p>Manage sales agent</p></a></li>
-					<li><a href="<?php echo base_url('knoxville/viewClients')?>" class="navigation">CLIENT MANAGEMENT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p>Manage client</p></a></li>
-					<li><a href="<?php echo base_url('knoxville/viewOrders')?>" class="navigation">SALES MANAGEMENT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p>Manage sales</p></a></li>
-					<li><a href="<?php echo base_url('knoxville/viewItems')?>" class="navigation">INVENTORY MANAGEMENT<p>Manage inventory</p></a></li>
-					<li><a href="<?php echo base_url('knoxville/viewDeliverer')?>" class="navigation">DELIVERER MANAGEMENT<p>Manage delivery</p></a></li>
+			   <li><a href="<?php echo base_url('knoxville/index')?>" class="navigation">DASHBOARD&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+					<li><a href="<?php echo base_url('knoxville/viewSalesAgents')?>" class="navigation">SALES AGENT MANAGEMENT</a></li>
+					<li><a href="<?php echo base_url('knoxville/viewClients')?>" class="navigation">CLIENT MANAGEMENT</a></li>
+					<li><a href="<?php echo base_url('knoxville/viewOrders')?>" class="navigation">SALES MANAGEMENT</a></li>
+					<li><a href="<?php echo base_url('knoxville/viewItems')?>" class="navigation">INVENTORY MANAGEMENT</a></li>
+					<li><a href="<?php echo base_url('knoxville/viewDeliverer')?>" class="navigation">DELIVERER MANAGEMENT</a></li>
 				
 				</ul>
             </ul>

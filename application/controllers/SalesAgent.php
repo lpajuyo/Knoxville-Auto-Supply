@@ -204,7 +204,7 @@ class SalesAgent extends CI_Controller {
                 $isAdmin=0;
             $salesAgentRecord=array('userID'=>$_POST['userID'],'password'=>$_POST['pass'],'fullname'=>$_POST['name'],'birthdate'=>$_POST['bday'],'email'=>$_POST['email'],'contact_no'=>$_POST['cnum'],'isAdmin'=>$isAdmin);
             $this->SalesAgent->create($salesAgentRecord);
-            redirect('knoxville/viewSalesAgents');
+            redirect('SalesAgent/viewSalesAgents');
         }
     }
     
@@ -248,14 +248,14 @@ class SalesAgent extends CI_Controller {
                 $isAdmin=0;
             $newRecord=array('userID'=>$_POST['userID'],'password'=>$_POST['pass'],'fullname'=>$_POST['name'],'birthdate'=>$_POST['bday'],'email'=>$_POST['email'],'contact_no'=>$_POST['cnum'],'isAdmin'=>$isAdmin);
             $this->SalesAgent->update($newRecord);
-            redirect('knoxville/viewSalesAgents');
+            redirect('SalesAgent/viewSalesAgents');
         }
     }
     
     public function delSalesAgent($userID){
         $where_array = array('userID'=>$userID);
         $this->SalesAgent->del($where_array);
-        redirect('knoxville/viewSalesAgents');
+        redirect('SalesAgent/viewSalesAgents');
     }
     
     public function viewClients(){
@@ -264,7 +264,7 @@ class SalesAgent extends CI_Controller {
         $data['clients'] = $result_array; //Array ( [clientID] => 1 [client_name] => dsa [address] => dsa [contact_no] => 123 )
 		$header_data['title'] = "View Clients";
         $this->load->view('include/SA_header',$header_data);
-        $this->load->view('client_view',$data);
+        $this->load->view('client_view_user',$data);
 		$this->load->view('include/footer');
     }
     
@@ -282,13 +282,14 @@ class SalesAgent extends CI_Controller {
         if($this->form_validation->run()==FALSE){
 			$header_data['title'] = "Add Client";
             $this->load->view('include/SA_header',$header_data);
-            $this->load->view('add_clientForm');
+            $this->load->view('add_clientForm_user');
 			$this->load->view('include/footer');
+
         }
         else{
             $clientRecord=array('client_name'=>$_POST['cname'],'address'=>$_POST['caddress'],'contact_no'=>$_POST['cnum']);
             $this->Client->create($clientRecord);
-            redirect('knoxville/viewClients');
+            redirect('SalesAgent/viewClients');
         }
     }
     
@@ -310,20 +311,20 @@ class SalesAgent extends CI_Controller {
         if($this->form_validation->run()==FALSE){
 			$header_data['title'] = "Update Clients";
             $this->load->view('include/SA_header',$header_data);
-            $this->load->view('update_clientForm',$data);
+            $this->load->view('update_clientForm_user',$data);
 			$this->load->view('include/footer');
         }
         else{
             $newRecord=array('clientID'=>$clientID,'client_name'=>$_POST['cname'],'address'=>$_POST['caddress'],'contact_no'=>$_POST['cnum']);
             $this->Client->update($newRecord);
-            redirect('knoxville/viewClients');
+            redirect('SalesAgent/viewClients');
         }
     }
     
     public function delClient($clientID){
         $where_array = array('clientID'=>$clientID);
         $this->Client->del($where_array);
-        redirect('knoxville/viewClients');
+        redirect('SalesAgent/viewClients');
     }
 	
 	public function addOrder (){ 
@@ -345,7 +346,7 @@ class SalesAgent extends CI_Controller {
 			$result_array = $this->Item->read();
 			$data['items'] = $result_array;
 			$this->load->view('include/SA_header',$header_data);
-			$this->load->view('add_orders',$data);
+			$this->load->view('add_orders_user',$data);
 			$this->load->view('include/footer');
         }
         else{
@@ -372,14 +373,14 @@ class SalesAgent extends CI_Controller {
                      }
                  }
             }
-             redirect('knoxville/viewOrders');
+             redirect('SalesAgent/viewOrders');
 		}
 	}
     
     public function delOrder($orderID){
         $where_array = array('orderID'=>$orderID);
         $this->Order->del($where_array);
-        redirect('knoxville/viewOrders');
+        redirect('SalesAgent/viewOrders');
     }
 	
 	public function viewOrders(){
@@ -393,7 +394,7 @@ class SalesAgent extends CI_Controller {
 		$data['clients'] = $result_array;
 		$header_data['title'] = "View Sales";
 		$this->load->view('include/SA_header',$header_data);
-        $this->load->view('order_view',$data);
+        $this->load->view('order_view_user',$data);
     }
 	public function viewTransaction($orderID){
         $condition = array('orderID' => $orderID);
@@ -429,7 +430,7 @@ class SalesAgent extends CI_Controller {
 		$data['ship'] = $shipRec;
 		$header_data['title'] = "Order#$orderID: Order Details";
 		$this->load->view('include/SA_header',$header_data);
-        $this->load->view('trans_view',$data);
+        $this->load->view('trans_view_user',$data);
 		$this->load->view('include/footer');
     }
     
@@ -462,7 +463,7 @@ class SalesAgent extends CI_Controller {
         else{
             $newRecord=array('unit_price'=>$_POST['price'],'quantity'=>$_POST['qty']);
             $this->Transaction->update($newRecord, $transID);
-            redirect('knoxville/viewTransaction/'.$orderID);
+            redirect('SalesAgent/viewTransaction/'.$orderID);
         }
     }
     
@@ -470,7 +471,7 @@ class SalesAgent extends CI_Controller {
         $where_array = array('transID'=>$transID);
         $this->Transaction->del($where_array);
         //$this->viewTransaction($orderID);
-        redirect('knoxville/viewTransaction/'.$orderID);
+        redirect('SalesAgent/viewTransaction/'.$orderID);
     }
 	
 	public function addPurchase($orderID){
@@ -485,7 +486,7 @@ class SalesAgent extends CI_Controller {
 		$itemsRec = $this->Item->read();
 		$data['items'] = $itemsRec;
 		 $this->load->view('include/SA_header',$header_data);
-		 $this->load->view('add_purchase',$data);
+		 $this->load->view('add_purchase_user',$data);
 		 $this->load->view('include/footer');
 		$count = 0; 
 		 if(!empty($_POST['itemList'])) {
@@ -502,7 +503,7 @@ class SalesAgent extends CI_Controller {
                      $this->Item->subtractStocks($quantity[$x], $items[$x]);
                  }
              }
-             redirect('knoxville/viewTransaction/'.$orderID.'');
+             redirect('SalesAgent/viewTransaction/'.$orderID.'');
 		 }
 		
 		
@@ -538,7 +539,7 @@ class SalesAgent extends CI_Controller {
                      $this->Item->addStocks($quantity[$x], $items[$x]);
                  }
              }
-             redirect('knoxville/viewOrders');
+             redirect('SalesAgent/viewOrders');
 		 }
 		
 		
@@ -554,8 +555,12 @@ class SalesAgent extends CI_Controller {
 		$this->form_validation->set_rules($rules);
 		if($this->form_validation->run()==FALSE){
             $this->load->view('include/SA_header',$header_data);
+<<<<<<< HEAD
             $this->load->view('add_schedForm',$data);
 			$this->load->view('include/footer');
+=======
+            $this->load->view('add_schedForm_user',$data);
+>>>>>>> ca91011f14c47b13b057811fec6d059763ce9f17
 		}
 		else{
 		$ShipRecord=array('delivererID'=>$_POST['deliverer'],'orderID'=>$orderID);
@@ -563,7 +568,7 @@ class SalesAgent extends CI_Controller {
 		$shipID=$this->Shipment->getLastRecordID();
 		$ShipStatus=array('shipID'=>$shipID,'date'=>$_POST['date'],'time'=>$_POST['time'],'status'=>'Scheduled');
 		$this->ShipStatus->create($ShipStatus);
-		redirect('knoxville/viewTransaction/'.$orderID.'');
+		redirect('SalesAgent/viewTransaction/'.$orderID.'');
 		}
 	}
     
@@ -598,7 +603,7 @@ class SalesAgent extends CI_Controller {
             $ShipStatus=array('shipID'=>$shipID,'date'=>$_POST['date'],'time'=>$_POST['time'],'status'=>$_POST['status'].' '.$_POST['location']);
             print_r($ShipStatus);
             $this->ShipStatus->create($ShipStatus);
-            redirect('knoxville/viewTransaction/'.$orderID.'');
+            redirect('SalesAgent/viewTransaction/'.$orderID.'');
 		}
             
 	}
@@ -607,7 +612,7 @@ class SalesAgent extends CI_Controller {
         $where_array = array('transID'=>$transID);
         $this->Transaction->del($where_array);
         //$this->viewTransaction($orderID);
-        redirect('knoxville/viewTransaction/'.$orderID);
+        redirect('SalesAgent/viewTransaction/'.$orderID);
     }
 	
     public function viewItems(){
@@ -616,7 +621,7 @@ class SalesAgent extends CI_Controller {
         $data['item'] = $result_array; 
 		$header_data['title'] = "View Inventory";
 		$this->load->view('include/SA_header',$header_data);
-        $this->load->view('item_view',$data);
+        $this->load->view('item_view_user',$data);
 		$this->load->view('include/footer');
     }
     
@@ -633,20 +638,20 @@ class SalesAgent extends CI_Controller {
         if($this->form_validation->run()==FALSE){
 			$header_data['title'] = "Add Item";
             $this->load->view('include/SA_header',$header_data);
-            $this->load->view('add_itemForm');
+            $this->load->view('add_itemForm_user');
 			$this->load->view('include/footer');
         }
         else{
             $itemRecord=array('item_desc'=>$_POST['idesc'],'stocks'=>$_POST['stocks']);
             $this->Item->create($itemRecord);
-            redirect('knoxville/viewItems');
+            redirect('SalesAgent/viewItems');
         }
     }
     
     public function delItem($itemID){
         $where_array = array('itemID'=>$itemID);
         $this->Item->del($where_array);
-        redirect('knoxville/viewItems');
+        redirect('SalesAgent/viewItems');
     }
     
     public function updateItem($itemID){
@@ -665,14 +670,15 @@ class SalesAgent extends CI_Controller {
         if($this->form_validation->run()==FALSE){
 			$header_data['title'] = "Update Item";
             $this->load->view('include/SA_header',$header_data);
-            $this->load->view('update_itemForm',$data);
 			$this->load->view('include/footer');
+            $this->load->view('update_itemForm_user',$data);
+
         }
 		
         else{
             $newRecord=array('itemID'=>$itemID,'item_desc'=>$_POST['idesc'],'stocks'=>$_POST['stocks']);
             $this->Item->update($newRecord,$itemID);
-            redirect('knoxville/viewItems');
+            redirect('SalesAgent/viewItems');
         }
     }
     
@@ -707,7 +713,7 @@ class SalesAgent extends CI_Controller {
         else{
             $delivererRecord=array('vehicle'=>$_POST['vehicle'],'contact_no'=>$_POST['cnum'],'assigned'=>$_POST['assigned']);
             $this->Deliverer->create($delivererRecord);
-            redirect('knoxville/viewDeliverer');
+            redirect('SalesAgent/viewDeliverer');
         }
     }
     
@@ -735,14 +741,16 @@ class SalesAgent extends CI_Controller {
         else{
             $newRecord=array('delivererID'=>$delivererID,'vehicle'=>$_POST['vehicle'],'contact_no'=>$_POST['cnum'],'assigned'=>$_POST['assigned']);
             $this->Deliverer->update($newRecord);
-            redirect('knoxville/viewDeliverer');
+            redirect('SalesAgent/viewDeliverer');
         }
     }
     
     public function delDeliverer($delivererID){
         $where_array = array('delivererID'=>$delivererID);
         $this->Deliverer->del($where_array);
-        redirect('knoxville/viewDeliverer');
-		$this->load->view('include/footer');
+
+
+        redirect('SalesAgent/viewDeliverer');
+	$this->load->view('include/footer');
     }
 }

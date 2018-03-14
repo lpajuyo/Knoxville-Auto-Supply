@@ -32,6 +32,7 @@
 						Account
 						<span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
+							<li><span class="glyphicon glyphicon-user"></span> Sample User</li>
 							<li><a href="<?php echo base_url('login/logout'); ?>"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
 						</ul>
 					</li>
