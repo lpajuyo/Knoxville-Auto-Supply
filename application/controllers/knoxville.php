@@ -49,9 +49,10 @@ class Knoxville extends CI_Controller {
         if($_POST['range']=='week'){
             $startDate = date('Y-m-d',strtotime('next sunday - 1 week'));
             $endDate = date('Y-m-d',strtotime('next sunday - 1 second'));
+			$start = date('jS F, Y',strtotime('next sunday - 1 week'));
+            $end = date('jS F, Y',strtotime('next sunday - 1 second'));
             $condition = "(status='Cancelled' OR status='Returned' or status='Purchased') AND date BETWEEN '$startDate' AND '$endDate'";
             $transData=$this->Transaction->read($condition);
-            
             $totalQuantity = 0;
             $totalRevenue = 0;
             if($transData!=false){
@@ -100,12 +101,14 @@ class Knoxville extends CI_Controller {
 					}
 			}
             $data['range'] = 'This Week';
-            $data['date'] = $startDate.' to '.$endDate;
+            $data['date'] = $start.' to '.$end;
             echo $this->load->view('sales_report',$data,TRUE);
         }
         else if($_POST['range']=='month'){
             $startDate = date('Y-m-d',strtotime('first day of this month'));
             $endDate = date('Y-m-d',strtotime('last day of this month'));
+			$start = date('jS F, Y',strtotime('first day of this month'));
+            $end = date('jS F, Y',strtotime('last day of this month'));
             $condition = "(status='Cancelled' OR status='Returned' or status='Purchased') AND date BETWEEN '$startDate' AND '$endDate'";
             $transData=$this->Transaction->read($condition);
             
@@ -157,7 +160,7 @@ class Knoxville extends CI_Controller {
 				}
 			}
             $data['range'] = 'This Month';
-            $data['date'] = $startDate.' to '.$endDate;
+            $data['date'] = $start.' to '.$end;
             echo $this->load->view('sales_report',$data,TRUE);
         }
         else if($_POST['range']=='day'){
@@ -214,6 +217,7 @@ class Knoxville extends CI_Controller {
 				}
 			}
             $data['range'] = 'Today';
+			$date = date('jS F, Y',strtotime('today'));
             $data['date'] = $date;
             echo $this->load->view('sales_report',$data,TRUE);
            

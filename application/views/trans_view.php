@@ -50,7 +50,7 @@
 						//echo base_url('knoxville/delClient/'.c['clientID'])
 						}
 
-						echo '<p><b>Subtotal: PHP</b> '. $totalPrice."</p>";
+						echo '<p><b>Subtotal: &#x20B1;</b> '. $totalPrice."</p>";
 				?>
 				
 				
