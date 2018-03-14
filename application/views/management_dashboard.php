@@ -1,5 +1,6 @@
+<body>
 <div class="tab-content">
-    <div class="sales">
+    <div class="">
 		<p class="text-center report">Sales Report</p>
     
 		<div id="range-dropdown">

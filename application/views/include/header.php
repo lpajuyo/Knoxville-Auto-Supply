@@ -16,10 +16,10 @@
 </head>
 <body>
 <nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid">
+    <div class="container-fluid nav">
 		<!-- Brand and toggle get grouped for better mobile display -->
-		<div class="navbar-header">
-			<a class="navbar-brand" href="#">
+		<div class="navbar-header" style="padding-left: 5px;">
+			<a class="navbar-brand" style="color: white;"href="<?php echo base_url('knoxville/index'); ?>">
 			KNOXVILLE
 			</a>
 		</div>
@@ -28,11 +28,10 @@
 			
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown ">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="color: white;">
 						Account
 						<span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
-							<li class="dropdown-header">SETTINGS</li>
 							<li><a href="<?php echo base_url('login/logout'); ?>"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
 						</ul>
 					</li>

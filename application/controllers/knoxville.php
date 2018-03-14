@@ -165,6 +165,7 @@ class Knoxville extends CI_Controller {
 					$tOrders = 0;
 					if($s['userID'] == $o['userID']){
 						$condition1 = "orderID='".$o['orderID']."'";
+                        if($transData!=false){
 						$trans = $this->Transaction->read($condition1." AND ".$condition);
 						 foreach($trans as $t){
 							if($t['status']=='Purchased'){
@@ -174,7 +175,7 @@ class Knoxville extends CI_Controller {
 								$total -= $t['quantity']*$t['unit_price'];
 							}
 						 }	
-					
+					    }
 					}
 					$tOrders++;
 				}

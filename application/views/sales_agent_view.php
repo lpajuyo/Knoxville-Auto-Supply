@@ -3,7 +3,10 @@
    <?php echo validation_errors(); ?>
    <div class="card-body" style="padding: 10px;">
    <h3 style="text-align: center; text-decoration: bold;" >SALES AGENT MANAGEMENT</h3>
-    <button data-toggle="modal" data-target="#squarespaceModal"style="margin-left: 85%;" ><span class="glyphicon glyphicon-plus"> </span>&nbsp;Add Sales Agent</button>
+    <div class="search1">
+        Search: <input type="text" id="myInput" onkeyup="Sales()" placeholder="Type any value" title="Type ANY value">
+   
+    <a data-toggle="modal" data-target="#squarespaceModal" class="butt" ><span class="glyphicon glyphicon-plus"> </span>&nbsp;Add Sales Agent</a>
     <div class="modal fade" id="squarespaceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -31,7 +34,7 @@
     
     <div class="ClientForm">
         <label class="control-label col-sm-4" for="name">Name:</label>
-        <input class="form-control col-sm-4" type="text" name="name" id="name" />
+        <input class="form-control col-sm-4" type="text" name="name" id="name" placeholder="First Name, Last Name"/>
     </div>
     
     <div class="ClientForm">
@@ -41,12 +44,12 @@
     
     <div class="ClientForm">
         <label class="control-label col-sm-4" for="email">Email:</label>
-        <input class="form-control col-sm-4" type="email" name="email" id="email" />
+        <input class="form-control col-sm-4" type="email" name="email" id="email" placeholder="name@email.com" />
     </div>
     
     <div class="ClientForm">
         <label class="control-label col-sm-4" for="cnum">Contact Number:</label>
-        <input class="form-control col-sm-4" type="text" name="cnum" id="cnum" />
+        <input class="form-control col-sm-4" type="text" name="cnum" id="cnum" placeholder="09-XXX-XXX-XXX"/>
     </div>
    <div class="ClientForm">
     <div class="col-sm-4" style="; padding: 20px;">
@@ -67,8 +70,7 @@
   </div>
 
    
-    <div class="search">
-        Search: <input type="text" id="myInput" onkeyup="Sales()" placeholder="Type any value" title="Type ANY value">
+   
     </div>
         <div class="table-responsive table" id="myTable">
             <table class="table table-striped">

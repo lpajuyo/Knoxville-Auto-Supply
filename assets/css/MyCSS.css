@@ -24,6 +24,9 @@ body{
 .sidenav a:hover {
     color: #f1f1f1;
 }
+
+.nav{background-color: #2C3E50  ;}
+.navbar-header{background-color: #2C3E50  ;}
 .nav-tabs {
   
    height: 100%;
@@ -32,9 +35,9 @@ body{
    z-index: 1;
    top: 0;
    left: 0;
-   background-color: #111;
+   background-color: #2C3E50  ;
    overflow-x: hidden;
-   padding-top: 50px;
+   padding-top: 45px;
 }
 
 .nav-tabs a {
@@ -44,25 +47,40 @@ body{
    display:block;
    margin:0 0 0 1px;
    padding: 6px 2px 6px 16px;
-   background: #E5E7E9;
-   color:#1B2631;
+   background: 1B2631#;
+   color:white;
    text-decoration:none;
    line-height:1.3em;
 }
 
 .nav-tabs ul li a:hover {
    background:#34495E;
-   color:#fff;
+   
 }
 .nav-tabs ul li a.active{
-   background:#34495E;
-   color:#fff;	
+   background-color:#C0392B;
+   	
 }
 
 .nav-tabs ul li a.active:hover {
-   color:#fff;
+  
    background:#3a425b;
    font-weight:bold;	
+}
+.butt{
+	margin-left: 380px;
+}
+.butt2{
+	margin-left: 420px;
+}
+.butt3{
+	margin-left: 440px;
+}
+.butt4{
+	margin-left: 430px;
+}
+.butt5{
+	margin-left: 390px;
 }
 
 
@@ -102,10 +120,10 @@ body{
 }
 .search1{
 	color: #34495E;
-	float: right;
-	margin-right: 340px;
-	margin-top: 35px;
+	margin-left: 90px;
+	margin-top: 60px;
 	margin-bottom: 10px;
+	
 }
 .searchLeft{
 	color: #34495E;

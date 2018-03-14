@@ -612,6 +612,8 @@ class SalesAgent extends CI_Controller {
         
         $data['deliverer'] = $result_array; 
 		$header_data['title'] = "View Deliverers";
+		$id =  $this->Deliverer->count();
+        $data['id'] = (string) $id++;
 		$this->load->view('include/SA_header',$header_data);
         $this->load->view('deliverer_view',$data);
     }
