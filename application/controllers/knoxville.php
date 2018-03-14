@@ -13,6 +13,7 @@ class Knoxville extends CI_Controller {
 		$this->load->model('shipment_model','Shipment');
 		$this->load->model('shipment_status_model','ShipStatus');
 		
+		
     }
 	
 	
@@ -36,6 +37,7 @@ class Knoxville extends CI_Controller {
                 $data['sales'] = $sales;
 				$this->load->view('include/header',$header_data);
                 $this->load->view('management_dashboard',$data);
+				$this->load->view('include/footer');
 				
             }
         }
@@ -227,6 +229,9 @@ class Knoxville extends CI_Controller {
         $header_data['title'] = "View Sales Agents";
         $this->load->view('include/header',$header_data);
         $this->load->view('sales_agent_view',$data);
+       $this->load->view('include/footer');
+        
+        
     }
     
     public function addSalesAgent(){
@@ -247,6 +252,7 @@ class Knoxville extends CI_Controller {
 			$header_data['title'] = "Add Sales Agent";
             $this->load->view('include/header',$header_data);
             $this->load->view('add_sales_agentForm');
+			$this->load->view('include/footer');
         }
         else{
             if(isset($_POST['isAdmin']))
@@ -293,6 +299,7 @@ class Knoxville extends CI_Controller {
 			$title['title']="Update Sales Agent";
             $this->load->view('include/header',$title);
             $this->load->view('update_sales_agentForm',$data);
+			$this->load->view('include/footer');
         }
         else{
             if(isset($_POST['isAdmin']))
@@ -319,6 +326,7 @@ class Knoxville extends CI_Controller {
 		$header_data['title'] = "View Clients";
         $this->load->view('include/header',$header_data);
         $this->load->view('client_view',$data);
+		$this->load->view('include/footer');
     }
     
     public function addClient(){
@@ -336,6 +344,7 @@ class Knoxville extends CI_Controller {
 			$header_data['title'] = "Add Client";
             $this->load->view('include/header',$header_data);
             $this->load->view('add_clientForm');
+			$this->load->view('include/footer');
         }
         else{
             $count = $this->Client->count();
@@ -366,6 +375,7 @@ class Knoxville extends CI_Controller {
 			$header_data['title'] = "Update Clients";
             $this->load->view('include/header',$header_data);
             $this->load->view('update_clientForm',$data);
+			$this->load->view('include/footer');
         }
         else{
             $newRecord=array('clientID'=>$clientID,'client_name'=>$_POST['cname'],'address'=>$_POST['caddress'],'contact_no'=>$_POST['cnum']);
@@ -400,6 +410,7 @@ class Knoxville extends CI_Controller {
 			$data['items'] = $result_array;
 			$this->load->view('include/header',$header_data);
 			$this->load->view('add_orders',$data);
+			$this->load->view('include/footer');
         }
         else{
             $count = 0; 
@@ -447,6 +458,7 @@ class Knoxville extends CI_Controller {
 		$header_data['title'] = "View Sales";
 		$this->load->view('include/header',$header_data);
         $this->load->view('order_view',$data);
+		$this->load->view('include/footer');
     }
 	public function viewTransaction($orderID){
         $condition = array('orderID' => $orderID);
@@ -483,6 +495,7 @@ class Knoxville extends CI_Controller {
 		$header_data['title'] = "Order#$orderID: Order Details";
 		$this->load->view('include/header',$header_data);
         $this->load->view('trans_view',$data);
+		$this->load->view('include/footer');
     }
     
     public function updateTransaction($transID){
@@ -509,6 +522,7 @@ class Knoxville extends CI_Controller {
 			$header_data['title'] = "Update Transaction";
             $this->load->view('include/header',$header_data);
             $this->load->view('update_transForm',$data);
+			$this->load->view('include/footer');
         }
         else{
             $newRecord=array('unit_price'=>$_POST['price'],'quantity'=>$_POST['qty']);
@@ -537,6 +551,7 @@ class Knoxville extends CI_Controller {
 		$data['items'] = $itemsRec;
 		 $this->load->view('include/header',$header_data);
 		 $this->load->view('add_purchase',$data);
+		 $this->load->view('include/footer');
 		$count = 0; 
 		 if(!empty($_POST['itemList'])) {
              foreach($_POST['itemList'] as $check) {
@@ -571,6 +586,7 @@ class Knoxville extends CI_Controller {
 		$data['items'] = $itemsRec;
 		 $this->load->view('include/header',$header_data);
 		 $this->load->view('add_refundForm',$data);
+		 $this->load->view('include/footer');
 		$count = 0; 
 		 if(!empty($_POST['itemList'])) {
              foreach($_POST['itemList'] as $check) {
@@ -604,6 +620,7 @@ class Knoxville extends CI_Controller {
 		if($this->form_validation->run()==FALSE){
             $this->load->view('include/header',$header_data);
             $this->load->view('add_schedForm',$data);
+			$this->load->view('include/footer');
 		}
 		else{
 		$ShipRecord=array('delivererID'=>$_POST['deliverer'],'orderID'=>$orderID);
@@ -639,6 +656,7 @@ class Knoxville extends CI_Controller {
 		if($this->form_validation->run()==FALSE){
             $this->load->view('include/header',$header_data);
             $this->load->view('add_DeliveryStatus',$data);
+			$this->load->view('include/footer');
 		}
 		else{
             $ShipStatus=array('shipID'=>$shipID,'date'=>$_POST['date'],'time'=>$_POST['time'],'status'=>$_POST['status'],'location' => $_POST['location']);
@@ -677,6 +695,7 @@ class Knoxville extends CI_Controller {
             $header_data['title']='Update Delivery Status';
             $this->load->view('include/header',$header_data);
             $this->load->view('update_DeliveryStatus',$data);
+			$this->load->view('include/footer');
         }
         else{
             $ShipStatus=array('date'=>$_POST['date'],'time'=>$_POST['time'],'status'=>$_POST['status'],'location'=>$_POST['location']);
@@ -692,6 +711,7 @@ class Knoxville extends CI_Controller {
 		$header_data['title'] = "View Inventory";
 		$this->load->view('include/header',$header_data);
         $this->load->view('item_view',$data);
+		$this->load->view('include/footer');
     }
     
     public function addItem(){
@@ -739,6 +759,7 @@ class Knoxville extends CI_Controller {
 			$header_data['title'] = "Update Item";
             $this->load->view('include/header',$header_data);
             $this->load->view('update_itemForm',$data);
+			$this->load->view('include/footer');
         }
         else{
             $newRecord=array('itemID'=>$itemID,'item_desc'=>$_POST['idesc'],'stocks'=>$_POST['stocks']);
@@ -756,6 +777,7 @@ class Knoxville extends CI_Controller {
         $data['id'] = (string) $id++;
 		$this->load->view('include/header',$header_data);
         $this->load->view('deliverer_view',$data);
+		$this->load->view('include/footer');
     }
     
     public function addDeliverer(){
@@ -772,6 +794,7 @@ class Knoxville extends CI_Controller {
 			$header_data['title'] = "Add Deliverer";
 			$this->load->view('include/header',$header_data);
             $this->load->view('add_delivererForm');
+			$this->load->view('include/footer');
         }
         else{
             $delivererRecord=array('delivererID'=>$_POST['delivererID'],'vehicle'=>$_POST['vehicle'],'contact_no'=>$_POST['cnum'],'assigned'=>$_POST['assigned']);
@@ -799,6 +822,7 @@ class Knoxville extends CI_Controller {
 			$title['title']="Update Deliverer";
             $this->load->view('include/header',$title);
             $this->load->view('update_delivererForm',$data);
+			$this->load->view('include/footer');
         }
         else{
             $newRecord=array('delivererID'=>$delivererID,'vehicle'=>$_POST['vehicle'],'contact_no'=>$_POST['cnum'],'assigned'=>$_POST['assigned']);
@@ -835,6 +859,7 @@ class Knoxville extends CI_Controller {
             $header_data['title'] = "CHANGE PASSWORD";
             $this->load->view('include/header',$header_data);       
             $this->load->view('changepass',$data);
+			$this->load->view('include/footer');
         }else{
             $user =  $this->session->userdata('userID');
             $change=array('userID'=>$userID,'password'=>$_POST['new_password']);
