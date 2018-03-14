@@ -43,62 +43,110 @@ class SalesAgent extends CI_Controller {
 	}
     
     public function viewSalesReport(){
+		$userID=$this->session->userdata('userID');
         if($_POST['range']=='week'){
             $startDate = date('Y-m-d',strtotime('next sunday - 1 week'));
             $endDate = date('Y-m-d',strtotime('next sunday - 1 second'));
+			$start = date('jS F, Y',strtotime('next sunday - 1 week'));
+            $end = date('jS F, Y',strtotime('next sunday - 1 second'));
+			$cond = "userID='$userID'";
             $condition = "status='Purchased' AND date BETWEEN '$startDate' AND '$endDate'";
-            $transData=$this->Transaction->read($condition);
-            
-            $totalQuantity = 0;
-            $totalRevenue = 0;
-            if($transData != false){
-                foreach($transData as $t){
-                    $totalQuantity += $t['quantity'];
-                    $totalRevenue += $t['quantity']*$t['unit_price'];
-                }
-            }
-            $data['totalQuantity'] = $totalQuantity;
-            $data['totalRevenue'] = $totalRevenue;
+			$orders = $this->Order->read($cond);
+			$total = 0;
+				if($orders!=false){
+						foreach($orders as $o){
+							$tOrders = 0;
+								$condition1 = "orderID='".$o['orderID']."'";
+								if($transData!=false){
+									$trans = $this->Transaction->read($condition1." AND ".$condition);
+										if($trans!=false){
+										 foreach($trans as $t){
+											if($t['status']=='Purchased'){
+												$total += $t['quantity']*$t['unit_price'];
+											}
+											else{
+												$total -= $t['quantity']*$t['unit_price'];
+											}
+										}
+									}
+								}
+								$tOrders++;
+							}
+							
+				}	
+				$data['totalRevenue']=$total;
+				$data['totalOrders']=$tOrders;
             $data['range'] = 'This Week';
-            $data['date'] = $startDate.' to '.$endDate;
+            $data['date'] = $start.' to '.$end;
             echo $this->load->view('sales_report',$data,TRUE);
-        }
+		}
         else if($_POST['range']=='month'){
             $startDate = date('Y-m-d',strtotime('first day of this month'));
             $endDate = date('Y-m-d',strtotime('last day of this month'));
+           $start = date('jS F, Y',strtotime('next sunday - 1 week'));
+            $end = date('jS F, Y',strtotime('next sunday - 1 second'));
+			$cond = "userID='$userID'";
             $condition = "status='Purchased' AND date BETWEEN '$startDate' AND '$endDate'";
-            $transData=$this->Transaction->read($condition);
-            
-            $totalQuantity = 0;
-            $totalRevenue = 0;
-            if($transData != false){
-                foreach($transData as $t){
-                    $totalQuantity += $t['quantity'];
-                    $totalRevenue += $t['quantity']*$t['unit_price'];
-                }
-            }
-            $data['totalQuantity'] = $totalQuantity;
-            $data['totalRevenue'] = $totalRevenue;
+			$orders = $this->Order->read($cond);
+			$total = 0;
+				if($orders!=false){
+						foreach($orders as $o){
+							$tOrders = 0;
+								$condition1 = "orderID='".$o['orderID']."'";
+								if($transData!=false){
+									$trans = $this->Transaction->read($condition1." AND ".$condition);
+										if($trans!=false){
+										 foreach($trans as $t){
+											if($t['status']=='Purchased'){
+												$total += $t['quantity']*$t['unit_price'];
+											}
+											else{
+												$total -= $t['quantity']*$t['unit_price'];
+											}
+										}
+									}
+								}
+								$tOrders++;
+							}
+							
+				}	
+				$data['totalRevenue']=$total;
+				$data['totalOrders']=$tOrders;
             $data['range'] = 'This Month';
-            $data['date'] = $startDate.' to '.$endDate;
+            $data['date'] = $start.' to '.$end;
             echo $this->load->view('sales_report',$data,TRUE);
         }
         else if($_POST['range']=='day'){
             $date = date('Y-m-d',strtotime('today'));
             $condition=array('date'=>$date, 'status'=>'Purchased');
-            $transData=$this->Transaction->read($condition);
-            
-            $totalQuantity = 0;
-            $totalRevenue = 0;
-            if($transData!=false){
-                foreach($transData as $t){
-                    $totalQuantity += $t['quantity'];
-                    $totalRevenue += $t['quantity']*$t['unit_price'];
-                }
-            }
-            $data['totalQuantity'] = $totalQuantity;
-            $data['totalRevenue'] = $totalRevenue;
-            $data['range'] = 'Today';
+			$cond = "userID='$userID'";
+            $condition = "status='Purchased' AND date BETWEEN '$startDate' AND '$endDate'";
+			$orders = $this->Order->read($cond);
+			$total = 0;
+				if($orders!=false){
+						foreach($orders as $o){
+							$tOrders = 0;
+								$condition1 = "orderID='".$o['orderID']."'";
+								if($transData!=false){
+									$trans = $this->Transaction->read($condition1." AND ".$condition);
+										if($trans!=false){
+										 foreach($trans as $t){
+											if($t['status']=='Purchased'){
+												$total += $t['quantity']*$t['unit_price'];
+											}
+											else{
+												$total -= $t['quantity']*$t['unit_price'];
+											}
+										}
+									}
+								}
+								$tOrders++;
+							}
+							
+				}	
+				$data['totalRevenue']=$total;
+				$data['totalOrders']=$tOrders;
+            $data['range'] = 'This Week';
             $data['date'] = $date;
             echo $this->load->view('sales_report',$data,TRUE);
            
