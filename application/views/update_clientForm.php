@@ -25,7 +25,7 @@
 		<input class="form-control" type="text" name="cnum" id="cnum"value="<?php echo $cnum?>" />
       </div>
     <div class="col-sm-8">
-		<input class="subUpdate" type="submit" value="Submit" />
+		<input class="subUpdate sround" type="submit" value="Submit" />
 	</div>
 	</div>
   </form>

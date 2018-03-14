@@ -24,7 +24,7 @@
     </div>
     
 	<div class="col-sm-6">
-		<input class="subUpdate" type="submit" value="SUBMIT"/>
+		<input class="subUpdate sround" type="submit" value="SUBMIT"/>
 	</div>
   </form>
   </div>

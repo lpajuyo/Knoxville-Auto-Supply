@@ -85,10 +85,10 @@
 					
 				?>
 				
-				<a href="<?php echo base_url('knoxville/addPurchase/'.$orderID.'') ?>" class="sub">
+				<a href="<?php echo base_url('knoxville/addPurchase/'.$orderID.'') ?>" class="sub sround">
 		<span class="glyphicon glyphicon-plus"> </span>Purchase items</a>	
 		
-		<a href="<?php echo base_url('knoxville/addRefund/'.$orderID.'') ?>" class="sub">
+		<a href="<?php echo base_url('knoxville/addRefund/'.$orderID.'') ?>" class="sub sround">
 		<span class="glyphicon glyphicon-plus"> </span>Cancel/Return Orders</a>
 			</tbody>
 		</table>
