@@ -83,8 +83,8 @@ class SalesAgent extends CI_Controller {
         else if($_POST['range']=='month'){
             $startDate = date('Y-m-d',strtotime('first day of this month'));
             $endDate = date('Y-m-d',strtotime('last day of this month'));
-           $start = date('jS F, Y',strtotime('next sunday - 1 week'));
-            $end = date('jS F, Y',strtotime('next sunday - 1 second'));
+           $start = date('jS F, Y',strtotime('first day of this month'));
+            $end = date('jS F, Y',strtotime('last day of this month'));
 			$cond = "userID='$userID'";
             $condition = "status='Purchased' AND date BETWEEN '$startDate' AND '$endDate'";
 			$orders = $this->Order->read($cond);
