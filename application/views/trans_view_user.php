@@ -12,7 +12,7 @@
 	</div>
 	<br />
 	<br />
-	<p class="text1"><a href="<?php echo base_url('knoxville/addSched/'.$orderID) ?>"><span class="glyphicon glyphicon-plus"> </span>Schedule Delivery</a></a></p>
+	<p class="text1"><a href="<?php echo base_url('SalesAgent/addSched/'.$orderID) ?>"><span class="glyphicon glyphicon-plus"> </span>Schedule Delivery</a></a></p>
 		<div class="search1">
 			Search: <input type="text" id="myInput" onkeyup="Transaction()" placeholder="Type any value" title="Type ANY value">
 		</div>
@@ -39,12 +39,12 @@
 							if ($t['itemID'] == $i['itemID'])
 							echo $i['item_desc'];
 						}	
-						echo '</td><td>'.$t['unit_price'].'</td><td>'.$t['quantity'].'</td><td>'.$t['date'].'</td><td>'.$t['status'].'</td><td><a href="'.base_url('knoxville/updateTransaction/'.$t['transID']).'">Edit</a> | <a href="'.base_url('knoxville/delTransaction/'.$t['transID']).'/'.$orderID.'">Delete</a></td></tr>';
+						echo '</td><td>'.$t['unit_price'].'</td><td>'.$t['quantity'].'</td><td>'.$t['date'].'</td><td>'.$t['status'].'</td><td><a href="'.base_url('SalesAgent/updateTransaction/'.$t['transID']).'">Edit</a> | <a href="'.base_url('SalesAgent/delTransaction/'.$t['transID']).'/'.$orderID.'">Delete</a></td></tr>';
 						if($t['status'] == 'Purchased')
 							$totalPrice = $totalPrice + $t['unit_price'] * $t['quantity'];
 						elseif($t['status'] == 'Returned' || $t['status'] == 'Cancelled')
 							$totalPrice = $totalPrice - $t['unit_price'] * $t['quantity'];
-						//echo base_url('knoxville/delClient/'.c['clientID'])
+						//echo base_url('SalesAgent/delClient/'.c['clientID'])
 						}
 
 						echo '<p><b>Subtotal: &#x20B1;</b> '. $totalPrice."</p>";
@@ -69,23 +69,23 @@
 				if($ship != false ){
 					foreach($ship as $s){
 					if($s['status']=='Scheduled'){
-					echo '<a href="'.base_url('knoxville/addDeliveryStatus/'.$orderID.'/'.$s['shipID'].'').'" class="sub">
+					echo '<a href="'.base_url('SalesAgent/addDeliveryStatus/'.$orderID.'/'.$s['shipID'].'').'" class="sub">
 					<span class="glyphicon glyphicon-plus"> </span>Add Delivery Updates</a>';}
 					}
 					
 				
 					 foreach($ship as $s){
 					echo '<td>'.$s['status'].'</td><td>'.$s['location'].'</td><td>'.$s['date'].'</td><td>'.$s['time'].'</td>
-					<td><a href="'.base_url('knoxville/updateDeliveryStatus/'.$s['statusID'].'/'.$orderID).'">Edit</a> | <a href="'.base_url('knoxville/delDeliveryStatus/'.$s['statusID'].'/'.$orderID).'">Delete</a></td></tr>';
+					<td><a href="'.base_url('SalesAgent/updateDeliveryStatus/'.$s['statusID'].'/'.$orderID).'">Edit</a> | <a href="'.base_url('SalesAgent/delDeliveryStatus/'.$s['statusID'].'/'.$orderID).'">Delete</a></td></tr>';
 					 }
 				}
 					
 				?>
 				
-				<a href="<?php echo base_url('knoxville/addPurchase/'.$orderID.'') ?>" class="sub">
+				<a href="<?php echo base_url('SalesAgent/addPurchase/'.$orderID.'') ?>" class="sub">
 		<span class="glyphicon glyphicon-plus"> </span>Purchase items</a>	
 		
-		<a href="<?php echo base_url('knoxville/addRefund/'.$orderID.'') ?>" class="sub">
+		<a href="<?php echo base_url('SalesAgent/addRefund/'.$orderID.'') ?>" class="sub">
 		<span class="glyphicon glyphicon-plus"> </span>Cancel/Return Orders</a>
 			</tbody>
 		</table>
