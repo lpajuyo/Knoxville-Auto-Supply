@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <div class="tab-content">
 <?php echo validation_errors(); ?>
-<div class="card-body" style="padding: 10px;"><h3 style="text-align: center; text-decoration: bold;" >ITEM MANAGEMENT</h3>
+<div class="card-body" style="padding: 10px;">
+<h3 style="text-align: center; text-decoration: bold;" >ITEM MANAGEMENT</h3>
 	<div class="search1">
-		Search: <input type="text" id="myInput" onkeyup="Item()" placeholder="Type any value" title="Type ANY value">
+		Search: <input type="text" id="myInput" onkeyup="Item()" placeholder="Type any value" title="Type ANY value" class="sround">
 		<a data-toggle="modal" data-target="#squarespaceModal" class="butt4"><span class="glyphicon glyphicon-plus"> </span>&nbsp;Add Item</a>
 	
 <div class="modal fade" id="squarespaceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
@@ -22,15 +23,15 @@
   ?> 
     <div class="ClientForm">
 		<label class="control-label col-sm-4" for="idesc">Item Desc.:</label>
-		<input class="form-control col-sm-4" type="text" name="idesc" id="idesc" placeholder="Name of item" />
+		<input class="form-control col-sm-4" type="text" name="idesc" id="idesc" placeholder="Name of item" style="width:200px;"/>
     </div>
     
     <div class="ClientForm">
 		<label class="control-label col-sm-4" for="stocks">Stocks:</label>
-		<input class="form-control col-sm-4" type="text" name="stocks" id="stocks" placeholder="Number of stock"/>
+		<input class="form-control col-sm-4" type="number" name="stocks" id="stocks" placeholder="Number of stock" style="width:200px;"/>
     </div>
     
-	<div class="col-sm-6" style="margin-left: 150px;">
+	<div class="col-sm-12" style="margin-left: 100px;">
 		<input class="subUpdate" type="submit" value="SUBMIT"/>
 	</div>
   </form>

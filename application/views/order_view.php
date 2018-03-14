@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<div class="tab-content">
+<div class="tab-content"> 
+ <?php echo validation_errors(); ?>
+<div class="card-body" style="padding: 10px;"> 
 <h3 style="text-align: center; text-decoration: bold;" >SALES MANAGEMENT</h3>
 <?php echo validation_errors(); ?>
 
 
 
 <div class="search1">
-	Search: <input type="text" id="myInput" onkeyup="Order()" placeholder="Type any value" title="Type ANY value">
+	Search: <input type="text" id="myInput" onkeyup="Order()" placeholder="Type any value" title="Type ANY value" class="sround">
 	<a href="<?php echo base_url('knoxville/addOrder')?>" class="butt3"><span class="glyphicon glyphicon-plus"> </span>&nbsp;Add Order</a>
 </div>
 

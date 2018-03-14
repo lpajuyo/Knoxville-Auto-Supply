@@ -64,7 +64,7 @@
             <table class="table table-striped">
                 <thead>
                     <tr id="trHead">
-                 
+                      
                         <th>Client Name</th>
                         <th>Address </th>
                         <th>Contact No.</th>

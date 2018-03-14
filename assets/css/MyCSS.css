@@ -82,7 +82,10 @@ body{
 .butt5{
 	margin-left: 390px;
 }
-
+.up{
+	margin-left:150px;
+	width: 50%;
+}
 
 .tab-content{
 	margin-left: 200px;
@@ -109,7 +112,11 @@ body{
 	min-height: 30px;
 	max-height: 300px;
 }
-
+.sround{
+	background-color:#deeaee;
+	border-radius:15px;
+	border: solid #deeaee;
+}
 
 .search{
 	color: #34495E;
@@ -117,18 +124,31 @@ body{
 	margin-right: 300px;
 	margin-top: 35px;
 	margin-bottom: 10px;
+	
 }
 .search1{
 	color: #34495E;
-	margin-left: 90px;
+	margin-left: 80px;
 	margin-top: 60px;
 	margin-bottom: 10px;
 	
 }
-.searchLeft{
+.searchLeft1{
 	color: #34495E;
 	float: right;
-	margin-right: 570px;
+	margin-right: 545px;
+	margin-top: 35px;
+}
+.searchLeft2{
+	color: #34495E;
+	float: right;
+	margin-right: 495px;
+	margin-top: 35px;
+}
+.searchLeft3{
+	color: #34495E;
+	float: right;
+	margin-right: 535px;
 	margin-top: 35px;
 }
 .searchMid{
@@ -144,7 +164,22 @@ body{
 .report{
 	font-family: verdana;
 	font-size: 20px;
-	color: #fff;
+	color:#FAFAFA;
+}
+.x{
+	font-family: verdana;
+	font-size: 30px;
+	color: #1A5276;
+}
+.xx{
+	font-family: verdana;
+	font-size: 20px;
+	color: black;
+}
+.xxx{
+	font-family: verdana;
+	font-size: 20px;
+	color: #1A5276;
 }
 .hdr{
 	font-family: verdana;
@@ -156,8 +191,8 @@ body{
 	padding: 20px;
 	background: #1A5276;
 	color: #fff;
-	width: 80%;
-	margin-left: 100px;
+	width: 50%;
+	margin-left: 210px;
 }
 .tbl{
 	padding: 20px;
