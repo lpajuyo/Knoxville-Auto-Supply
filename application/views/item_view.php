@@ -47,8 +47,8 @@
             <table class="table table-striped">
                 <thead>
                     <tr id="trHead">
-						<th>Item Description</th>
-						<th>Stocks</th>
+						<th>Item Description <span class="glyphicon glyphicon-sort" style="color: white;"></span></th>
+						<th>Stocks <span class="glyphicon glyphicon-sort" style="color: white;"></span></th>
 						<th>ACTION</th>
 					</tr>
 				</thead>

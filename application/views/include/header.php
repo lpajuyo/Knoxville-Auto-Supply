@@ -48,7 +48,7 @@
         <div class="row">
             <ul class="nav nav-tabs">
                <ul class="nav navbar-nav">
-			   <li><a href="<?php echo base_url('knoxville/index')?>" class="navigation active">DASHBOARD</a></li>
+			   <li><a href="<?php echo base_url('knoxville/index')?>" class="navigation">DASHBOARD&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
 					<li><a href="<?php echo base_url('knoxville/viewSalesAgents')?>" class="navigation">SALES AGENT MANAGEMENT</a></li>
 					<li><a href="<?php echo base_url('knoxville/viewClients')?>" class="navigation">CLIENT MANAGEMENT</a></li>
 					<li><a href="<?php echo base_url('knoxville/viewOrders')?>" class="navigation">SALES MANAGEMENT</a></li>

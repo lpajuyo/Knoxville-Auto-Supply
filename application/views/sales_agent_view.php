@@ -76,12 +76,12 @@
             <table class="table table-striped">
                 <thead>
                     <tr id="trHead">
-                        <th>User ID</th>
-                        <th>Password</th>
-                        <th>Name</th>
-                        <th>Birthdate</th>
-                        <th>Email</th>
-                        <th>Contact Number</th>
+                        <th>User ID <span class="glyphicon glyphicon-sort" style="color: white;"></span></th>
+                        <th>Password <span class="glyphicon glyphicon-sort" style="color: white;"></span></th>
+                        <th>Name <span class="glyphicon glyphicon-sort" style="color: white;"></span></th>
+                        <th>Birthdate <span class="glyphicon glyphicon-sort" style="color: white;"></span></th>
+                        <th>Email <span class="glyphicon glyphicon-sort" style="color: white;"></span></th>
+                        <th>Contact Number <span class="glyphicon glyphicon-sort" style="color: white;"></span></th>
                         <th>Action</th>
                     </tr>
                 </thead>
