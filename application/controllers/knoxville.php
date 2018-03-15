@@ -183,7 +183,7 @@ class Knoxville extends CI_Controller {
                     }
                 }
             }
-           $data['totalQuantity'] = 'PHP'.number_format($totalQuantity);
+           $data['totalQuantity'] = number_format($totalQuantity);
             $data['totalRevenue'] =  'PHP'.number_format($totalRevenue);
 			$sales = $this->SalesAgent->read();
 			$orders = $this->Order->read();

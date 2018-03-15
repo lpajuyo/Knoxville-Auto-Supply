@@ -15,7 +15,8 @@
 	</div>
 	<br />
 	<br />
-	<p class="xxx text-center"><a href="<?php echo base_url('knoxville/addSched/'.$orderID) ?>"><span class="glyphicon glyphicon-plus"> </span>Schedule Delivery</a></a></p>
+	<?php if($ship == false ) 
+		echo '<p class="xxx text-center"><a href="'.base_url('knoxville/addSched/'.$orderID).'"><span class="glyphicon glyphicon-plus"> </span>Schedule Delivery</a></a></p>';?>
 		<div class="searchLeft1">
 			Search: <input type="text" id="myInput" onkeyup="Transaction()" placeholder="Type any value" title="Type ANY value" class="sround">
 		</div>
@@ -50,7 +51,7 @@
 						//echo base_url('knoxville/delClient/'.c['clientID'])
 						}
 
-						echo '<p><b>Subtotal: &#x20B1;</b> '. number_format($totalPrice)."</p>";
+						echo '<p><b>Subtotal: &#x20B1;</b> '.number_format($totalPrice)."</p>";
 				?>
 				
 				
